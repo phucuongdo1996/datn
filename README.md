@@ -1,7 +1,3 @@
-# CYARea!
-
-Development by **[DEHA Software JSC](https://www.deha-soft.com/)**
-
 ## Environment
 - Nginx: 1.12
 - PHP: 7.2
@@ -23,16 +19,3 @@ Development by **[DEHA Software JSC](https://www.deha-soft.com/)**
     `npm install`
     `npm run dev (If you debug)`
     `npm run prod (If you want min file)`
-
-### PHP extension requirements
-
-- BCMath PHP Extension
-- Ctype PHP Extension
-- JSON PHP Extension
-- Mbstring PHP Extension
-- OpenSSL PHP Extension
-- PDO PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
-- Intl PHP Extension
-- Zip PHP Extension
