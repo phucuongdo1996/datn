@@ -1,0 +1,63 @@
+@page {
+    margin: 0 0 13mm 0;
+    size: A3 landscape;
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important; /*Chrome, Safari */
+        color-adjust: exact !important; /*Firefox*/
+    }
+
+    .table-wrapper {
+        display: table;
+    }
+
+    #header, .main-sidebar-left, .container-wrapper-annual {
+        display: none !important;
+    }
+
+    #wrapper-master {
+        top: 0;
+        padding: 0;
+    }
+
+    #pre-print-annual-performance .table-data tr:first-child td:first-child {
+        width: 250px !important;
+    }
+
+    #pre-print-annual-performance .diagram-block {
+        height: 105mm;
+    }
+
+    #pre-print-annual-performance .diagram-block-2 {
+        height: 145mm;
+    }
+
+    .background-print {
+        padding: 0;
+        margin: auto;
+        width: 1515px;
+        transform-origin: 0px 0px;
+    }
+
+    #block-page, .print-bg {
+        height: auto;
+        transform: none;
+        transform-origin: 50% 50%;
+    }
+
+    .page-1-pre {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+    .page-2-pre {
+        min-height: 258mm;
+        page-break-inside: avoid;
+    }
+
+    .container-preview {
+        page-break-inside: avoid;
+    }
+}

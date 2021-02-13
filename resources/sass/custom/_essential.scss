@@ -1,0 +1,366 @@
+//.essential {
+//    padding-right: 60px !important;
+//    padding-top: 45px !important;
+//    padding-bottom: 60px !important;
+//}
+
+.essential-blade-content {
+    max-width: 1000px !important;
+}
+
+.essential-body {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.essential-body-special {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.essential-title {
+    //height: 42px;
+    color: #2c3348;
+    font-weight: 400 !important;
+}
+
+.essential-sub-title {
+    height: 22px;
+    color: #2c3348;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.12px;
+}
+
+.essential-body-title {
+    height: 25px;
+    color: #2c3348;
+    font-size: 16px;
+    font-weight: 700;
+}
+.row-center {
+    display: flex;
+    align-items: center;
+}
+
+.essential-text {
+    //height: 22px !important;
+    color: #2c3348 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+
+.essential-input {
+    height: 32px !important;
+    border-radius: 0px !important;
+    border: none !important;
+}
+
+.essential-input-border {
+    border-radius: 5px !important;
+    border: solid 1px #E4E6F1 !important;
+}
+
+.text-end {
+    align-self: flex-end;
+}
+
+.essential-img {
+    width: 100%;
+    height: 262px;
+    border: 2px dashed #cccccc;
+    background-color: #eff2f4;
+}
+
+.essential-confirm-img {
+    width: 100%;
+    height: 279px;
+    background-color: #eff2f4;
+}
+
+.essential-img-sub {
+    height: 258px;
+    width: 100%;
+    border: 2px dashed #cccccc;
+    background-color: #eff2f4;
+}
+
+.essential-confirm-img-sub {
+    width: 100%;
+    height: 135px;
+    background-color: #eff2f4;
+}
+
+.essential-icon-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.essential-row-text-center {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.delete-image, .cancel-image {
+    cursor: pointer;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.5rem;
+    border-radius: 50%;
+    padding: 0.3rem;
+    background: none;
+    -webkit-appearance: none;
+    border: none;
+    color: white;
+}
+
+.img-preview-map {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.input-hidden {
+    display: none;
+}
+
+.essential-border-radius-0 {
+    border-radius: 0px !important;
+}
+
+.essential-p30l {
+    padding-left: 30px !important;
+}
+
+.essential-checkbox {
+    letter-spacing: 0.08em;
+    text-align: center;
+    font-size: 12px;
+    height: 32px;
+    color: #ffffff;
+    background-color: #7C85A0;
+    padding: 5px;
+}
+
+.essential-checkbox input[type="checkbox"] {
+    zoom: 1.3;
+}
+
+.essential-m0b {
+    margin-bottom: 0px !important;
+}
+
+.essential-m10b {
+    margin-bottom: 0px !important;
+}
+
+.fill-height {
+    padding-bottom: 77px;
+}
+
+.page-name {
+    display: flex !important;
+}
+
+.title-style {
+    word-break: keep-all;
+}
+
+@media (max-width: 575px) {
+    .essential-confirm-img-sub {
+        margin-top: 10px;
+    }
+
+    .essential-body {
+        border-radius: 0 !important;
+    }
+
+    .essential-body-special {
+        border-radius: 0 !important;
+    }
+
+    .essential-blade-content .btn-essential-submit {
+        margin-right: 20px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .essential-img-sub {
+        //height: 130px;
+    }
+}
+
+@media (max-width: 767px) {
+    .essential-m10b {
+        margin-bottom: 10px !important;
+    }
+}
+
+@media (max-width: 1199px) {
+    .essential-m15t {
+        margin-top: 15px;
+    }
+
+    .essential-m5t {
+        margin-top: 5px;
+    }
+
+    .essential-m10t {
+        margin-top: 10px;
+    }
+
+    .essential-p15t {
+        padding-top: 15px !important;
+    }
+
+    .essential-p7-5r {
+        padding-right: 7.5px !important;
+    }
+
+    .essential-p30l {
+        padding-left: 0px !important;
+    }
+
+    .essential-img-sub {
+        margin-bottom: 10px;
+    }
+
+    .media-1199-p0r {
+        padding-right: 0 !important;
+    }
+
+    .media-1199-p0l {
+        padding-left: 0 !important;
+    }
+
+    .media-1199-m30t {
+        margin-top: 30px !important;
+    }
+
+    .fill-height {
+        padding-bottom: 30px;
+    }
+
+    .essential-checkbox {
+        width: 129px !important;
+    }
+}
+
+#preview-print-essential{
+    width: 21cm;
+    page-break-after: always;
+}
+#preview-print-essential-image{
+    padding-top: 85px;
+    background-color: transparent;
+    width: 21cm;
+}
+
+.preview-print-essential-image{
+    height: 926px;
+}
+
+.essential-break-inside {
+    page-break-inside: avoid;
+}
+
+.col-label-1{
+    width: 40%;
+}
+
+.col-label-2{
+    width: 20%;
+}
+
+.col-content-1{
+    width: 60%;
+}
+
+.col-content-2{
+    width: 80%;
+}
+
+.essential-pre{
+    padding: 5px 0px 5px 10px;
+    overflow-wrap: break-word;
+}
+
+.text-area-print{
+    min-height: 100px;
+}
+
+.print-map-image{
+    width: 30%;
+    min-height: 150px;
+    padding: 5px;
+}
+
+.print-info-image{
+    width: 70%;
+    min-height: 150px;
+    padding: 5px;
+}
+
+.title-preview-print{
+    height: 30px;
+    line-height: 30px;
+}
+
+.row-info-image{
+    height: 160px;
+    margin-bottom: 10px;
+}
+
+.preview-info-images{
+    padding: 0 5px;
+    height: 100%;
+}
+
+.confirm-image-location-map{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-close-preview-print{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.list-house-proprietor {
+    width: 275px;
+    max-width: 100%;
+}
+
+.list-house-proprietor-title {
+    width: 39.9999%;
+}
+
+.list-house-proprietor-select {
+    width: 59.9999%;
+}
+
+@media (max-width: 1088px) {
+
+    .list-house-proprietor {
+        width: 150px;
+        max-width: 100%;
+    }
+
+    .list-house-proprietor-title {
+        width: 99.9999%;
+    }
+    .list-house-proprietor-select {
+        margin-top: 2px;
+        width: 99.9999%;
+        border-radius:0 !important;
+    }
+}

@@ -1,0 +1,169 @@
+#form-data-profile table input::placeholder {
+    color: #6E7A94;
+}
+
+.head {
+    text-align: center;
+    margin: 6% auto;
+}
+
+.attention {
+    color: #d03c42;
+    margin-top: 8%;
+}
+
+#nick-name {
+    width: 50%;
+}
+
+.label-info {
+    vertical-align: middle !important;
+    width: 35%;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #EFF2F4;
+}
+
+.avatar {
+    width: 100px !important;
+    height: 100px !important;
+    padding: 0;
+    border: dashed 2px #CCCCCC;
+    display: flex;
+    color: #6E7A94;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-info table tr td {
+    padding: 20px;
+}
+
+.roll-text {
+    background-color: #d03c42;
+    color: white;
+    font-size: 17px;
+    margin: 2% auto 0%;
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
+.progress-info {
+    display: inline-block;
+    width: 380px;
+    height: 87px;
+    background-color: #eff2f4;
+}
+
+.progress-full {
+    width: 200px;
+    height: 15px;
+    border-radius: 20px;
+    border: 1px solid #c7c7c7;
+    background-color: #ffffff;
+}
+
+.progress-current {
+    width: 0%;
+    height: 13px;
+    border-radius: 20px;
+    border: 1px solid #c7c7c7;
+    background-color: #0e7aff;
+}
+
+.import-info, .update-info {
+    width: 280px;
+    height: 60px;
+    border-radius: 8px;
+}
+
+.num-percent {
+    color: #060c1c;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.text-percent {
+    color: #060c1c;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.vertical-base {
+    vertical-align: baseline !important;
+}
+
+@media (max-width: 768px) {
+    .input-md-pr {
+        padding-right: 15px !important;
+    }
+
+    .p0l-under-md  {
+        padding-left: 0 !important;
+    }
+
+    .row-license {
+        padding-right: 0 !important;
+    }
+
+    .p0-under-md {
+        padding: 0 !important;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .label-info {
+        font-size: 13px;
+    }
+
+    .roll-text {
+        font-size: 15px;
+    }
+
+    .attention {
+        font-size: 14px !important;
+    }
+
+    .container-info #form-data-profile h1 {
+        font-size: 32px;
+    }
+
+    #nick-name {
+        width: 100%;
+    }
+
+    .progress-info {
+        width: 100%;
+    }
+
+    .progress-full {
+        width: 160px;
+    }
+
+    .progress-info .row {
+        padding-left: 50px !important;
+    }
+
+    .block-percent {
+        padding-top: 10px !important;
+        text-align: right;
+    }
+
+    .num-percent {
+        font-size: 32px;
+    }
+
+    .text-percent {
+        font-size: 16px;
+    }
+
+}
+
+.dropzone {
+    border: 2px dashed #CCCCCC;
+    background: white;
+    width: 100%;
+    margin: auto;
+    background-size: 100% 100%;
+}

@@ -1,0 +1,205 @@
+.container-wrapper-rent{
+
+    .diagram-block{
+        min-height: inherit;
+    }
+
+    .group-button-top{
+        flex: auto;
+        margin-top: 0;
+        width: auto;
+        max-width: initial !important;
+    }
+
+    #table-property{
+        td{
+            word-break: keep-all !important;
+            padding: 15px;
+            vertical-align: middle;
+            &:first-of-type{
+                padding: 15px 25px;
+            }
+        }
+
+        .bg-general{
+            color: #fff;
+        }
+
+        .fa-trash-alt{
+            color: #d03c42;
+        }
+    }
+
+    .rent-roll-popup{
+        color: #007bff !important;
+        text-decoration: none !important;
+        background-color: transparent;
+        width: 100%;
+        text-align: left;
+    }
+
+    .rent-roll-popup:hover {
+        color: #0056b3 !important;
+        text-decoration: none;
+    }
+
+    .rent-roll-popup:after {
+        display: none !important;
+    }
+
+    .rent-roll-set-scrollbar {
+        top: 15px !important;
+        border-radius: 8px;
+        overflow-y: auto;
+        width: 160px;
+    }
+
+    .room-empty {
+        display: inline-block;
+        float: right;
+        border-radius: 50px;
+        background-color: #ea4f67;
+        padding: 4px 5px;
+        font-size: 12px;
+        color: #fff;
+        line-height: 1;
+    }
+
+    .rent-btn{
+        box-sizing: border-box;
+        display: inline-block;
+        padding: 3px;
+        width: 56px;
+        font-size: 13px;
+        color: #fff;
+        border-radius: 30px;
+        text-align: center;
+        &.rent-green-btn{
+            background-color: #5fb93e;
+        }
+        &.rent-pink-btn{
+            background-color: #ea4f67;
+        }
+        &.rent-general-btn{
+            background-color: #2c3348;
+        }
+    }
+
+    .col-12-sp{
+        &.m17l-per{
+            tr{
+                td{
+                    min-width: 100px;
+                    &:first-of-type{
+                        padding: 1rem;
+                    }
+                }
+                &:first-of-type{
+                    td{
+                        padding: 7px !important;
+                        min-width: initial;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1601px) {
+        .col-xxl-5 {
+            flex: 0 0 41.666667%;
+            max-width: 41.666667%;
+        }
+
+        .m30t-m14 {
+            margin-top: 30px;
+        }
+    }
+
+    @media (max-width: 1600px) {
+        .m30t-max16 {
+            margin-top: 30px;
+        }
+    }
+
+    @media (max-width: 420px) {
+        #form-condition-1{
+            .block-status {
+                display: block;
+            }
+            .centered{
+                padding-top: 10px !important;
+                padding-bottom: 10px !important;
+            }
+            .group-button-top{
+                margin: 30px 0 0 !important;
+                a{
+                    margin: 10px 0 0 !important;
+                    &:first-of-type{
+                        margin: 0 !important;
+                    }
+                }
+                #pre-print{
+                    margin-top: 30px !important;
+                }
+            }
+        }
+
+        .col-12-sp{
+            padding: 0 !important;
+            max-width: 100% !important;
+            &.m17l-per{
+                margin-left: 0 !important;
+                tr{
+                    &:first-of-type{
+                        td{
+                            min-width: 40px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .block-sp{
+            display: block;
+        }
+
+        .diagram-block{
+            &.p30{
+                padding: 20px !important;
+            }
+        }
+
+    }
+
+    .diagram-block-new {
+        min-height: 365px;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .room_no_empty {
+        width: 18px;
+        height: 18px;
+        background: #0E7AFF;
+    }
+
+    .room_empty {
+        width: 18px;
+        height: 18px;
+        background: #D03C42;
+    }
+
+    .legend-chart {
+        display: none;
+    }
+
+    #chart-acreage {
+        border-radius: 20px;
+    }
+
+    #chart-room {
+        border-radius: 20px;
+    }
+
+}

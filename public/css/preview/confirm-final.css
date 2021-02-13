@@ -1,0 +1,81 @@
+.input-simulation {
+    padding: 6px 12px !important;
+}
+
+@page {
+    margin: 0 0 45px 0;
+    size: A3 landscape;
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important; /*Chrome, Safari */
+        color-adjust: exact !important; /*Firefox*/
+    }
+
+    #pre-print-business-plan, #pre-print-confirm-final {
+        margin: auto !important;
+        padding: 0 !important;
+        width: 100%;
+        height: 100%;
+        -webkit-transform: scale(0.85);
+        -ms-transform: scale(0.85);
+        transform: scale(0.85);
+        -webkit-transform-origin: 0px 0px;
+        -ms-transform-origin: 0px 0px;
+        transform-origin: 0px 0px;
+    }
+
+    #pre-print-business-plan table tbody tr td {
+        font-size: 11px;
+    }
+
+    .table-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .table-wrapper th tr thead tbody {
+        width: 100% !important;
+    }
+
+    #block-page {
+        height: auto;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
+        -webkit-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+    }
+
+    #pre-print-confirm-final {
+        display: block;
+    }
+
+    #header, .main-sidebar-left, .content-confirm-final {
+        display: none;
+    }
+
+    .table-wrapper {
+        display: table;
+    }
+
+    #wrapper-master {
+        top: 0;
+        padding: 0;
+    }
+
+    .background-print {
+        padding: 0;
+        height: 100%;
+    }
+
+    .margin-preview {
+        margin-bottom: 300px;
+    }
+
+    .bd-black {
+        border: 0.5px solid black !important;
+    }
+}

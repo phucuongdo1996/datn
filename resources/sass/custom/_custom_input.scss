@@ -1,0 +1,155 @@
+.container-input {
+    z-index: 9;
+    margin-bottom: 0;
+    display: block;
+    position: relative;
+    padding-left: 21px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container-input input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: white;
+    border: solid 1px #6E7A94;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 4px;
+    top: 1px;
+    width: 6px;
+    height: 10px;
+    border: solid #088B5E;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.container-input input[type=checkbox]:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container-input:hover {
+    .checkmark {
+        border: solid 1px #088B5E;
+    }
+}
+
+.checkmark-radio {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    border: solid 1px #707070;
+    border-radius: 50%;
+}
+
+.checkmark-radio:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #24C172;
+}
+
+.container-input input[type=radio]:checked ~ .checkmark-radio:after {
+    display: block;
+}
+
+//select-option
+.custom-select-option {
+    position: relative;
+}
+
+.custom-select-option select {
+    display: none;
+}
+
+.select-selected {
+    font-size: 14px;
+    height: 32px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #2C3348 transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #2C3348 transparent;
+    top: 7px;
+}
+
+.select-selected {
+    color: #2C3348;
+    padding: .375rem .75rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.select-items div {
+    color: #2C3348;
+    padding: 0 .75rem;
+    margin: .5rem 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.select-items {
+    max-height: 400px;
+    overflow-y: auto;
+    word-break: break-all;
+    background-color: white;
+    border-radius: 8px;
+    position: absolute;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+    top: 125%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: #E2EFF7;
+}
+
+.text-transform-uppercase {
+    text-transform: uppercase;
+}

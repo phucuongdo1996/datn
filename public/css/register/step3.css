@@ -1,0 +1,88 @@
+.process .progress .progress-bar {
+    background-color: #0E7AFF;
+    width: 75%;
+}
+
+#title-step3 {
+    color: #5f6473;
+    font-weight: bold;
+}
+
+.process-content .div-block {
+    padding: 3%;
+    margin: 3% auto 0%;
+    width: 53%;
+}
+
+.head-process-contant .process-title {
+    color: #949db0;
+}
+
+.head-process-contant .title-active,
+.title-receive-email {
+    color: #5f6473;
+    font-weight: bold;
+}
+
+.text-red {
+    color: #f70000;
+}
+
+.process-content .content-auth-email {
+    margin-top: 3%;
+}
+
+.receive-email .message-receive-email span {
+    font-size: 13px;
+    font-weight: 100;
+    color: #2C3348;
+}
+.title-receive-email {
+    margin-top: 4%;
+}
+
+.receive-email {
+    margin-bottom: 6%;
+}
+
+.step3-user-name {
+    font-size: 16px;
+}
+
+.content-auth-email span {
+    font-size: 16px;
+    font-weight: 100;
+    color: #2C3348;
+}
+.title-receive-email {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 1%;
+}
+
+.btn-register-information {
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #0E7AFF;
+    padding: 18px 36px;
+    border-radius: 8px;
+    margin: 2% auto 2%;
+}
+
+@media (max-width: 420px) {
+    .content-auth-email span {
+        font-size: 10px;
+        font-weight: 100;
+        color: #2C3348;
+    }
+
+    .receive-email .message-receive-email span {
+        font-size: 10px;
+        font-weight: 100;
+        color: #2C3348;
+    }
+
+    .content-auth-email {
+        margin: 3% auto 0%;
+    }
+}

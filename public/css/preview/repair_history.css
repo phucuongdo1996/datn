@@ -1,0 +1,37 @@
+@page {
+    margin: 0 0 13mm 0;
+    size: A3 landscape;
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important; /*Chrome, Safari */
+        color-adjust: exact !important; /*Firefox*/
+    }
+
+    .table-wrapper {
+        display: table;
+    }
+
+    #header, .main-sidebar-left, .container-wrapper-history {
+        display: none !important;
+    }
+
+    #wrapper-master {
+        top: 0;
+        padding: 0;
+    }
+
+    .background-print {
+        padding: 0;
+        margin: auto;
+        width: 1515px;
+        transform-origin: 0 0;
+    }
+
+    .page-preview-print {
+        min-height: 258mm;
+        transform: none;
+        transform-origin: 50% 50%;
+    }
+}

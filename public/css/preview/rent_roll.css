@@ -1,0 +1,72 @@
+@page {
+    margin: 0 0 13mm 0;
+    size: A3 landscape;
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important; /*Chrome, Safari */
+        color-adjust: exact !important; /*Firefox*/
+    }
+
+    .table-wrapper {
+        display: table;
+    }
+
+    #header, .main-sidebar-left, .container-wrapper-rent, .container-wrapper-monthly {
+        display: none !important;
+    }
+
+    #wrapper-master {
+        top: 0;
+        padding: 0;
+    }
+
+    .background-print {
+        padding: 0;
+        margin: auto;
+        width: 1515px;
+        transform-origin: 0px 0px;
+    }
+
+    #block-page, .print-bg {
+        height: auto;
+        transform: none;
+        transform-origin: 50% 50%;
+    }
+
+    #page-11 {
+        page-break-inside: avoid;
+        page-break-after: always;
+    }
+
+    #page-22 {
+        min-height: 258mm;
+        page-break-inside: avoid;
+    }
+
+    .container-preview {
+        page-break-inside: avoid;
+    }
+
+    .highcharts-background {
+        margin: auto !important;
+    }
+
+    /* style print #pre-print-monthly-balance */
+    #pre-print-monthly-balance #block-page {
+        min-height: 0 !important;
+    }
+
+    #pre-print-monthly-balance .highcharts-container {
+        margin: auto;
+    }
+
+    #pre-print-monthly-balance .table-data tr:first-child td {
+        width: 100px;
+    }
+
+    #pre-print-monthly-balance .page-preview-print {
+        min-height: 540mm;
+    }
+}

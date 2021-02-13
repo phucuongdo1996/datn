@@ -1,0 +1,54 @@
+.container-user-detail {
+    .table-striped tbody tr.footer-table {
+        background-color:#f8f8f8 !important;
+    }
+}
+
+.color-information-NEWS {
+    background-color: green;
+}
+
+.color-information-EVENT {
+    background-color: #6666ff;
+}
+
+.enable-overflow-x {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.date-information {
+    padding: 12px 20px;
+}
+
+.dropdown-home {
+    min-width: 350px;
+    width: 97% !important;
+}
+
+.dropdown-properties-home {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 500px;
+}
+
+.user-create-home {
+    width: 50% !important;
+}
+
+.user-border-home {
+    border-left: 1px solid #000000;
+    color: #212529
+}
+
+@media (max-width: 1633px) {
+    .user-create-home {
+        width: 100% !important;
+    }
+
+    .user-border-home {
+        border-left: none !important;
+        color: #212529
+    }
+}
+

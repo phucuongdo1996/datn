@@ -1,0 +1,441 @@
+#wrap {
+    .sectionWrap#privacy {
+        width: 100%;
+        color: black;
+
+        .contact {
+            color: black;
+        }
+    }
+
+    .sectionWrap .sectionInner > * {
+        margin-top: 80px;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap .sectionInner > * {
+            margin-top: 14%;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap .sectionInner > * {
+            margin-top: 16%;
+        }
+    }
+
+    .sectionWrap .sectionInner > *:first-child {
+        margin-top: 0;
+    }
+
+    .sectionWrap#privacy .privacyListWrap {
+        width: 100%;
+    }
+
+    .sectionWrap#privacy .privacyListWrap > * {
+        margin-top: 60px;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap#privacy .privacyListWrap > * {
+            margin-top: 12%;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap#privacy .privacyListWrap > * {
+            margin-top: 14%;
+        }
+    }
+
+    .sectionWrap#privacy .privacyListWrap > *:first-child {
+        margin-top: 0;
+    }
+
+    .sectionWrap#privacy .privacyList > * {
+        margin-top: 20px;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap#privacy .privacyList > * {
+            margin-top: 4%;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap#privacy .privacyList > * {
+            margin-top: 5%;
+        }
+    }
+
+    .sectionWrap#privacy .privacyList > *:first-child {
+        margin-top: 0;
+    }
+
+    .sectionWrap#privacy .privacyList .privacyTitleArea .privacyTitle {
+        line-height: 1.8;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 0.2em;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap#privacy .privacyList .privacyTitleArea .privacyTitle {
+            font-size: 3.4vw;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap#privacy .privacyList .privacyTitleArea .privacyTitle {
+            font-size: 5vw;
+        }
+    }
+
+    .sectionWrap .textArea > * {
+        margin-top: 20px;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap .textArea > * {
+            margin-top: 6%;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap .textArea > * {
+            margin-top: 8%;
+        }
+    }
+
+    .sectionWrap .textArea > *:first-child {
+        margin-top: 0;
+    }
+
+    .sectionWrap .textArea > .numList > li,
+    .sectionWrap .textArea > .kakkoNumList > li {
+        margin-top: 1.5em;
+    }
+
+    .sectionWrap .textArea > .numList > li:first-child,
+    .sectionWrap .textArea > .kakkoNumList > li:first-child {
+        margin-top: 0;
+    }
+
+    .sectionWrap .numList,
+    .sectionWrap .kakkoNumList {
+        width: 100%;
+        list-style-type: none;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .sectionWrap .numList > li,
+    .sectionWrap .kakkoNumList > li {
+        width: 100%;
+        line-height: 2;
+        font-size: 15px;
+        letter-spacing: 0.12em;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap .numList > li,
+        .sectionWrap .kakkoNumList > li {
+            font-size: 2.6vw;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap .numList > li,
+        .sectionWrap .kakkoNumList > li {
+            font-size: 3.8vw;
+        }
+    }
+
+    .sectionWrap .numList > li:before,
+    .sectionWrap .kakkoNumList > li:before {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .sectionWrap .numList > li > *,
+    .sectionWrap .kakkoNumList > li > * {
+        margin-top: 0.5em;
+    }
+
+    .sectionWrap .numList > li > *:first-child,
+    .sectionWrap .kakkoNumList > li > *:first-child {
+        margin-top: 0;
+    }
+
+    .sectionWrap .numList > li {
+        padding-left: 1.5em;
+        counter-increment: numListCnt;
+    }
+
+    .sectionWrap .numList > li:before {
+        content: counter(numListCnt) ".";
+    }
+
+    .sectionWrap .kakkoNumList > li {
+        padding-left: 2em;
+        counter-increment: kakkoNumListCnt;
+    }
+
+    .sectionWrap .kakkoNumList > li:before {
+        content: "(" counter(kakkoNumListCnt) ")";
+    }
+
+    .sectionWrap .kakkoNumList.keta2 > li {
+        padding-left: 2.8em;
+    }
+
+    .sectionWrap#privacy .grayBgBox {
+        width: 100%;
+        padding: 20px;
+        background-color: #f3f3f3;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .sectionWrap#privacy .grayBgBox .companyList .companyName {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .sectionWrap#privacy .grayBgBox .companyList .companyName + * {
+        margin-top: 20px;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap#privacy .grayBgBox .companyList .companyName + * {
+            margin-top: 2%;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap#privacy .grayBgBox .companyList .companyName + * {
+            margin-top: 4%;
+        }
+    }
+
+    .sectionWrap#privacy .grayBgBox .companyList .companyName + *:first-child {
+        margin-top: 0;
+    }
+
+    .sectionWrap#privacy .grayBgBox .companyList > p {
+        line-height: 2;
+        font-size: 15px;
+        letter-spacing: 0.12em;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap#privacy .grayBgBox .companyList > p {
+            font-size: 2.6vw;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap#privacy .grayBgBox .companyList > p {
+            font-size: 3.8vw;
+        }
+    }
+
+    .sectionWrap#privacy .grayBgBox .companyList .textLink {
+        line-height: 1;
+    }
+
+    .sectionWrap .revisionDate {
+        font-size: 15px;
+        letter-spacing: 0.12em;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap .revisionDate {
+            font-size: 2.6vw;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap .revisionDate {
+            font-size: 3.8vw;
+        }
+    }
+
+    .sectionWrap .backBtnArea > a {
+        font-size: 15px;
+        letter-spacing: 0.12em;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap .backBtnArea > a {
+            font-size: 2.6vw;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap .backBtnArea > a {
+            font-size: 3.8vw;
+        }
+    }
+
+    .sectionWrap#legal {
+        width: 100%;
+        color: #000;
+    }
+
+    .sectionWrap#legal .legalListWrap {
+        width: 100%;
+    }
+
+    .sectionWrap#legal .legalListWrap .legalList {
+        width: 100%;
+    }
+
+    .sectionWrap#legal .legalListWrap .legalList > * {
+        margin-top: 5px;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap#legal .legalListWrap .legalList > * {
+            margin-top: 1%;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap#legal .legalListWrap .legalList > * {
+            margin-top: 2%;
+        }
+    }
+
+    .sectionWrap#legal .legalListWrap .legalList > *:first-child {
+        margin-top: 0;
+    }
+
+    .sectionWrap#legal .legalListWrap .legalList > dl {
+        width: 100%;
+        padding: 30px;
+        background-color: #f3f3f3;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap#legal .legalListWrap .legalList > dl {
+            padding: 6%;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+    }
+
+    .sectionWrap#legal .legalListWrap .legalList > dl > dt,
+    .sectionWrap#legal .legalListWrap .legalList > dl > dd {
+        line-height: 2;
+        font-size: 15px;
+        letter-spacing: 0.12em;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap#legal .legalListWrap .legalList > dl > dt,
+        .sectionWrap#legal .legalListWrap .legalList > dl > dd {
+            font-size: 2.6vw;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap#legal .legalListWrap .legalList > dl > dt,
+        .sectionWrap#legal .legalListWrap .legalList > dl > dd {
+            font-size: 3.8vw;
+        }
+    }
+
+    .sectionWrap#legal .legalListWrap .legalList > dl > dt {
+        width: 38%;
+        font-weight: bold;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap#legal .legalListWrap .legalList > dl > dt {
+            width: 100%;
+        }
+    }
+
+    .sectionWrap#legal .legalListWrap .legalList > dl > dd {
+        width: 57%;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap#legal .legalListWrap .legalList > dl > dd {
+            width: 100%;
+            margin-top: 4%;
+        }
+    }
+
+    .sectionWrap#legal .backBtnArea > a {
+        font-size: 15px;
+        letter-spacing: 0.12em;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .sectionWrap#legal .backBtnArea > a {
+            font-size: 2.6vw;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .sectionWrap#legal .backBtnArea > a {
+            font-size: 3.8vw;
+        }
+    }
+
+    .sectionWrap#terms {
+        color: black !important;
+
+        .termsList .textArea {
+            margin-top: 20px;
+        }
+
+        .termsList > *:first-child {
+            margin-top: 0;
+        }
+
+
+        .termsListWrap {
+            width: 100%;
+        }
+
+        .termsListWrap > * {
+            margin-top: 60px;
+        }
+
+        .termsList .termsTitleArea .termsTitle {
+            line-height: 1.8;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+        }
+
+        .alignR {
+            text-align: right;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .termsList .termsTitleArea .termsTitle {
+                font-size: 5vw;
+            }
+        }
+    }
+}

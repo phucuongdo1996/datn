@@ -1,0 +1,64 @@
+#footer {
+    background-color: #2c3348;
+    min-height: 12vh;
+    color: white;
+    font-size: 13px;
+    padding: 3% 0;
+}
+
+#footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+.contain-modal {
+    overflow: auto;
+    max-height: 470px;
+    padding: 8%;
+}
+
+.modal-body-unhead {
+    padding: 5px;
+}
+
+.contain-modal-body {
+    margin-top: 5%;
+    text-align: justify;
+}
+
+.contain-modal-body p {
+    font-size: 14px;
+    color: #2C3348;
+    line-height: 2em;
+}
+
+.modal-content-unhead {
+    border-radius: 20px;
+}
+
+.btn-close-modal {
+    position: absolute;
+    top: -8%;
+    right: 1%;
+    font-size: 30px;
+    color: #FFFFFF;
+}
+
+.title-modal {
+    color: #2C3348;
+}
+
+.contact {
+    color: #2B9ACB;
+}
+
+@media (max-width: 420px) {
+    #footer {
+        font-size: 12px;
+        line-height: 3;
+    }
+
+    .div-show-rules {
+        padding-left: 5px !important;
+    }
+}

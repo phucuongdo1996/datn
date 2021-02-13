@@ -1,0 +1,41 @@
+@page  {
+    margin: 0 0 45px 0;
+    padding: 0;
+    size: 210mm 297mm;
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important; /*Chrome, Safari */
+        color-adjust: exact !important;  /*Firefox*/
+    }
+
+    .table-wrapper {
+        display: table;
+    }
+
+    #header, #form-data-summary, .main-sidebar-left {
+        display: none;
+    }
+
+    #wrapper-master {
+        top: 0;
+        padding: 0;
+    }
+
+    .background-print{
+        padding: 0;
+        height: 100%;
+    }
+    #preview-print-essential{
+        page-break-inside: avoid;
+    }
+
+    #preview-print-essential-image{
+        page-break-inside: avoid;
+    }
+
+    #btn-close-preview-print{
+        display: none;
+    }
+}

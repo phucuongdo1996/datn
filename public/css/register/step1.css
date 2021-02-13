@@ -1,0 +1,36 @@
+.process-content .btn-submit {
+    color: white;
+    padding: 3% 10%;
+    margin: 5% auto;
+}
+
+.process .progress .progress-bar {
+    width: 25%;
+}
+
+#title-step1 {
+    color: #5f6473;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.input-register {
+    height: 45px;
+}
+
+@media (max-width: 420px) {
+    #form-data-role-email .form-group {
+        margin-bottom: 0px !important;
+    }
+
+    .form-group {
+        margin-bottom: 1rem !important;
+    }
+
+    .process-content .btn-submit {
+        padding: 5% 10%;
+    }
+}
