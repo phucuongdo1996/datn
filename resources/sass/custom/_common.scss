@@ -920,7 +920,7 @@
     min-height: 100%; }
 
 .h-100 {
-    height: 100%; }
+    height: 100% !important; }
 
 .fl {
     float: left !important; }
@@ -988,6 +988,9 @@
 
 .fs40 {
     font-size: 40px !important; }
+
+.fs50 {
+    font-size: 50px !important; }
 
 .fs56 {
     font-size: 56px !important; }
@@ -1186,7 +1189,7 @@ body {
 }
 
 .fw-bold {
-    font-weight: bold;
+    font-weight: bold !important;
 }
 
 .fw-normal {

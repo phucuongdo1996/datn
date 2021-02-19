@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 | Web Routes no need to login
 */
 Route::get('/', 'TopController@index')->name(TOP);
+
 Route::get('/privacy', 'TopController@privacy')->name(PRIVACY);
 Route::get('/legal', 'TopController@legal')->name(LEGAL);
 Route::get('/terms', 'TopController@terms')->name(TERMS);
