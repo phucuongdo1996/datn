@@ -1,0 +1,53 @@
+.item-block {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.text-blue {
+    color: blue;
+}
+
+.h90 {
+    height: 90px !important;
+}
+.zoom-hover {
+    width: 130px;
+    height: 90px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+/*.zoom-hover:hover {*/
+/*    z-index: 9999;*/
+/*    transform: scale(1.15);*/
+/*}*/
+
+.zoom-hover img {
+    width: 100%;
+    transition: 0.5s all ease-in-out;
+}
+
+.zoom-hover:hover img {
+    transform: scale(1.25);
+}
+
+.hero-hover:hover {
+    padding-left: 10px !important;
+    color: blue !important;
+}
+
+#category-item-dota .item-category {
+    font-size: 16px;
+    padding: 10px;
+    display: block;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #f3f3f3;
+    letter-spacing: .5px;
+}
+
+#category-item-dota .item-category:hover {
+    background-color: #0099FF;
+    padding-left: 20px !important;
+    color: white;
+}
