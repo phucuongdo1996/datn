@@ -15,7 +15,17 @@ class TopController extends Controller
      */
     public function index()
     {
-        return view('top');
+        return view('dota.top');
+    }
+
+    public function dotaHome()
+    {
+        return view('dota.top');
+    }
+
+    public function dotaListItem()
+    {
+        return view('dota.list_item');
     }
 
     /**

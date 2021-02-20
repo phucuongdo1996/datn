@@ -30,6 +30,9 @@ class TrimStrings extends Middleware
         }
 
         return is_string($value) ?  mb_ereg_replace(
-        '^[[:space:]]*([\s\S]*?)[[:space:]]*$', '\1', $value ) : $value;
+            '^[[:space:]]*([\s\S]*?)[[:space:]]*$',
+            '\1',
+            $value
+        ) : $value;
     }
 }

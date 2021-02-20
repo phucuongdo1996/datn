@@ -82,6 +82,8 @@ const SUB_USER_PROPERTY_STORE = 'sub_user.property.store';
 const SUB_USER_CHANGE_PERMISSION = 'sub_user.change.permission';
 
 const TOP = 'top';
+const DOTA_LIST_ITEM = 'dota.list.item';
+const DOTA_HOME = 'dota.home';
 const LOGIN = 'login';
 const SHOW_LOGIN = 'show.login';
 const LOGOUT = 'logout';

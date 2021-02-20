@@ -15,5 +15,4 @@ interface UserRepositoryInterface
      * @return mixed
      */
     public function getByUserCode($id);
-
 }

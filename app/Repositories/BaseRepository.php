@@ -268,7 +268,6 @@ abstract class BaseRepository implements RepositoryInterface
         $this->unsetWith();
 
         return $model;
-
     }
 
     /**
@@ -420,7 +419,6 @@ abstract class BaseRepository implements RepositoryInterface
         return $this;
     }
 
-
     /**
      * Reset the query clause parameter arrays.
      *
@@ -535,7 +533,10 @@ abstract class BaseRepository implements RepositoryInterface
         $items = $items instanceof Collection ? $items : Collect::make($items);
 
         return new LengthAwarePaginator(
-            $items->forPage($page, $perPage), $items->count(), $perPage, $page,
+            $items->forPage($page, $perPage),
+            $items->count(),
+            $perPage,
+            $page,
             [
                 'path' => Paginator::resolveCurrentPath(),
                 'pageName' => 'page',

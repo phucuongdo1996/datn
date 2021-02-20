@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/fontawesome-free-5.6.1.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/datepicker.standalone.min.css') }}">
+    ////
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('styles')
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/datepicker.min.js') }}"></script>
     <script src="{{ asset('js/datepicker.ja.min.js') }}"></script>
-    <script src="{{ asset('js/dropzone.js') }}"></script>
     @yield('script-files')
 </head>
 <body>
@@ -26,7 +27,6 @@
         @include('layout.new_footer')
     </div>
 </div>
-@yield('custom_content')
 </body>
 @yield('js')
 <script src="{{ asset('dist/js/custom.min.js') }}"></script>

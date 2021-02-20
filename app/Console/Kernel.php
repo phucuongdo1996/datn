@@ -24,12 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('queue:work --stop-when-empty')->everyMinute()->withoutOverlapping();
-//        $schedule->command('sub-user:destroy')->everyMinute();
-        $schedule->command('check-profile:destroy')->everyFiveMinutes();
-        $schedule->command('block-user:payment-error')->everyMinute();
-        $schedule->command('pay:update-member-after-pay')->dailyAt("8:00");
-        $schedule->command('pay:update-amount-before-pay')->dailyAt('8:00');
+        //
     }
 
     /**
