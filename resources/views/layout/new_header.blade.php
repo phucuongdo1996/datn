@@ -1,6 +1,6 @@
 <div id="headWrap">
     <header id="header">
-        <div id="logo"><a href="{{ route($currentUser ? TOP : USER_HOME) }}">
+        <div id="logo"><a href="">
                 <img class="w-80" src="{{ asset('images/logo.png') }}" alt="DATN" /></a>
         </div>
 
@@ -9,7 +9,7 @@
                 <div id="globalNavInner">
                     <div id="mainNav">
                         <ul>
-                            <li><a>DOTA 2</a></li>
+                            <li><a href="{{ route(DOTA_HOME) }}">DOTA 2</a></li>
                             <li><a>Steam Code</a></li>
                             <li><a>Hướng dẫn</a></li>
                             <li><a>Liên hệ</a></li>
@@ -19,9 +19,9 @@
                     <div id="memberNav">
                         <ul>
                             @if(!$currentUser)
-                                <li><a href="{{ route(REGISTER_SHOW_SCREEN_REGISTER) }}" class="registrationBtn">Đăng nhập</a>
+                                <li><a href="" class="registrationBtn">Đăng nhập</a>
                             @else
-                                <li><a href="{{ route(USER_HOME) }}" class="registrationBtn">{{ trans('attributes.top.header.home') }}aaa</a></li>
+                                <li><a href="" class="registrationBtn">{{ trans('attributes.top.header.home') }}</a></li>
                             @endif
                         </ul>
                     </div><!-- memberNav -->

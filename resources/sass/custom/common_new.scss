@@ -1,5 +1,5 @@
 @charset "UTF-8";
-#wrap ~ html , #wrap ~ body {
+body {
     border: 0;
     outline: 0;
     font-weight: inherit;
@@ -11,22 +11,16 @@
     padding: 0;
 }
 
-@media all and (-ms-high-contrast: none) {
-    #wrap ~ html, #wrap ~ body {
-        font-family: "メイリオ",Meiryo,"游ゴシック",YuGothic,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック","MS PGothic",sans-serif;
-    }
-}
-
-#wrap ~ body {
+body {
     line-height: 1;
     font-size: 14px;
     color: #000;
     -webkit-text-size-adjust: 100%;
 }
 
-#wrap ~ html {
-    font-size: 62.5%;
-}
+//#wrap ~ html {
+//    font-size: 62.5%;
+//}
 
 * html .clearfix {
     zoom: 1;
