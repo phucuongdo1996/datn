@@ -17,5 +17,10 @@ use Illuminate\Support\Facades\Route;
 | Web Routes no need to login
 */
 Route::get('/', 'TopController@index')->name(TOP);
-Route::get('/dota', 'TopController@dotaHome')->name(DOTA_HOME);
-Route::get('/dota/list-item', 'TopController@dotaListItem')->name(DOTA_LIST_ITEM);
+
+Route::prefix('dota')->group(function () {
+    Route::get('/', 'TopController@dotaHome')->name(DOTA_HOME);
+    Route::get('/list-item', 'TopController@dotaListItem')->name(DOTA_LIST_ITEM);
+    Route::get('/list-set', 'TopController@dotaListSet')->name(DOTA_LIST_SET);
+    Route::get('/detail', 'DotaController@detail')->name(DOTA_DETAIL);
+});

@@ -21,7 +21,7 @@
                             <div class="row m-0">
                                 <div class="col-12 m10b">
                                     <p class="fs20 fw-bold m-0">Mới cập nhật
-                                        <a href="" aria-hidden="true" data-placement="left" data-toggle="tooltip" title="Item mới cập nhật !"><i class="question-icon far fa-question-circle"></i></a>
+                                        <a class="m5l" href="" aria-hidden="true" data-placement="left" data-toggle="tooltip" title="Item mới cập nhật !"><i class="question-icon far fa-question-circle"></i></a>
                                     </p>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                             <div class="row m-0">
                                 <div class="col-12 m10b d-flex justify-content-between">
                                     <p class="fs20 fw-bold m-0">Set đang bán</p>
-                                    <button class="btn btn-primary">Xem thêm >></button>
+                                    <button class="btn btn-primary"><a class="text-white" href="{{ route(DOTA_LIST_SET) }}">Xem thêm >></a></button>
                                 </div>
                             </div>
                             <div class="row m-0" style="height: 550px; overflow-y: scroll; overflow-x: hidden">
@@ -107,7 +107,9 @@
                         <div class="item-block m10b m5l p15" style="height: 660px">
                             <div class="row m-0">
                                 <div class="col-12 m10b">
-                                    <p class="fs20 fw-bold m-0">Bán chạy nhất<i class="question-icon far fa-question-circle" aria-hidden="true"></i></p>
+                                    <p class="fs20 fw-bold m-0">Bán chạy nhất
+                                        <a class="m5l" href="" aria-hidden="true" data-placement="left" data-toggle="tooltip" title="Item mới cập nhật !"><i class="question-icon far fa-question-circle"></i></a>
+                                    </p>
                                 </div>
                             </div>
                             <div style="max-height: 550px; overflow-y: scroll">
@@ -129,7 +131,9 @@
                         <div class="item-block m10b m5l p15" style="height: 660px">
                             <div class="row m-0">
                                 <div class="col-12 m10b">
-                                    <p class="fs20 fw-bold m-0">Đáng chú ý<i class="question-icon far fa-question-circle" aria-hidden="true"></i></p>
+                                    <p class="fs20 fw-bold m-0">Đáng chú ý
+                                        <a class="m5l" href="" aria-hidden="true" data-placement="left" data-toggle="tooltip" title="Item mới cập nhật !"><i class="question-icon far fa-question-circle"></i></a>
+                                    </p>
                                 </div>
                             </div>
                             <div style="max-height: 550px; overflow-y: scroll">
