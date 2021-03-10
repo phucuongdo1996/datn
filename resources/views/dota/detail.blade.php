@@ -203,7 +203,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-info">Đến kho đồ <i class="fas fa-arrow-right"></i></button>
+                    <a href="{{ route(USER_LIST_ITEM) }}">
+                        <button type="button" class="btn btn-info">Đến kho đồ <i class="fas fa-arrow-right"></i></button>
+                    </a>
                 </div>
             </div>
         </div>

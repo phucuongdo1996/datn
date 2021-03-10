@@ -16,9 +16,11 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/datepicker.min.js') }}"></script>
-    <script src="{{ asset('js/datepicker.ja.min.js') }}"></script>
+{{--    <script src="{{ asset('js/datepicker.ja.min.js') }}"></script>--}}
     <script src="{{ asset('js/highcharts/exporting.js') }}"></script>
     <script src="{{ asset('js/highcharts/highcharts.js') }}"></script>
+    <script src="{{ asset('js/cleave.js') }}"></script>
+    <script src="{{ asset('js/common/common.js') }}"></script>
     @yield('script-files')
 </head>
 <body>

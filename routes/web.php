@@ -23,4 +23,7 @@ Route::prefix('dota')->group(function () {
     Route::get('/list-item', 'TopController@dotaListItem')->name(DOTA_LIST_ITEM);
     Route::get('/list-set', 'TopController@dotaListSet')->name(DOTA_LIST_SET);
     Route::get('/detail', 'DotaController@detail')->name(DOTA_DETAIL);
+    Route::prefix('user')->group(function () {
+        Route::get('/list-item', 'UserController@listItem')->name(USER_LIST_ITEM);
+    });
 });
