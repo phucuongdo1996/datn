@@ -61,5 +61,14 @@ $(document).ready(function () {
 
    $('#open-modal').on('click', function () {
        $('#exampleModalCenter').modal('show')
+   });
+
+   $('#pay-submit').on('click', function () {
+       $('#exampleModalCenter').modal('hide');
+       $('#loading').modal('show');
+       setTimeout(function () {
+           $('#loading').modal('hide');
+           $('#modal-success').modal('show');
+       }, 2000)
    })
 });

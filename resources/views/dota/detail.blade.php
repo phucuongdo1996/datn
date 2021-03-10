@@ -90,7 +90,7 @@
                                                     </td>
                                                     <td class="font-weight-bold text-right text-blue">15,000</td>
                                                     <td class="text-center">
-                                                        <button class="btn btn-primary"><i class="fas fa-shopping-cart m10r"></i>Mua sản phẩm</button>
+                                                        <button class="btn btn-primary"><a class="color-white" href="{{ route(DOTA_DETAIL) }}"><i class="fas fa-shopping-cart m10r"></i>Mua sản phẩm</a></button>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -155,23 +155,106 @@
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 700px">
+    <div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 750px">
+            <div class="modal-content" style="background-color: unset; border: none">
+                <div class="modal-body">
+                    <div class="loading-wrapper d-flex align-items-center justify-content-center">
+                        <div class="loading-bar"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-success" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 750px">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Mua sản phẩm</h5>
+                    <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Thanh toán thành công !</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-flex" style="height: 450px;">
-                        <img class="w-100 object-fit-contain" src="{{ asset('images/item_dota/set_dota_1.jpg') }}" alt="">
+                    <div class="row">
+                        <div class="row m0 col-12">
+                            <div class="row m0 col-12 border p10b">
+                                <div class="row m0 col-12 m10t form-group">
+                                    <div class="col-6 d-flex align-items-center">Số giao dịch</div>
+                                    <div class="form-control col-6 text-right">DPC20210301</div>
+                                </div>
+                                <div class="row m0 col-12 m10t form-group">
+                                    <div class="col-6 d-flex align-items-center">Mã sản phẩm</div>
+                                    <div class="form-control col-6 text-right">SPKD20210301</div>
+                                </div>
+                                <div class="row m0 col-12 m10t form-group">
+                                    <div class="col-6 d-flex align-items-center">Ngày tạo</div>
+                                    <div class="form-control col-6 text-right">{{ date('d/m/Y', time()) }}</div>
+                                </div>
+                                <div class="row m0 col-12 m10t form-group">
+                                    <div class="col-6 d-flex align-items-center">Giá sản phẩm (đã bao gồm VAT)</div>
+                                    <div class="form-control col-6 text-right">15,000</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-info">Đến kho đồ <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 750px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Mua sản phẩm</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="row m0 h100 col-12">
+                            <div class="d-flex h100" style="width: 150px">
+                                <img class="w-100 object-fit-contain" src="{{ asset('images/item_dota/set_dota_1.jpg') }}" alt="">
+                            </div>
+                            <div style="min-width: 450px; max-width: 550px">
+                                <div class="d-flex align-items-center font-weight-bold m10l m10b fs20 justify-content-center">Guise of the Winged Bolt</div>
+                                <div class="d-flex align-items-center m10l justify-content-center fs16">Drow ranger</div>
+                            </div>
+                        </div>
+                        <div class="row m0 m20t col-12">
+                            <div class="row m0 col-12 border p10t p10b">
+                                <div class="col-12 font-weight-bold fs16 m10t"> Thông tin thanh toán</div>
+                                <div class="row m0 col-12 m10t form-group">
+                                    <div class="col-6 d-flex align-items-center">Tài khoản hiện có</div>
+                                    <div class="form-control col-6 text-right">2,000,000</div>
+                                </div>
+                                <div class="row m0 col-12 m10t form-group">
+                                    <div class="col-6 d-flex align-items-center">Giá sản phẩm (đã bao gồm VAT)</div>
+                                    <div class="form-control col-6 text-right">15,000</div>
+                                </div>
+                                <div class="row m0 col-12 m10t form-group">
+                                    <div class="col-6 d-flex align-items-center">Tài khoản còn lại</div>
+                                    <div class="form-control col-6 text-right">1,985,000</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m0 m20t col-12 p25l">
+                            <input type="checkbox" style="display: block; width: unset">
+                            <div class="m10l">Đồng ý và tiến hành thanh toán</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button id="pay-submit" type="button" class="btn btn-primary">Thanh toán</button>
                 </div>
             </div>
         </div>
