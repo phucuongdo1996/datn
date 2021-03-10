@@ -17,6 +17,7 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/datepicker.min.js') }}"></script>
     <script src="{{ asset('js/datepicker.ja.min.js') }}"></script>
+    <script src="{{ asset('/js/slick.min.js') }}"></script>
     @yield('script-files')
 </head>
 <body>

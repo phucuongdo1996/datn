@@ -11,8 +11,10 @@
                 <div class="row m10b">
                     <div class="col-8">
                         <div class="item-block m5r">
-                            <div class="d-flex" style="max-height: 350px">
-                                <img style="object-fit: fill" src="{{ asset('images/dota2_1.png') }}" alt="">
+                            <div class="slide-logo" style="max-height: 350px">
+                                <img style="max-height: 350px; object-fit: fill" src="{{ asset('images/dota2_1.png') }}" alt="">
+                                <img style="max-height: 350px; object-fit: fill" src="{{ asset('images/logo.png') }}" alt="">
+                                <img style="max-height: 350px; object-fit: fill" src="{{ asset('images/logo_steam.png') }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -160,4 +162,14 @@
 @section('js')
     <script src="{{ asset('/dist/js/top_index.min.js') }}"></script>
     <script src="{{ asset('/js/top/top.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.slide-logo').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                arrows: false,
+            });
+        });
+    </script>
 @endsection
