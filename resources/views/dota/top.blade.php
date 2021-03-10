@@ -46,19 +46,18 @@
                 </div>
 
                 <div class="row m10b">
-                    <div class=" row m-0 item-block p15" style="height: 220px; width: 100%">
-                        @foreach([1,2,3,4,5,6,7] as $item)
-                        <div class="m10l m10r">
-                            <div class="d-flex zoom-hover" style="width: 170px; height: 100px">
-                                <img style="object-fit: fill" src="{{ asset('images/dota2_1.png') }}" alt="">
-                            </div>
-                            <div class="p5t font-weight-bold">Guise of the Winged Bolt</div>
-                            <a href="#" class="p5t hero-hover"> - Drow Ranger</a>
-                            <div class="p5t font-weight-bold text-blue">10,000</div>
-                        </div>
+                    <div class=" row m-0 item-block p15 slide-bottom" style="height: 220px; width: 100%">
+                        @foreach([1,2,3,4,5,6,7,8,9,10] as $item)
+                            <a href="" class="background-style position-relative" style="background-image: url({{ asset('images/dota2_1.png') }})">
+                                <div class="bg-linear-gradient"></div>
+                                <div class="title-carousel-image text-center">
+                                    <p class="p5t font-weight-bold">Guise of the Winged Bolt</p>
+                                    <p class="p5t"> - Drow Ranger</p>
+                                    <p class="p5t font-weight-bold text-danger">10,000</p>
+                                </div>
+                            </a>
                         @endforeach
                     </div>
-
                 </div>
 
                 <div class="row">
@@ -168,7 +167,42 @@
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 autoplay: true,
+                dots: false,
                 arrows: false,
+            });
+
+            $('.slide-bottom').slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                autoplay: true,
+                dots: false,
+                arrows: false,
+                responsive: [
+                    {
+                        breakpoint: 1600,
+                        settings: {
+                            slidesToShow: 4,
+                        }
+                    },
+                    {
+                        breakpoint: 1300,
+                        settings: {
+                            slidesToShow: 3,
+                        }
+                    },
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2,
+                        }
+                    },
+                    {
+                        breakpoint: 576,
+                        settings: {
+                            slidesToShow: 1,
+                        }
+                    }
+                ]
             });
         });
     </script>
