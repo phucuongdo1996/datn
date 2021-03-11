@@ -849,6 +849,9 @@
 .h46 {
     height: 46px !important; }
 
+.h45 {
+    height: 45px !important; }
+
 .h49 {
     height: 49px !important; }
 
@@ -1653,6 +1656,10 @@ input[type=checkbox] {
     object-fit: contain !important;
 }
 
+.object-fit-fill {
+    object-fit: fill !important;
+}
+
 .object-fit-cover {
     object-fit: cover !important;
 }
@@ -1948,4 +1955,8 @@ input[type=checkbox] {
 
 .color-black {
     color: #000000;
+}
+
+.color-white {
+    color: white !important;
 }
