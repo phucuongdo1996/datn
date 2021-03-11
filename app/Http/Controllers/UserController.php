@@ -13,4 +13,14 @@ class UserController extends Controller
     {
         return view('user.list_item');
     }
+
+    public function storeProduct()
+    {
+        return view('user.store_product');
+    }
+
+    public function history()
+    {
+        return view('user.history');
+    }
 }
