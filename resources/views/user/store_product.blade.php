@@ -49,16 +49,19 @@
                                 <div class="item-block m5r h-100 p15 p20t">
                                     <div class="row m-0" style="height: 700px; overflow-y: scroll; overflow-x: hidden">
                                         @foreach([1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] as $item)
-                                            <div class="col-2 m0 p15b p15r" style="height: 115px">
+                                            <div class="col-2 m0 p15b p15r">
                                                 <div class="d-flex position-relative hovereffect">
                                                     <img class="w-100 h-110" style="object-fit: fill" src="{{ asset('images/item_dota/item_dota_2.png') }}" alt="">
-                                                    <div class="overlay d-flex justify-content-center align-items-center">
+                                                    <div class="overlay d-flex justify-content-center align-items-center h100">
                                                         <div>
                                                             <button class="btn btn-primary fs18 sell-item" style="min-width: 100px">
-                                                                Bán
+                                                                Thu hồi
                                                             </button>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-center p5">
+                                                   <span class="font-weight-bold">10,000,000</span>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -125,5 +128,5 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('/js/user/list_item.js') }}"></script>
+{{--    <script src="{{ asset('/js/user/user.js') }}"></script>--}}
 @endsection

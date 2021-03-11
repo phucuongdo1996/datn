@@ -18,22 +18,16 @@
                                 <div class="col-12 item-block m5r h-100 p15 p20t">
                                     <div class="row m-0">
                                         <div class="col-4 p10lr">
-                                            <input class="form-control" type="text" placeholder="Tên sản phẩm...">
+                                            <input class="form-control date-time" type="text" value="01/01/2021" placeholder="01/01/2021">
+                                        </div>
+                                        <div class="col-4 p10lr">
+                                            <input class="form-control date-time" type="text" value="{{ date('m/d/Y', time()) }}" placeholder="01/01/2021">
                                         </div>
                                         <div class="col-4 p10lr" >
                                             <select class="form-control" name="" id="">
                                                 <option value="">Tất cả</option>
-                                                <option value="">Alchemit</option>
-                                                <option value="">Anti-mage</option>
-                                                <option value="">Drow ranger</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-4 p10lr" >
-                                            <select class="form-control" name="" id="">
-                                                <option value="">Tất cả</option>
-                                                <option value="">Alchemit</option>
-                                                <option value="">Anti-mage</option>
-                                                <option value="">Drow ranger</option>
+                                                <option value="">Bán</option>
+                                                <option value="">Mua</option>
                                             </select>
                                         </div>
                                     </div>
@@ -48,19 +42,40 @@
                             <div class="row m-0">
                                 <div class="item-block m5r h-100 p15 p20t">
                                     <div class="row m-0" style="height: 700px; overflow-y: scroll; overflow-x: hidden">
+{{--                                        {{ dd(strtotime('0/01/2021')) }}--}}
+{{--                                        {{ rand(1575126000, 1606748400) }}--}}
                                         @foreach([1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] as $item)
-                                            <div class="col-2 m0 p15b p15r" style="height: 115px">
-                                                <div class="d-flex position-relative hovereffect">
-                                                    <img class="w-100 h-110" style="object-fit: fill" src="{{ asset('images/item_dota/item_dota_2.png') }}" alt="">
-                                                    <div class="overlay d-flex justify-content-center align-items-center">
-                                                        <div>
-                                                            <button class="btn btn-primary fs18 sell-item" style="min-width: 100px">
-                                                                Bán
-                                                            </button>
-                                                        </div>
+                                            @php($random = rand(0, 1))
+                                        @php($number = number_format(rand(1, 20) * 10000))
+                                        @if($random == 0)
+                                            <div class="row col-12 m0 p15 justify-content-between border-bottom">
+                                                <div>
+                                                    <div class="fs16 m10b">
+                                                        <span class="font-weight-bold">Cường</span> đã mua <span class="font-weight-bold">Guise of the Winged Bolt</span> với giá <span class="font-weight-bold">{{ $number }}</span>.
+                                                    </div>
+                                                    <div class="text-blue fs14">
+                                                        {{ date('h:i d/m/Y', rand(1575126000, 1606748400)) }}
                                                     </div>
                                                 </div>
+                                                <div class="fs18" style="color: green">
+                                                    + {{ $number }}
+                                                </div>
                                             </div>
+                                            @else
+                                                <div class="row col-12 m0 p15 justify-content-between border-bottom">
+                                                    <div>
+                                                        <div class="fs16 m10b">
+                                                            <span class="font-weight-bold">Bạn</span> đã mua <span class="font-weight-bold">Guise of the Winged Bolt</span> từ <span class="font-weight-bold">Cường</span> với giá <span class="font-weight-bold">{{ $number }}</span>.
+                                                        </div>
+                                                        <div class="text-blue fs14">
+                                                            {{ date('h:i d/m/Y', rand(1575126000, 1606748400)) }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="fs18" style="color: red">
+                                                        - {{ $number }}
+                                                    </div>
+                                                </div>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </div>
@@ -125,5 +140,5 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('/js/user/list_item.js') }}"></script>
+{{--    <script src="{{ asset('/js/user/user.js') }}"></script>--}}
 @endsection

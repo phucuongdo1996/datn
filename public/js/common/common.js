@@ -109,8 +109,8 @@ var Common = (function () {
 
     modules.optionDateTime = function () {
         $('.date-time').datepicker({
-            format: 'yyyy/mm/dd',
-            language: "ja",
+            format: 'dd/mm/yyyy',
+            language: "en",
             forceParse: false,
             useCurrent: false,
         });

@@ -1,5 +1,6 @@
-var user = (function () {
+let listItem = (function () {
     let modules = {};
+
     modules.buildHistoryChart = function () {
         Highcharts.chart('history-pay-chart-sell', {
             chart: {
@@ -55,12 +56,13 @@ var user = (function () {
             }]
         });
     }
+
     return modules;
 }(window.jQuery, window, document));
 
 $(document).ready(function () {
    $('.sell-item').on('click', function () {
-       user.buildHistoryChart()
+       listItem.buildHistoryChart()
        $('#modal-sell-item').modal('show')
    });
 
