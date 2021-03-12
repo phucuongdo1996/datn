@@ -5,7 +5,7 @@
 }
 
 .text-blue {
-    color: blue;
+    color: blue !important;
 }
 
 .h90 {
@@ -228,4 +228,8 @@
 
 .h-110 {
     height: 110px !important;
+}
+
+.text-underline {
+    text-decoration: underline !important;
 }

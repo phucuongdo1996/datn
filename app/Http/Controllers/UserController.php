@@ -23,4 +23,9 @@ class UserController extends Controller
     {
         return view('user.history');
     }
+
+    public function info()
+    {
+        return view('user.info');
+    }
 }

@@ -27,5 +27,6 @@ Route::prefix('dota')->group(function () {
         Route::get('/list-item', 'UserController@listItem')->name(USER_LIST_ITEM);
         Route::get('/store-product', 'UserController@storeProduct')->name(USER_STORE_PRODUCT);
         Route::get('/history', 'UserController@history')->name(USER_HISTORY);
+        Route::get('/info', 'UserController@info')->name(USER_INFO);
     });
 });

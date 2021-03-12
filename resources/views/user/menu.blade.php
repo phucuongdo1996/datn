@@ -3,7 +3,7 @@
         @php($currentRouteName = request()->route()->getName())
         <div id="">
             <ul>
-                <a href="#" class="d-flex align-items-center menu-user-item p15 border-bottom">
+                <a href="{{ route(USER_INFO) }}" class="d-flex align-items-center menu-user-item p15 border-bottom @if($currentRouteName == USER_INFO) menu-user-item-active @endif ">
                     <i class="fas fa-user-circle fs20"></i>
                     <div class="fs18 p10l">Thông tin tài khoản</div>
                 </a>
