@@ -39,11 +39,49 @@
                                 </div>
                             </div>
 
+                            <div class="row m-0 m10b">
+                                <div class="col-12 item-block m5r h-100 p15 p20t">
+                                    <div class="p15l fs18 ">
+                                        <a id="show-chart" class="text-underline text-blue" data-toggle="collapse" href="#collapseChart" aria-expanded="false" aria-controls="collapseChart">Xem biểu đồ</a>
+                                    </div>
+                                    <div class="collapse m15t" id="collapseChart">
+                                        <div class="border p15t p15r p15b">
+                                            <div id="chart-history-user"></div>
+                                        </div>
+
+                                        <div class="row m0 p20t">
+                                            <div class="col-4 row m0">
+                                                <div class="col-4 d-flex align-items-center justify-content-center">
+                                                    <label class="fs18">Tổng thu</label>
+                                                </div>
+                                                <div class="col-8 p15r">
+                                                    <input type="text" value="{{ number_format(rand(1111111, 9999999), 2) }}" class="form-control text-right" style="color: green">
+                                                </div>
+                                            </div>
+                                            <div class="col-4 row m0">
+                                                <div class="col-4 d-flex align-items-center justify-content-center">
+                                                    <label class="fs18">Tổng chi</label>
+                                                </div>
+                                                <div class="col-8 p15r">
+                                                    <input type="text" value="{{ number_format(rand(1111111, 9999999), 2) }}" class="form-control text-right" style="color: red">
+                                                </div>
+                                            </div>
+                                            <div class="col-4 row m0">
+                                                <div class="col-4 d-flex align-items-center justify-content-center">
+                                                    <label class="fs18">Chênh lệch</label>
+                                                </div>
+                                                <div class="col-8 p15r">
+                                                    <input type="text" value="{{ number_format(rand(1111111, 9999999), 2) }}" class="form-control text-right" style="color: green">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row m-0">
-                                <div class="item-block m5r h-100 p15 p20t">
+                                <div class="item-block h-100 p15 p20t">
                                     <div class="row m-0" style="height: 700px; overflow-y: scroll; overflow-x: hidden">
-{{--                                        {{ dd(strtotime('0/01/2021')) }}--}}
-{{--                                        {{ rand(1575126000, 1606748400) }}--}}
                                         @foreach([1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] as $item)
                                             @php($random = rand(0, 1))
                                         @php($number = number_format(rand(1, 20) * 10000))
@@ -140,5 +178,5 @@
     </div>
 @endsection
 @section('js')
-{{--    <script src="{{ asset('/js/user/user.js') }}"></script>--}}
+    <script src="{{ asset('/js/user/history.js') }}"></script>
 @endsection
