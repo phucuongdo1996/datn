@@ -28,4 +28,9 @@ class UserController extends Controller
     {
         return view('user.info');
     }
+
+    public function rechargeMoney()
+    {
+        return view('user.recharge_money');
+    }
 }

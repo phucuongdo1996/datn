@@ -233,3 +233,7 @@
 .text-underline {
     text-decoration: underline !important;
 }
+
+.text-red {
+    color: #dc3545 !important;
+}

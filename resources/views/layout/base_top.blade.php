@@ -24,7 +24,7 @@
     @yield('script-files')
 </head>
 <body>
-<div id="wrapper" style="position: absolute; top: 0 !important;">
+<div id="wrapper">
     <div id="wrap">
         @yield('content')
 

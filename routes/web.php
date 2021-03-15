@@ -28,5 +28,6 @@ Route::prefix('dota')->group(function () {
         Route::get('/store-product', 'UserController@storeProduct')->name(USER_STORE_PRODUCT);
         Route::get('/history', 'UserController@history')->name(USER_HISTORY);
         Route::get('/info', 'UserController@info')->name(USER_INFO);
+        Route::get('/recharge-money', 'UserController@rechargeMoney')->name(USER_RECHARGE_MONEY);
     });
 });
