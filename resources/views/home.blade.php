@@ -1,3 +1,3 @@
-@extends('layout.home.master')
+@extends('layouts.home.master')
 @section('content')
 @endsection

@@ -1,9 +1,9 @@
-@extends('layout.base_top')
+@extends('layouts.base')
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/top/top.css') }}">
 @endsection
 @section('content')
-    @include('layout.new_header')
+    @include('layouts.header')
     <div id="mainWrap" class="p80t">
         <div id="main">
             <div id="kvWrap" style="padding-left: 10%; padding-right: 10%; background-color: #f4f6f9">
@@ -14,9 +14,8 @@
 
                     <div class="col-9">
                         <div class="p5l">
-
                             <div class="row m-0">
-                                <div class="col-12 item-block m5r h-100 p15 p20t">
+                                <div class="col-12 item-block m5r h-100 p15 p20t" style="min-height: 600px">
                                     <div class="row m-0 fs16">
                                         <div class="col-2 d-flex justify-content-center">
                                             <div style="width: 120px; height: 120px">
@@ -49,6 +48,101 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row m20t p20l">
+                                        <div class="col-2"></div>
+                                        <div class="col-8">
+                                            <div class="p10">
+                                                <div class="border">
+                                                    <div class="p10t p10b p20l p20r">
+                                                        <div class="row m0">
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                Số dư tài khoản:
+                                                            </div>
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                29,000,000
+                                                            </div>
+                                                        </div>
+                                                        <div class="row m0">
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                Tổng tiền đã nạp:
+                                                            </div>
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                44,000,000
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p10">
+                                                <div class="border">
+                                                    <div class="p10t p10b p20l p20r">
+                                                        <div class="row m0">
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                Số sản phẩm sở hữu:
+                                                            </div>
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                20
+                                                            </div>
+                                                        </div>
+                                                        <div class="row m0">
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                Số sản phẩm đang bán:
+                                                            </div>
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                14
+                                                            </div>
+                                                        </div>
+                                                        <div class="row m0">
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                Tổng tiền sản phẩm đang bán:
+                                                            </div>
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                25,000,000
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p10">
+                                                <div class="border">
+                                                    <div class="p10t p10b p20l p20r">
+                                                        <div class="row m0">
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                Số sản phẩm đã bán:
+                                                            </div>
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                24
+                                                            </div>
+                                                        </div>
+                                                        <div class="row m0">
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                Tổng tiền sản phẩm đã bán:
+                                                            </div>
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                               35,250,000
+                                                            </div>
+                                                        </div>
+                                                        <div class="row m0">
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                Số sản phẩm đã mua:
+                                                            </div>
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                29
+                                                            </div>
+                                                        </div>
+                                                        <div class="row m0">
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                Tổng tiền sản phẩm đã mua:
+                                                            </div>
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
+                                                                14,000,000
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                       </div>
                                     </div>
                                 </div>
                             </div>

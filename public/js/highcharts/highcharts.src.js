@@ -6708,7 +6708,7 @@
 
 		            // Update textWidth. Use the memoized textPxLength if possible, to
 		            // avoid the getTextPxLength function using elem.offsetWidth.
-		            // Calling offsetWidth affects rendering time as it forces layout
+		            // Calling offsetWidth affects rendering time as it forces layouts
 		            // (#7656).
 		            if (
 		                textWidth !== wrapper.oldTextWidth &&
@@ -9450,7 +9450,7 @@
 		         * Valid values are `left`, `center` and `right`.
 		         *
 		         * In the case that the legend is aligned in a corner position, the
-		         * `layout` option will determine whether to place it above/below
+		         * `layouts` option will determine whether to place it above/below
 		         * or on the side of the plot area.
 		         *
 		         * @validvalue ["left", "center", "right"]
@@ -9466,7 +9466,7 @@
 		        align: 'center',
 
 		        /**
-		         * If the [layout](legend.layout) is `horizontal` and the legend items
+		         * If the [layouts](legend.layouts) is `horizontal` and the legend items
 		         * span over two lines or more, whether to align the items into vertical
 		         * columns. Setting this to `false` makes room for more items, but will
 		         * look more messy.
@@ -9489,7 +9489,7 @@
 		         */
 
 		        /**
-		         * The layout of the legend items. Can be one of `horizontal` or
+		         * The layouts of the legend items. Can be one of `horizontal` or
 		         * `vertical` or `proximate`. When `proximate`, the legend items will be
 		         * placed as close as possible to the graphs they're representing,
 		         * except in inverted charts or when the legend position doesn't allow
@@ -9497,29 +9497,29 @@
 		         *
 		         * @validvalue ["horizontal", "vertical", "proximate"]
 		         * @type {String}
-		         * @sample {highcharts} highcharts/legend/layout-horizontal/
+		         * @sample {highcharts} highcharts/legend/layouts-horizontal/
 		         *         Horizontal by default
-		         * @sample {highcharts} highcharts/legend/layout-vertical/
+		         * @sample {highcharts} highcharts/legend/layouts-vertical/
 		         *         Vertical
-		         * @sample highcharts/legend/layout-proximate
+		         * @sample highcharts/legend/layouts-proximate
 		         *         Labels proximate to the data
-		         * @sample {highstock} stock/legend/layout-horizontal/
+		         * @sample {highstock} stock/legend/layouts-horizontal/
 		         *         Horizontal by default
 		         * @sample {highmaps} maps/legend/padding-itemmargin/
 		         *         Vertical with data classes
-		         * @sample {highmaps} maps/legend/layout-vertical/
+		         * @sample {highmaps} maps/legend/layouts-vertical/
 		         *         Vertical with color axis gradient
 		         * @default horizontal
 		         */
 		        layout: 'horizontal',
 
 		        /**
-		         * In a legend with horizontal layout, the itemDistance defines the
+		         * In a legend with horizontal layouts, the itemDistance defines the
 		         * pixel distance between each item.
 		         *
 		         * @type {Number}
-		         * @sample {highcharts} highcharts/legend/layout-horizontal/ 50px item distance
-		         * @sample {highstock} highcharts/legend/layout-horizontal/ 50px item distance
+		         * @sample {highcharts} highcharts/legend/layouts-horizontal/ 50px item distance
+		         * @sample {highstock} highcharts/legend/layouts-horizontal/ 50px item distance
 		         * @default {highcharts} 20
 		         * @default {highstock} 20
 		         * @default {highmaps} 8
@@ -9555,7 +9555,7 @@
 
 		        /**
 		         * The width for each legend item. By default the items are laid out
-		         * successively. In a [horizontal layout](legend.layout), if the items
+		         * successively. In a [horizontal layouts](legend.layouts), if the items
 		         * are laid out across two rows or more, they will be vertically aligned
 		         * depending on the [legend.alignColumns](legend.alignColumns) option.
 		         *
@@ -9925,7 +9925,7 @@
 		         * axis, the height defaults to 200.
 		         *
 		         * @type {Number}
-		         * @sample {highmaps} maps/legend/layout-vertical-sized/
+		         * @sample {highmaps} maps/legend/layouts-vertical-sized/
 		         *         Sized vertical gradient
 		         * @sample {highmaps} maps/legend/padding-itemmargin/
 		         *         No distance between data classes
@@ -9958,7 +9958,7 @@
 		         *         Greater symbol width and padding
 		         * @sample {highmaps} maps/legend/padding-itemmargin/
 		         *         Padding and item margins demonstrated
-		         * @sample {highmaps} maps/legend/layout-vertical-sized/
+		         * @sample {highmaps} maps/legend/layouts-vertical-sized/
 		         *         Sized vertical gradient
 		         * @apioption legend.symbolWidth
 		         */
@@ -10000,10 +10000,10 @@
 		         * by the `y` option.
 		         *
 		         * In the case that the legend is aligned in a corner position, the
-		         * `layout` option will determine whether to place it above/below
+		         * `layouts` option will determine whether to place it above/below
 		         * or on the side of the plot area.
 		         *
-		         * When the [layout](#legend.layout) option is `proximate`, the
+		         * When the [layouts](#legend.layouts) option is `proximate`, the
 		         * `verticalAlign` option doesn't apply.
 		         *
 		         * @validvalue ["top", "middle", "bottom"]
@@ -10396,7 +10396,7 @@
 		         *
 		         * @productdesc {highstock} In Highstock, tooltips are split by default
 		         * since v6.0.0. Stock charts typically contain multi-dimension points
-		         * and multiple panes, making split tooltips the preferred layout over
+		         * and multiple panes, making split tooltips the preferred layouts over
 		         * the previous `shared` tooltip.
 		         *
 		         * @type {Boolean}
@@ -12526,7 +12526,7 @@
 		         * guess, attempting to enter approximately 5 minor ticks between
 		         * each major tick.
 		         *
-		         * Prior to v6.0.0, ticks were unabled in auto layout by setting
+		         * Prior to v6.0.0, ticks were unabled in auto layouts by setting
 		         * `minorTickInterval` to `"auto"`.
 		         *
 		         * @productdesc {highcharts}
@@ -20229,7 +20229,7 @@
 		    },
 
 		    /**
-		     * Get the position of the item in the layout. We now know the
+		     * Get the position of the item in the layouts. We now know the
 		     * maxItemWidth from the previous loop.
 		     *
 		     * @private
@@ -20335,7 +20335,7 @@
 		    },
 
 		    /**
-		     * Get a short, three letter string reflecting the alignment and layout.
+		     * Get a short, three letter string reflecting the alignment and layouts.
 		     *
 		     * @private
 		     * @return {String} The alignment, empty string if floating
@@ -20560,7 +20560,7 @@
 		        legend.legendHeight = legendHeight;
 
 		        if (display) {
-		            // If aligning to the top and the layout is horizontal, adjust for
+		            // If aligning to the top and the layouts is horizontal, adjust for
 		            // the title (#7428)
 		            alignTo = chart.spacingBox;
 		            if (/(lth|ct|rth)/.test(legend.getAlignment())) {
@@ -21357,7 +21357,7 @@
 		            chart.temporaryDisplay();
 		        }
 
-		        // Adjust title layout (reflow multiline text)
+		        // Adjust title layouts (reflow multiline text)
 		        chart.layOutTitles();
 
 		        // link stacked series
@@ -24410,7 +24410,7 @@
 		     *         Between in a column chart
 		     * @sample {highcharts|highstock}
 		     *         highcharts/plotoptions/series-pointplacement-numeric/
-		     *         Numeric placement for custom layout
+		     *         Numeric placement for custom layouts
 		     * @default null
 		     * @since 2.3.0
 		     * @product highcharts highstock

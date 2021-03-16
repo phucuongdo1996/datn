@@ -7,6 +7,10 @@
                     <i class="fas fa-user-circle fs20"></i>
                     <div class="fs18 p10l">Thông tin tài khoản</div>
                 </a>
+                <a href="{{ route(USER_RECHARGE_MONEY) }}" class="d-flex align-items-center menu-user-item p15 border-bottom @if($currentRouteName == USER_RECHARGE_MONEY) menu-user-item-active @endif " >
+                    <i class="fas fa-money-check-alt fs20"></i>
+                    <div class="fs18 p10l">Nạp tài khoản</div>
+                </a>
                 <a href="{{ route(USER_LIST_ITEM) }}" class="d-flex align-items-center menu-user-item p15 border-bottom @if($currentRouteName == USER_LIST_ITEM) menu-user-item-active @endif " >
                     <i class="fab fa-product-hunt fs20"></i>
                     <div class="fs18 p10l">Kho sản phẩm</div>

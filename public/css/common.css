@@ -233,3 +233,25 @@
 .text-underline {
     text-decoration: underline !important;
 }
+
+.text-red {
+    color: #dc3545 !important;
+}
+
+.radio-custom {
+    display: none;
+}
+
+.radio-custom:checked + label {
+    background-color: #2fcc71;
+    color: white;
+}
+
+.label-radio-custom:before {
+    display: none !important;
+}
+
+.label-radio-custom:after {
+    display: none !important;
+}
+
