@@ -16,5 +16,7 @@ const USER_HISTORY = 'user.history';
 const USER_INFO = 'user.info';
 const USER_RECHARGE_MONEY = 'user.recharge.money';
 
+const ADMIN_INDEX = 'admin.index';
+
 const TYPE_ITEM_CATEGORY = 1;
 const TYPE_SET_CATEGORY = 2;

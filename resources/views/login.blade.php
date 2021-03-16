@@ -1,4 +1,4 @@
-@extends('layout/base_top')
+@extends('layouts.base')
 @section('content')
     <div id="mainWrap" class="wrap-login">
         <div id="main">

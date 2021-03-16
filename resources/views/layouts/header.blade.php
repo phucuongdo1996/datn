@@ -1,7 +1,7 @@
 <div id="headWrap">
     <header id="header">
-        <div id="logo"><a href="">
-                <img class="w-80" src="{{ asset('images/logo.png') }}" alt="DATN" /></a>
+        <div id="logo">
+            <a href="{{route(DOTA_HOME) }}"><img class="w-80" src="{{ asset('images/logo.png') }}" alt="DATN" /></a>
         </div>
 
         <div id="globalNavWrap">

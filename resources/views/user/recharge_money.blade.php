@@ -1,9 +1,9 @@
-@extends('layout.base_top')
+@extends('layouts.base')
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/top/top.css') }}">
 @endsection
 @section('content')
-    @include('layout.new_header')
+    @include('layouts.header')
     <div id="mainWrap" class="p80t">
         <div id="main">
             <div id="kvWrap" style="padding-left: 10%; padding-right: 10%; background-color: #f4f6f9">

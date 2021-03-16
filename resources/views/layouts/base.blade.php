@@ -28,7 +28,7 @@
     <div id="wrap">
         @yield('content')
 
-        @include('layout.new_footer')
+        @include('layouts.footer')
     </div>
 </div>
 </body>

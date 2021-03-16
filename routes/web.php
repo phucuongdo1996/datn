@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'TopController@index')->name(TOP);
 
+Route::prefix('admin')->group(function () {
+    Route::get('/', 'AdminController@index')->name(ADMIN_INDEX);
+});
+
 Route::prefix('dota')->group(function () {
     Route::get('/', 'TopController@dotaHome')->name(DOTA_HOME);
     Route::get('/list-item', 'TopController@dotaListItem')->name(DOTA_LIST_ITEM);
