@@ -1,6 +1,5 @@
 @extends('layouts.base')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/top/top.css') }}">
 @endsection
 @section('content')
     @include('layouts.header')
@@ -109,5 +108,5 @@
 @endsection
 @section('js')
     <script src="{{ asset('/dist/js/top_index.min.js') }}"></script>
-    <script src="{{ asset('/js/top/top.js') }}"></script>
+    <script src="{{ asset('/js/dota/dota.js') }}"></script>
 @endsection

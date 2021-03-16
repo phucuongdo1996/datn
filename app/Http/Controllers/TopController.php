@@ -7,18 +7,18 @@ use Illuminate\Support\Facades\Auth;
 class TopController extends Controller
 {
     /**
-     * Show top site
+     * Show dota site
      *
      * @return mixed
      */
     public function index()
     {
-        return view('dota.top');
+        return view('dota.index');
     }
 
     public function dotaHome()
     {
-        return view('dota.top');
+        return view('dota.index');
     }
 
     public function dotaListItem()

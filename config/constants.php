@@ -4,7 +4,7 @@
  * Define const for route name
  */
 
-const TOP = 'top';
+const TOP = 'dota';
 const DOTA_LIST_ITEM = 'dota.list.item';
 const DOTA_LIST_SET = 'dota.list.set';
 const DOTA_HOME = 'dota.home';

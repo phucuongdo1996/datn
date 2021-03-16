@@ -1,7 +1,9 @@
 <div id="headWrap">
     <header id="header">
-        <div id="logo">
-            <a href="{{route(DOTA_HOME) }}"><img class="w-80" src="{{ asset('images/logo.png') }}" alt="DATN" /></a>
+        <div id="logo" style="">
+            <a class="d-flex" href="{{route(DOTA_HOME) }}" style="height: 80px !important;">
+                <img class="w-80 object-fit-cover" src="{{ asset('images/logo.png') }}" alt="DATN" />
+            </a>
         </div>
 
         <div id="globalNavWrap">
@@ -21,7 +23,7 @@
                             @if(!$currentUser)
                                 <li><a href="" class="registrationBtn">Đăng nhập</a>
                             @else
-                                <li><a href="" class="registrationBtn">{{ trans('attributes.top.header.home') }}</a></li>
+                                <li><a href="" class="registrationBtn">{{ trans('attributes.dota.header.home') }}</a></li>
                             @endif
                         </ul>
                     </div><!-- memberNav -->
