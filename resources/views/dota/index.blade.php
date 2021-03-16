@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/top/top.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dota/index.css') }}">
 @endsection
 @section('content')
     @include('layouts.header')
@@ -163,8 +163,6 @@
     </div>
 @endsection
 @section('js')
-{{--    <script src="{{ asset('/dist/js/top_index.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('/js/top/top.js') }}"></script>--}}
     <script>
         $(document).ready(function () {
             $('.slide-logo').slick({

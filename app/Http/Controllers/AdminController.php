@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     /**
-     * Show top site
+     * Show dota site
      *
      * @return mixed
      */
     public function index()
     {
-        return view('dota.top');
+        return view('dota.dota');
     }
 }

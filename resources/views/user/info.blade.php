@@ -1,6 +1,5 @@
 @extends('layouts.base')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/top/top.css') }}">
 @endsection
 @section('content')
     @include('layouts.header')
@@ -206,5 +205,4 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('/js/user/history.js') }}"></script>
 @endsection

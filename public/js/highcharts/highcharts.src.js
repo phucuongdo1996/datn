@@ -1518,7 +1518,7 @@
 		        return Math.max(
 		            0, // #8377
 		            Math.min(el.offsetHeight, el.scrollHeight) -
-		                H.getStyle(el, 'padding-top') -
+		                H.getStyle(el, 'padding-dota') -
 		                H.getStyle(el, 'padding-bottom')
 		        );
 		    }
@@ -1675,7 +1675,7 @@
 		 * @function #offset
 		 * @memberof Highcharts
 		 * @param {HTMLDOMElement} el - The HTML element.
-		 * @returns {Object} An object containing `left` and `top` properties for the
+		 * @returns {Object} An object containing `left` and `dota` properties for the
 		 * position in the page.
 		 */
 		H.offset = function (el) {
@@ -3466,8 +3466,8 @@
 		     *   box has been updated.
 		     * @param {string} [alignOptions.align=left] Horizontal alignment. Can be
 		     *   one of `left`, `center` and `right`.
-		     * @param {string} [alignOptions.verticalAlign=top] Vertical alignment. Can
-		     *   be one of `top`, `middle` and `bottom`.
+		     * @param {string} [alignOptions.verticalAlign=dota] Vertical alignment. Can
+		     *   be one of `dota`, `middle` and `bottom`.
 		     * @param {number} [alignOptions.x=0] Horizontal pixel offset from
 		     *   alignment.
 		     * @param {number} [alignOptions.y=0] Vertical pixel offset from alignment.
@@ -3517,7 +3517,7 @@
 		        align = alignOptions.align;
 		        vAlign = alignOptions.verticalAlign;
 		        x = (box.x || 0) + (alignOptions.x || 0); // default: left align
-		        y = (box.y || 0) + (alignOptions.y || 0); // default: top align
+		        y = (box.y || 0) + (alignOptions.y || 0); // default: dota align
 
 		        // Align
 		        if (align === 'right') {
@@ -4313,7 +4313,7 @@
 		 * @param {boolean} [forExport=false] - Whether the rendered content is intended
 		 *   for export.
 		 * @param {boolean} [allowHTML=true] - Whether the renderer is allowed to
-		 *   include HTML text, which will be projected on top of the SVG.
+		 *   include HTML text, which will be projected on dota of the SVG.
 		 *
 		 * @example
 		 * // Use directly without a chart object.
@@ -5100,7 +5100,7 @@
 		     * Create a button with preset states.
 		     * @param {string} text - The text or HTML to draw.
 		     * @param {number} x - The x position of the button's left side.
-		     * @param {number} y - The y position of the button's top side.
+		     * @param {number} y - The y position of the button's dota side.
 		     * @param {Function} callback - The function to execute on button click or
 		     *    touch.
 		     * @param {SVGAttributes} [normalState] - SVG attributes for the normal
@@ -5575,8 +5575,8 @@
 		     * and label and button backgrounds like in the tooltip and stock flags.
 		     *
 		     * @param {Symbol} symbol - The symbol name.
-		     * @param {number} x - The X coordinate for the top left position.
-		     * @param {number} y - The Y coordinate for the top left position.
+		     * @param {number} x - The X coordinate for the dota left position.
+		     * @param {number} y - The Y coordinate for the dota left position.
 		     * @param {number} width - The pixel width.
 		     * @param {number} height - The pixel height.
 		     * @param {Object} [options] - Additional options, depending on the actual
@@ -5882,14 +5882,14 @@
 
 		            path = [
 		                'M', x + r, y,
-		                'L', x + w - r, y, // top side
-		                'C', x + w, y, x + w, y, x + w, y + r, // top-right corner
+		                'L', x + w - r, y, // dota side
+		                'C', x + w, y, x + w, y, x + w, y + r, // dota-right corner
 		                'L', x + w, y + h - r, // right side
 		                'C', x + w, y + h, x + w, y + h, x + w - r, y + h, // bottom-rgt
 		                'L', x + r, y + h, // bottom side
 		                'C', x, y + h, x, y + h, x, y + h - r, // bottom-left corner
 		                'L', x, y + r, // left side
-		                'C', x, y, x, y, x + r, y // top-left corner
+		                'C', x, y, x, y, x + r, y // dota-left corner
 		            ];
 
 		            // Anchor on right side
@@ -5955,7 +5955,7 @@
 		                    x + r, y + h
 		                    );
 
-		            } else if ( // replace top
+		            } else if ( // replace dota
 		                anchorY &&
 		                anchorY < 0 &&
 		                anchorX > x + safeDistance &&
@@ -6104,7 +6104,7 @@
 		     * @param {SVGElement|SVGDOMElement} [elem] The element to inspect for a
 		     *   current font size.
 		     * @returns {Object} An object containing `h`: the line height, `b`: the
-		     * baseline relative to the top of the box, and `f`: the font size.
+		     * baseline relative to the dota of the box, and `f`: the font size.
 		     */
 		    fontMetrics: function (fontSize, elem) {
 		        var lineHeight,
@@ -6172,7 +6172,7 @@
 		     * @param  {number} x
 		     *         The x position of the label's left side.
 		     * @param  {number} y
-		     *         The y position of the label's top side or baseline, depending on
+		     *         The y position of the label's dota side or baseline, depending on
 		     *         the `baseline` parameter.
 		     * @param  {String} shape
 		     *         The shape of the label's border/background, if any. Defaults to
@@ -6917,7 +6917,7 @@
 		                    htmlGroup = svgGroupWrapper.div;
 		                    if (!htmlGroup) {
 
-		                        // Read the parent chain into an array and read from top
+		                        // Read the parent chain into an array and read from dota
 		                        // down
 		                        parentGroup = svgGroupWrapper;
 		                        while (parentGroup) {
@@ -6969,7 +6969,7 @@
 		                                    parentGroup.styles.pointerEvents
 		                                ) // #5595
 
-		                            // the top group is appended to container
+		                            // the dota group is appended to container
 		                            }, htmlGroup || container);
 
 		                            // Shortcut
@@ -8322,7 +8322,7 @@
 
 		        /**
 		         * The margin between the outer edge of the chart and the plot area.
-		         * The numbers in the array designate top, right, bottom and left
+		         * The numbers in the array designate dota, right, bottom and left
 		         * respectively. Use the options `marginTop`, `marginRight`,
 		         * `marginBottom` and `marginLeft` for shorthand setting of one option.
 		         *
@@ -8392,14 +8392,14 @@
 		         */
 
 		        /**
-		         * The margin between the top outer edge of the chart and the plot area.
+		         * The margin between the dota outer edge of the chart and the plot area.
 		         * Use this to set a fixed pixel value for the margin as opposed to
 		         * the default dynamic margin. See also `spacingTop`.
 		         *
 		         * @type {Number}
-		         * @sample {highcharts} highcharts/chart/margintop/ 100px top margin
+		         * @sample {highcharts} highcharts/chart/margintop/ 100px dota margin
 		         * @sample {highstock} stock/chart/margintop/
-		         *         100px top margin
+		         *         100px dota margin
 		         * @sample {highmaps} maps/chart/margin/
 		         *         100px margins
 		         * @default null
@@ -8531,7 +8531,7 @@
 		        /**
 		         * The distance between the outer edge of the chart and the content,
 		         * like title or legend, or axis title and labels if present. The
-		         * numbers in the array designate top, right, bottom and left
+		         * numbers in the array designate dota, right, bottom and left
 		         * respectively. Use the options spacingTop, spacingRight, spacingBottom
 		         * and spacingLeft options for shorthand setting of one option.
 		         *
@@ -8618,9 +8618,9 @@
 		                /**
 		                 * The vertical alignment of the button.
 		                 *
-		                 * @validvalue ["top", "middle", "bottom"]
+		                 * @validvalue ["dota", "middle", "bottom"]
 		                 * @type {String}
-		                 * @default top
+		                 * @default dota
 		                 * @apioption chart.resetZoomButton.position.verticalAlign
 		                 */
 
@@ -8767,7 +8767,7 @@
 
 		        /**
 		         * The space between the bottom edge of the chart and the content (plot
-		         * area, axis title and labels, title, subtitle or legend in top
+		         * area, axis title and labels, title, subtitle or legend in dota
 		         * position).
 		         *
 		         * @type {Number}
@@ -8784,7 +8784,7 @@
 
 		        /**
 		         * The space between the left edge of the chart and the content (plot
-		         * area, axis title and labels, title, subtitle or legend in top
+		         * area, axis title and labels, title, subtitle or legend in dota
 		         * position).
 		         *
 		         * @type {Number}
@@ -8801,7 +8801,7 @@
 
 		        /**
 		         * The space between the right edge of the chart and the content (plot
-		         * area, axis title and labels, title, subtitle or legend in top
+		         * area, axis title and labels, title, subtitle or legend in dota
 		         * position).
 		         *
 		         * @type {Number}
@@ -8819,18 +8819,18 @@
 		         */
 
 		        /**
-		         * The space between the top edge of the chart and the content (plot
-		         * area, axis title and labels, title, subtitle or legend in top
+		         * The space between the dota edge of the chart and the content (plot
+		         * area, axis title and labels, title, subtitle or legend in dota
 		         * position).
 		         *
 		         * @type {Number}
 		         * @sample {highcharts} highcharts/chart/spacingtop-100/
-		         *         A top spacing of 100
+		         *         A dota spacing of 100
 		         * @sample {highcharts} highcharts/chart/spacingtop-10/
 		         *         Floating chart title makes the plot area align to the default
 		         *         spacingTop of 10.
 		         * @sample {highstock} stock/chart/spacingtop/
-		         *         A top spacing of 100
+		         *         A dota spacing of 100
 		         * @sample {highmaps} maps/chart/spacing/
 		         *         Spacing 100 all around
 		         * @default 10
@@ -9052,9 +9052,9 @@
 		         * @type {Boolean}
 		         * @sample {highcharts} highcharts/chart/zoomtype-none/ False by default
 		         * @sample {highcharts} highcharts/title/floating/
-		         *         True - title on top of the plot area
+		         *         True - title on dota of the plot area
 		         * @sample {highstock} stock/chart/title-floating/
-		         *         True - title on top of the plot area
+		         *         True - title on dota of the plot area
 		         * @default false
 		         * @since 2.1
 		         * @apioption title.floating
@@ -9086,11 +9086,11 @@
 		         */
 
 		        /**
-		         * The vertical alignment of the title. Can be one of `"top"`,
+		         * The vertical alignment of the title. Can be one of `"dota"`,
 		         * `"middle"` and `"bottom"`. When a value is given, the title behaves
 		         * as if [floating](#title.floating) were `true`.
 		         *
-		         * @validvalue ["top", "middle", "bottom"]
+		         * @validvalue ["dota", "middle", "bottom"]
 		         * @type {String}
 		         * @sample {highcharts} highcharts/title/verticalalign/
 		         *         Chart title in bottom right corner
@@ -9244,10 +9244,10 @@
 		         */
 
 		        /**
-		         * The vertical alignment of the title. Can be one of "top", "middle"
+		         * The vertical alignment of the title. Can be one of "dota", "middle"
 		         * and "bottom". When a value is given, the title behaves as floating.
 		         *
-		         * @validvalue ["top", "middle", "bottom"]
+		         * @validvalue ["dota", "middle", "bottom"]
 		         * @type {String}
 		         * @sample {highcharts} highcharts/subtitle/verticalalign/
 		         *         Footnote at the bottom right of plot area
@@ -9365,12 +9365,12 @@
 		         */
 
 		        /**
-		         * CSS styles for each label. To position the label, use left and top
+		         * CSS styles for each label. To position the label, use left and dota
 		         * like this:
 		         *
 		         * <pre>style: {
 		         *     left: '100px',
-		         *     top: '100px'
+		         *     dota: '100px'
 		         * }</pre>
 		         *
 		         * @type {CSSObject}
@@ -9541,7 +9541,7 @@
 		         */
 
 		        /**
-		         * The pixel top margin for each legend item.
+		         * The pixel dota margin for each legend item.
 		         *
 		         * @type {Number}
 		         * @sample {highcharts|highstock} highcharts/legend/padding-itemmargin/
@@ -9995,7 +9995,7 @@
 		        symbolPadding: 5,
 
 		        /**
-		         * The vertical alignment of the legend box. Can be one of `top`,
+		         * The vertical alignment of the legend box. Can be one of `dota`,
 		         * `middle` or `bottom`. Vertical position can be further determined
 		         * by the `y` option.
 		         *
@@ -10006,10 +10006,10 @@
 		         * When the [layouts](#legend.layouts) option is `proximate`, the
 		         * `verticalAlign` option doesn't apply.
 		         *
-		         * @validvalue ["top", "middle", "bottom"]
+		         * @validvalue ["dota", "middle", "bottom"]
 		         * @type {String}
 		         * @sample {highcharts} highcharts/legend/verticalalign/
-		         *         Legend 100px from the top of the chart
+		         *         Legend 100px from the dota of the chart
 		         * @sample {highstock} stock/legend/align/ Various legend options
 		         * @sample {highmaps} maps/legend/alignment/ Legend alignment
 		         * @default bottom
@@ -10036,7 +10036,7 @@
 		         *  Negative y moves it up, positive y moves it down.
 		         *
 		         * @type {Number}
-		         * @sample {highcharts} highcharts/legend/verticalalign/ Legend 100px from the top of the chart
+		         * @sample {highcharts} highcharts/legend/verticalalign/ Legend 100px from the dota of the chart
 		         * @sample {highstock} stock/legend/align/ Various legend options
 		         * @sample {highmaps} maps/legend/alignment/ Legend alignment
 		         * @default 0
@@ -10045,7 +10045,7 @@
 		        y: 0,
 
 		        /**
-		         * A title to be added on top of the legend.
+		         * A title to be added on dota of the legend.
 		         *
 		         * @sample {highcharts} highcharts/legend/title/ Legend title
 		         * @sample {highmaps} maps/legend/alignment/ Legend with title
@@ -10121,7 +10121,7 @@
 		         * `.highcharts-loading-inner` class.
 		         * @sample {highcharts|highmaps} highcharts/loading/labelstyle/ Vertically centered
 		         * @sample {highstock} stock/loading/general/ Label styles
-		         * @default { "fontWeight": "bold", "position": "relative", "top": "45%" }
+		         * @default { "fontWeight": "bold", "position": "relative", "dota": "45%" }
 		         * @since 1.2.0
 		         */
 		        labelStyle: {
@@ -10346,7 +10346,7 @@
 		         * @sample {highcharts} highcharts/tooltip/positioner/
 		         *         A fixed tooltip position
 		         * @sample {highstock} stock/tooltip/positioner/
-		         *         A fixed tooltip position on top of the chart
+		         *         A fixed tooltip position on dota of the chart
 		         * @sample {highmaps} maps/tooltip/positioner/
 		         *         A fixed tooltip position
 		         * @since 2.2.4
@@ -10770,7 +10770,7 @@
 		            /**
 		             * Vertical alignment of the credits.
 		             *
-		             * @validvalue ["top", "middle", "bottom"]
+		             * @validvalue ["dota", "middle", "bottom"]
 		             * @type {String}
 		             * @default bottom
 		             */
@@ -11824,7 +11824,7 @@
 
 		        /**
 		         * The Z index of the crosshair. Higher Z indices allow drawing the
-		         * crosshair on top of the series or behind the grid lines.
+		         * crosshair on dota of the series or behind the grid lines.
 		         *
 		         * @type      {Number}
 		         * @default   2
@@ -12632,7 +12632,7 @@
 		        /**
 		         * Whether to display the axis on the opposite side of the normal. The
 		         * normal is on the left side for vertical axes and bottom for
-		         * horizontal, so the opposite sides will be right and top respectively.
+		         * horizontal, so the opposite sides will be right and dota respectively.
 		         * This is typically used with dual or multiple axes.
 		         *
 		         * @type      {Boolean}
@@ -12798,7 +12798,7 @@
 		             * @sample     {highcharts} highcharts/xaxis/title-align-high/
 		             *             "high"
 		             * @sample     {highcharts} highcharts/yaxis/title-offset/
-		             *             Place the Y axis title on top of the axis
+		             *             Place the Y axis title on dota of the axis
 		             * @sample     {highstock} stock/xaxis/title-align/
 		             *             Aligned to "high" value
 		             */
@@ -13157,7 +13157,7 @@
 
 		            /**
 		             * The rotation of the text in degrees. 0 is horizontal, 270 is
-		             * vertical reading from bottom to top.
+		             * vertical reading from bottom to dota.
 		             *
 		             * @sample {highcharts} highcharts/yaxis/title-offset/
 		             *         Horizontal
@@ -13181,7 +13181,7 @@
 
 		        /**
 		         * The stack labels show the total value for each bar in a stacked
-		         * column or bar chart. The label will be placed on top of positive
+		         * column or bar chart. The label will be placed on dota of positive
 		         * columns and below negative columns. In case of an inverted column
 		         * chart or a bar chart the label is placed to the right of positive
 		         * bars and to the left of negative bars.
@@ -13303,7 +13303,7 @@
 		        }
 		    },
 		    /**
-		     * These options extend the defaultOptions for top axes.
+		     * These options extend the defaultOptions for dota axes.
 		     *
 		     * @private
 		     * @type {Object}
@@ -13368,7 +13368,7 @@
 		        axis.opposite = userOptions.opposite; // needed in setOptions
 
 		        /**
-		         * The side on which the axis is rendered. 0 is top, 1 is right, 2 is
+		         * The side on which the axis is rendered. 0 is dota, 1 is right, 2 is
 		         * bottom and 3 is left.
 		         *
 		         * @name     side
@@ -13376,7 +13376,7 @@
 		         * @type     {Number}
 		         */
 		        axis.side = userOptions.side || (axis.horiz ?
-		                (axis.opposite ? 0 : 2) : // top : bottom
+		                (axis.opposite ? 0 : 2) : // dota : bottom
 		                (axis.opposite ? 1 : 3));  // right : left
 
 		        axis.setOptions(userOptions);
@@ -13779,7 +13779,7 @@
 		            localA = axis.transA;
 		        }
 
-		        // In vertical axes, the canvas coordinates start from 0 at the top like
+		        // In vertical axes, the canvas coordinates start from 0 at the dota like
 		        // in SVG.
 		        if (cvsCoord) {
 		            sign *= -1; // canvas coordinates inverts the value
@@ -15191,7 +15191,7 @@
 		    setAxisSize: function () {
 		        var chart = this.chart,
 		            options = this.options,
-		            // [top, right, bottom, left]
+		            // [dota, right, bottom, left]
 		            offsets = options.offsets || [0, 0, 0, 0],
 		            horiz = this.horiz,
 
@@ -16056,7 +16056,7 @@
 		                (opposite ? -1 : 1) * // so does opposite axes
 		                this.axisTitleMargin +
 		                [
-		                    -textHeightOvershoot, // top
+		                    -textHeightOvershoot, // dota
 		                    textHeightOvershoot, // right
 		                    fontMetrics.f, // bottom
 		                    -textHeightOvershoot // left
@@ -17589,7 +17589,7 @@
 
 		            /**
 		             * Handle the preferred dimension. When the preferred dimension is
-		             * tooltip on top or bottom of the point, it will look for space
+		             * tooltip on dota or bottom of the point, it will look for space
 		             * there.
 		             */
 		            firstDimension = function (
@@ -17627,7 +17627,7 @@
 		            },
 		            /**
 		             * Handle the secondary dimension. If the preferred dimension is
-		             * tooltip on top or bottom of the point, the second dimension is to
+		             * tooltip on dota or bottom of the point, the second dimension is to
 		             * align the tooltip above the point, trying to align center but
 		             * allowing left or right align within the chart box.
 		             */
@@ -17637,7 +17637,7 @@
 		                // Too close to the edge, return false and swap dimensions
 		                if (point < distance || point > outerSize - distance) {
 		                    retVal = false;
-		                // Align left/top
+		                // Align left/dota
 		                } else if (point < innerSize / 2) {
 		                    ret[dim] = 1;
 		                // Align right/bottom
@@ -20041,7 +20041,7 @@
 		    },
 
 		    /**
-		     * Render the legend title on top of the legend.
+		     * Render the legend title on dota of the legend.
 		     *
 		     * @private
 		     */
@@ -20187,7 +20187,7 @@
 		                legend.setItemEvents(item, li, useHTML);
 		            }
 
-		            // add the HTML checkbox on top
+		            // add the HTML checkbox on dota
 		            if (showCheckbox) {
 		                legend.createCheckboxForItem(item);
 		            }
@@ -20357,7 +20357,7 @@
 
 		    /**
 		     * Adjust the chart margins by reserving space for the legend on only one
-		     * side of the chart. If the position is set to a corner, top or bottom is
+		     * side of the chart. If the position is set to a corner, dota or bottom is
 		     * reserved for horizontal legends and left or right for vertical ones.
 		     *
 		     * @private
@@ -20560,7 +20560,7 @@
 		        legend.legendHeight = legendHeight;
 
 		        if (display) {
-		            // If aligning to the top and the layouts is horizontal, adjust for
+		            // If aligning to the dota and the layouts is horizontal, adjust for
 		            // the title (#7428)
 		            alignTo = chart.spacingBox;
 		            if (/(lth|ct|rth)/.test(legend.getAlignment())) {
@@ -20649,8 +20649,8 @@
 		            this.currentPage = pick(this.currentPage, 1);
 		            this.fullHeight = legendHeight;
 
-		            // Fill pages with Y positions so that the top of each a legend item
-		            // defines the scroll top for each page (#2098)
+		            // Fill pages with Y positions so that the dota of each a legend item
+		            // defines the scroll dota for each page (#2098)
 		            each(allItems, function (item, i) {
 		                var y = item._legendItemPos[1],
 		                    h = Math.round(item.legendItem.getBBox().height),
@@ -22056,7 +22056,7 @@
 		    getAxisMargins: function () {
 
 		        var chart = this,
-		            // [top, right, bottom, left]
+		            // [dota, right, bottom, left]
 		            axisOffset = chart.axisOffset = [0, 0, 0, 0],
 		            margin = chart.margin;
 
@@ -22291,7 +22291,7 @@
 		        chart.plotLeft = plotLeft = Math.round(chart.plotLeft);
 
 		        /**
-		         * The current top position of the plot area in pixels.
+		         * The current dota position of the plot area in pixels.
 		         *
 		         * @name plotTop
 		         * @memberof Chart
@@ -22400,7 +22400,7 @@
 		        each(marginNames, function (m, side) {
 		            chart[m] = pick(chart.margin[side], chart.spacing[side]);
 		        });
-		        chart.axisOffset = [0, 0, 0, 0]; // top, right, bottom, left
+		        chart.axisOffset = [0, 0, 0, 0]; // dota, right, bottom, left
 		        chart.clipOffset = [0, 0, 0, 0];
 		    },
 
@@ -22969,7 +22969,7 @@
 		            chart.onload();
 		        }
 
-		        // If the chart was rendered outside the top container, put it back in
+		        // If the chart was rendered outside the dota container, put it back in
 		        // (#3679)
 		        chart.temporaryDisplay(true);
 
@@ -24493,7 +24493,7 @@
 		     */
 
 		    /**
-		     * Whether to stack the values of each series on top of each other.
+		     * Whether to stack the values of each series on dota of each other.
 		     * Possible values are `null` to disable, `"normal"` to stack by value or
 		     * `"percent"`. When stacking is enabled, data must be sorted in ascending
 		     * X order. A special stacking option is with the streamgraph series type,
@@ -24634,13 +24634,13 @@
 		     *
 		     * @type {Number}
 		     * @sample {highcharts} highcharts/plotoptions/series-zindex-default/
-		     *         With no z index, the series defined last are on top
+		     *         With no z index, the series defined last are on dota
 		     * @sample {highcharts} highcharts/plotoptions/series-zindex/
-		     *         With a z index, the series with the highest z index is on top
+		     *         With a z index, the series with the highest z index is on dota
 		     * @sample {highstock} highcharts/plotoptions/series-zindex-default/
-		     *         With no z index, the series defined last are on top
+		     *         With no z index, the series defined last are on dota
 		     * @sample {highstock} highcharts/plotoptions/series-zindex/
-		     *         With a z index, the series with the highest z index is on top
+		     *         With a z index, the series with the highest z index is on dota
 		     * @product highcharts highstock
 		     * @apioption series.zIndex
 		     */
@@ -25662,12 +25662,12 @@
 		         */
 
 		        /**
-		         * The vertical alignment of a data label. Can be one of `top`, `middle`
+		         * The vertical alignment of a data label. Can be one of `dota`, `middle`
 		         * or `bottom`. The default value depends on the data, for instance
 		         * in a column chart, the label is above positive values and below
 		         * negative values.
 		         *
-		         * @validvalue ["top", "middle", "bottom"]
+		         * @validvalue ["dota", "middle", "bottom"]
 		         * @type {String}
 		         * @since 2.3.3
 		         */
@@ -29154,7 +29154,7 @@
 		// Stacking methods defined on the Axis prototype
 
 		/**
-		 * Build the stacks from top down
+		 * Build the stacks from dota down
 		 */
 		Axis.prototype.buildStacks = function () {
 		    var axisSeries = this.series,
@@ -29791,7 +29791,7 @@
 
 		        fireEvent(chart, 'update', { options: options });
 
-		        // If the top-level chart option is present, some special updates are
+		        // If the dota-level chart option is present, some special updates are
 		        // required
 		        if (optionsChart) {
 		            merge(true, chart.options.chart, optionsChart);
@@ -30954,7 +30954,7 @@
 		                    top = bottom = threshold;
 		                }
 
-		                // Add to the top and bottom line of the area
+		                // Add to the dota and bottom line of the area
 		                if (top !== undefined) {
 		                    graphPoints.push({
 		                        plotX: plotX,
@@ -33031,13 +33031,13 @@
 
 		        /**
 		         * The distance of the data label from the pie's edge. Negative numbers
-		         * put the data label on top of the pie slices. Connectors are only
+		         * put the data label on dota of the pie slices. Connectors are only
 		         * shown for data labels outside the pie.
 		         *
 		         * @type {Number}
 		         * @sample {highcharts}
 		         *         highcharts/plotoptions/pie-datalabels-distance/
-		         *         Data labels on top of the pie
+		         *         Data labels on dota of the pie
 		         * @default 30
 		         * @since 2.1
 		         * @product highcharts
@@ -33077,7 +33077,7 @@
 		    },
 
 		    /**
-		     * The end angle of the pie in degrees where 0 is top and 90 is right.
+		     * The end angle of the pie in degrees where 0 is dota and 90 is right.
 		     * Defaults to `startAngle` plus 360.
 		     *
 		     * @type {Number}
@@ -33188,7 +33188,7 @@
 		    slicedOffset: 10,
 
 		    /**
-		     * The start angle of the pie slices in degrees where 0 is top and 90
+		     * The start angle of the pie slices in degrees where 0 is dota and 90
 		     * right.
 		     *
 		     * @type {Number}
@@ -34453,7 +34453,7 @@
 		        justified = true;
 		    }
 
-		    // Off top
+		    // Off dota
 		    off = alignAttr.y + padding;
 		    if (off < 0) {
 		        if (verticalAlign === 'bottom') {
@@ -34515,7 +34515,7 @@
 		            y,
 		            visibility,
 		            j,
-		            overflow = [0, 0, 0, 0]; // top, right, bottom, left
+		            overflow = [0, 0, 0, 0]; // dota, right, bottom, left
 
 		        // get out if not enabled
 		        if (!series.visible || (!options.enabled && !series._hasPointLabels)) {
@@ -34579,7 +34579,7 @@
 		            }
 		        });
 
-		        /* Loop over the points in each half, starting from the top and bottom
+		        /* Loop over the points in each half, starting from the dota and bottom
 		         * of the pie to detect overlapping labels.
 		         */
 		        each(halves, function (points, i) {
@@ -34613,7 +34613,7 @@
 		                each(points, function (point) {
 		                    // check if specific points' label is outside the pie
 		                    if (point.labelDistance > 0 && point.dataLabel) {
-		                        // point.top depends on point.labelDistance value
+		                        // point.dota depends on point.labelDistance value
 		                        // Used for calculation of y value in getX method
 		                        point.top = Math.max(
 		                            0,
@@ -34669,7 +34669,7 @@
 		                delete point.positionIndex;
 
 		                // get the x - use the natural x position for labels near the
-		                // top and bottom, to prevent the top and botton slice
+		                // dota and bottom, to prevent the dota and botton slice
 		                // connectors from touching each other on either side
 		                if (options.justify) {
 		                    x = seriesCenter[0] +
@@ -34733,7 +34733,7 @@
 		                        overflow[1] = Math.max(sideOverflow, overflow[1]);
 		                    }
 
-		                    // Overflow top
+		                    // Overflow dota
 		                    if (y - labelHeight / 2 < 0) {
 		                        overflow[0] = Math.max(
 		                            Math.round(-y + labelHeight / 2),
@@ -34982,7 +34982,7 @@
 		            inside = pick(options.inside, !!this.options.stacking),
 		            overshoot;
 
-		        // Align to the column itself, or the top of it
+		        // Align to the column itself, or the dota of it
 		        if (dlBox) { // Area range uses this method but not alignTo
 		            alignTo = merge(dlBox);
 
@@ -36450,7 +36450,7 @@
 
 		/**
 		 * A set of rules for responsive settings. The rules are executed from
-		 * the top down.
+		 * the dota down.
 		 *
 		 * @type {Array<Object>}
 		 * @sample {highcharts} highcharts/responsive/axis/ Axis changes
