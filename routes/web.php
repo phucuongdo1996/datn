@@ -20,6 +20,8 @@ Route::get('/', 'TopController@index')->name(TOP);
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index')->name(ADMIN_INDEX);
+    Route::get('/edit-product', 'AdminController@editProduct')->name(ADMIN_EDIT_PRODUCT);
+    Route::get('/add-steam-code', 'AdminController@addSteamCode')->name(ADMIN_ADD_STEAM_CODE);
 });
 
 Route::prefix('dota')->group(function () {

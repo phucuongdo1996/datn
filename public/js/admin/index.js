@@ -46,13 +46,14 @@ let adminFunction = (function () {
     modules.buildTopSellChart = function () {
         Highcharts.chart('chart-top-sell', {
             chart: {
+                height:300,
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false,
                 type: 'pie'
             },
             title: {
-                text: 'Browser market shares in January, 2018'
+                text: ''
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -69,32 +70,48 @@ let adminFunction = (function () {
                     dataLabels: {
                         enabled: false
                     },
-                    showInLegend: true
+                    showInLegend: false
                 }
             },
             series: [{
-                name: 'Brands',
+                name: 'Sản phẩm',
                 colorByPoint: true,
                 data: [{
-                    name: 'Chrome',
-                    y: 61.41,
+                    name: 'Sản phẩm 1',
+                    y: 60,
+                    color: '#BB0000',
                     sliced: true,
                     selected: true
                 }, {
-                    name: 'Internet Explorer',
-                    y: 11.84
+                    name: 'Sản phẩm 2',
+                    y: 20,
+                    color: '#FFFF66',
+                },{
+                    name: 'Sản phẩm 3',
+                    y: 20,
+                    color: '#00FF00'
                 }, {
-                    name: 'Firefox',
-                    y: 10.85
+                    name: 'Sản phẩm 4',
+                    y: 15,
+                    color: '#33CCFF'
                 }, {
-                    name: 'Edge',
-                    y: 4.67
+                    name: 'Sản phẩm 5',
+                    y: 5
                 }, {
-                    name: 'Safari',
-                    y: 4.18
+                    name: 'Sản phẩm 6',
+                    y: 5
                 }, {
-                    name: 'Other',
-                    y: 7.05
+                    name: 'Sản phẩm 7',
+                    y: 20
+                },{
+                    name: 'Sản phẩm 8',
+                    y: 20
+                }, {
+                    name: 'Sản phẩm 9',
+                    y: 15
+                }, {
+                    name: 'Sản phẩm 10',
+                    y: 5
                 }]
             }]
         });

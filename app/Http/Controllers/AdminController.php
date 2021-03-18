@@ -15,4 +15,14 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
+
+    public function editProduct()
+    {
+        return view('admin.edit_product');
+    }
+
+    public function addSteamCode()
+    {
+        return view('admin.steam_code');
+    }
 }
