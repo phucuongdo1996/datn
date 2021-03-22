@@ -13,6 +13,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('dota.dota');
+        return view('admin.index');
+    }
+
+    public function editProduct()
+    {
+        return view('admin.edit_product');
+    }
+
+    public function addSteamCode()
+    {
+        return view('admin.steam_code');
     }
 }
