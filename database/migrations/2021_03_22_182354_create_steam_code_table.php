@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDotaCategoryTable extends Migration
+class CreateSteamCodeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateDotaCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('dota_category', function (Blueprint $table) {
+        Schema::create('steam_code', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->tinyInteger('type')->comment('1 - Item, 2 - Set');
+            $table->string('steam_code');
+            $table->string('steam_seri');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +29,6 @@ class CreateDotaCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dota_category');
+        Schema::dropIfExists('steam_code');
     }
 }
