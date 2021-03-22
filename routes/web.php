@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 /*
 | Web Routes no need to login
 */
+Route::get('login', 'Auth\LoginController@create')->name(LOGIN);
 Route::get('/', 'TopController@index')->name(TOP);
 
 Route::prefix('admin')->group(function () {
@@ -34,4 +35,7 @@ Route::prefix('dota')->group(function () {
         Route::get('/info', 'UserController@info')->name(USER_INFO);
         Route::get('/recharge-money', 'UserController@rechargeMoney')->name(USER_RECHARGE_MONEY);
     });
+});
+Route::prefix('steam-code')->group(function () {
+    Route::get('/', 'SteamCodeController@index')->name(STEAM_CODE_INDEX);
 });

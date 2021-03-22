@@ -12,7 +12,7 @@
                     <div id="mainNav">
                         <ul>
                             <li><a href="{{ route(DOTA_HOME) }}">DOTA 2</a></li>
-                            <li><a>Steam Code</a></li>
+                            <li><a href="{{ route(STEAM_CODE_INDEX) }}">Steam Code</a></li>
                             <li><a>Hướng dẫn</a></li>
                             <li><a>Liên hệ</a></li>
                         </ul>

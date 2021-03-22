@@ -38,26 +38,21 @@ class LoginController extends Controller
     private $userRepository;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * LoginController constructor.
+     * @param UserRepositoryInterface $userRepository
      */
     public function __construct(UserRepositoryInterface $userRepository)
     {
-        $this->middleware('guest')->except('logout');
+//        $this->middleware('guest')->except('logout');
         $this->userRepository = $userRepository;
     }
 
     /**
-     * Handle a login request to the application.
-     *
-     * @param LoginRequest $request
-     *
-     * @return \Illuminate\Http\JsonResponse|void|
-     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|void
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function login(LoginRequest $request)
+    public function login(Request $request)
     {
         $remember = $request->has('remember') ? true : false;
 

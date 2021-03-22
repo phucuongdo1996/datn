@@ -4,11 +4,15 @@
  * Define const for route name
  */
 
+const LOGIN = 'login';
 const TOP = 'dota';
+
 const DOTA_LIST_ITEM = 'dota.list.item';
 const DOTA_LIST_SET = 'dota.list.set';
 const DOTA_HOME = 'dota.home';
 const DOTA_DETAIL = 'dota.detail';
+
+const STEAM_CODE_INDEX = 'steam.code.index';
 
 const USER_LIST_ITEM = 'user.list.item';
 const USER_STORE_PRODUCT = 'user.store.product';
