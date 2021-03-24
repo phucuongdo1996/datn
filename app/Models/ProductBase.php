@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ProductBase
+class ProductBase extends Model
 {
     use SoftDeletes;
 
@@ -24,4 +25,9 @@ class ProductBase
         'category_id',
         'type',
     ];
+
+    public function hero()
+    {
+        return $this->belongsTo(Hero::class, 'hero_id', 'id');
+    }
 }

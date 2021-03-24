@@ -15,9 +15,9 @@ class CreateProductsBaseTable extends Migration
     {
         Schema::create('products_base', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 50);
-            $table->integer('hero_id');
-            $table->tinyInteger('category_id');
+            $table->string('name', 100);
+            $table->integer('hero_id')->nullable();
+            $table->tinyInteger('category_id')->nullable();
             $table->tinyInteger('type')->comment('1 - dota_item; 2 - dota_set');
             $table->timestamps();
             $table->softDeletes();
