@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ProductBase extends Model
+class ProductNew extends Model
 {
     use SoftDeletes;
 
     /**
      * @var string
      */
-    protected $table = 'products_base';
+    protected $table = 'products_new';
 
     /**
      * The attributes that are mass assignable.
@@ -20,15 +20,11 @@ class ProductBase extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'hero_id',
-        'category_id',
-        'type',
-        'image'
+        'product_base_id'
     ];
 
-    public function hero()
+    public function productBase()
     {
-        return $this->belongsTo(Hero::class, 'hero_id', 'id');
+        return $this->belongsTo(ProductBase::class, 'product_base_id', 'id');
     }
 }
