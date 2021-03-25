@@ -12,25 +12,20 @@ class User extends Authenticatable
     use SoftDeletes;
 
     /**
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'user_code',
-        'name',
         'email',
-        'role',
         'password',
-        'status',
-        'verified_status',
-        'member_status',
-        'last_login',
-        'parent_id',
-        'reason_delete',
-        'group_code',
-        'sub_user_deleted',
-        'unblock_status',
-        'deleted_at'
+        'nick_name',
+        'steam_url',
+        'money_own',
     ];
 }

@@ -1,5 +1,6 @@
 @extends('layouts.base')
 @section('styles')
+    <link rel="stylesheet" href="{{ asset('css/dota/list_set.css') }}">
 @endsection
 @section('content')
     @include('layouts.header')
@@ -18,28 +19,16 @@
                                 </div>
                                 <input type="text" class="form-control m10b" list="list-hero">
                                 <datalist id="list-hero">
-                                    <option value="Abaddon">
-                                    <option value="Alchemist">
-                                    <option value="Ancient Apparition">
-                                    <option value="Anti Mage">
-                                    <option value="Arc Warden">
-                                    <option value="Axe">
-                                    <option value="Bane">
-                                    <option value="Batrider">
-                                    <option value="Beastmaster">
+                                    @foreach($listHero as $hero)
+                                        <option value="{{ $hero['name'] }}">
+                                    @endforeach
                                 </datalist>
                                 <div id="category-item-dota">
                                     <ul>
                                         <li class="item-category choose-category">Tất cả</li>
-                                        <li class="item-category">Abaddon</li>
-                                        <li class="item-category">Alchemist</li>
-                                        <li class="item-category">Ancient Apparition</li>
-                                        <li class="item-category">Anti Mage</li>
-                                        <li class="item-category">Arc Warden</li>
-                                        <li class="item-category">Axe</li>
-                                        <li class="item-category">Bane</li>
-                                        <li class="item-category">Batrider</li>
-                                        <li class="item-category">Beastmaster</li>
+                                        @foreach($listHero as $hero)
+                                            <li class="item-category">{{ $hero['name'] }}</li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
