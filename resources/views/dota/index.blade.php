@@ -70,14 +70,14 @@
                                 </div>
                             </div>
                             <div class="row m-0" style="height: 550px; overflow-y: scroll; overflow-x: hidden">
-                            @foreach([1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] as $item)
+                            @foreach($listItemDota as $item)
                                 <div class="col-2 p15l p15b">
                                     <div class="d-flex zoom-hover" style="width: 100%; height: 90px">
-                                        <img style="object-fit: fill" src="{{ asset('images/dota2_1.png') }}" alt="">
+                                        <img style="object-fit: fill" src="{{ asset(URL_DOTA_IMAGES_ITEM . $item['product_base']['image']) }}" alt="">
                                     </div>
-                                    <div class="p5t font-weight-bold">Guise of the Winged Bolt</div>
-                                    <a href="#" class="p5t hero-hover"> - Drow Ranger</a>
-                                    <div class="p5t font-weight-bold text-blue">10,000</div>
+                                    <div class="p5t font-weight-bold">{{ $item['product_base']['name'] }}</div>
+                                    <a href="#" class="p5t hero-hover"> - {{ $item['product_base']['hero']['name'] }}</a>
+                                    <div class="p5t font-weight-bold text-blue">{{ number_format($item['price']) }}</div>
                                 </div>
                             @endforeach
                             </div>
@@ -91,14 +91,14 @@
                                 </div>
                             </div>
                             <div class="row m-0" style="height: 550px; overflow-y: scroll; overflow-x: hidden">
-                                @foreach([1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] as $item)
+                                @foreach($listSetDota as $item)
                                     <div class="col-2 p15l p15b">
                                         <div class="d-flex zoom-hover" style="width: 100%; height: 90px">
-                                            <img style="object-fit: fill" src="{{ asset('images/dota2_1.png') }}" alt="">
+                                            <img style="object-fit: fill" src="{{ asset(URL_DOTA_IMAGES_SET . $item['product_base']['image']) }}" alt="">
                                         </div>
-                                        <div class="p5t font-weight-bold">Guise of the Winged Bolt</div>
-                                        <a href="#" class="p5t hero-hover"> - Drow Ranger</a>
-                                        <div class="p5t font-weight-bold text-blue">10,000</div>
+                                        <div class="p5t font-weight-bold">{{ $item['product_base']['name'] }}</div>
+                                        <a href="#" class="p5t hero-hover"> - {{ $item['product_base']['hero']['name'] }}</a>
+                                        <div class="p5t font-weight-bold text-blue">{{ number_format($item['price']) }}</div>
                                     </div>
                                 @endforeach
                             </div>

@@ -42,3 +42,9 @@ const ARRAY_COLOR = [
 const ARRAY_COLOR_1 = [
     '#2F868C', '#E56C9B', '#f7a35c', '#0377FF', '#FF0000',
 ];
+const URL_DOTA_IMAGES_ITEM = 'images/dota_images/item/';
+const URL_DOTA_IMAGES_ITEM_INFU = 'images/dota_images/item_infu/';
+const URL_DOTA_IMAGES_ITEM_TAUNT = 'images/dota_images/item_taunt/';
+const URL_DOTA_IMAGES_ITEM_COURIER = 'images/dota_images/item_courier/';
+const URL_DOTA_IMAGES_WARDS = 'images/dota_images/wards/';
+const URL_DOTA_IMAGES_SET = 'images/dota_images/set/';

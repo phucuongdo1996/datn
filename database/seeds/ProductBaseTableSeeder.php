@@ -15,19 +15,74 @@ class ProductBaseTableSeeder extends Seeder
         DB::table('products_base')->truncate();
         $faker = Faker\Factory::create();
         $heroIds = \App\Models\Hero::all()->pluck('id')->toArray();
-        for ($i = 0; $i < 1000; $i++) {
+        // Item thường
+        for ($i = 1; $i < 64; $i++) {
             DB::table('products_base')->insert([
                 'name' => $faker->sentence,
                 'hero_id' => $heroIds[array_rand($heroIds, 1)],
-                'type' => TYPE_SET_CATEGORY
+                'category_id' => 1,
+                'type' => TYPE_ITEM_CATEGORY,
+                'image' => $i . '.png'
             ]);
         }
-        $categories = \App\Models\Category::all()->pluck('id')->toArray();
-        for ($i = 0; $i < 1000; $i++) {
+        // Item có hiệu ứng
+        for ($i = 1; $i < 31; $i++) {
             DB::table('products_base')->insert([
                 'name' => $faker->sentence,
-                'category_id' => $categories[array_rand($categories, 1)],
-                'type' => TYPE_ITEM_CATEGORY
+                'hero_id' => $heroIds[array_rand($heroIds, 1)],
+                'category_id' => 2,
+                'type' => TYPE_ITEM_CATEGORY,
+                'image' => $i . '.png'
+            ]);
+        }
+        // Item khiêu khích
+        for ($i = 1; $i < 42; $i++) {
+            DB::table('products_base')->insert([
+                'name' => $faker->sentence,
+                'hero_id' => $heroIds[array_rand($heroIds, 1)],
+                'category_id' => 3,
+                'type' => TYPE_ITEM_CATEGORY,
+                'image' => $i . '.png'
+            ]);
+        }
+        // Item courier
+        for ($i = 1; $i < 29; $i++) {
+            DB::table('products_base')->insert([
+                'name' => $faker->sentence,
+//                'hero_id' => $heroIds[array_rand($heroIds, 1)],
+                'category_id' => 4,
+                'type' => TYPE_ITEM_CATEGORY,
+                'image' => $i . '.png'
+            ]);
+        }
+        // Item courier co hieu ung
+        for ($i = 1; $i < 29; $i++) {
+            DB::table('products_base')->insert([
+                'name' => $faker->sentence,
+//                'hero_id' => $heroIds[array_rand($heroIds, 1)],
+                'category_id' => 5,
+                'type' => TYPE_ITEM_CATEGORY,
+                'image' => $i . '.png'
+            ]);
+        }
+        // Item wards
+        for ($i = 1; $i < 11; $i++) {
+            DB::table('products_base')->insert([
+                'name' => $faker->sentence,
+//                'hero_id' => $heroIds[array_rand($heroIds, 1)],
+                'category_id' => 6,
+                'type' => TYPE_ITEM_CATEGORY,
+                'image' => $i . '.png'
+            ]);
+        }
+        // Set
+        for ($i = 1; $i < 102; $i++) {
+            DB::table('products_base')->insert([
+                'name' => $faker->sentence,
+                'hero_id' => $heroIds[array_rand($heroIds, 1)],
+//                'category_id' => 6,
+                'type' => TYPE_SET_CATEGORY,
+                'image' => $i . '.png'
             ]);
         }
     }

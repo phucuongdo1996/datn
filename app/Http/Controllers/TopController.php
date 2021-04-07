@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\Hero\HeroRepositoryInterface;
+use App\Repositories\Product\ProductEloquentRepository;
 use Illuminate\Support\Facades\Auth;
 
 class TopController extends Controller
@@ -11,11 +12,14 @@ class TopController extends Controller
      * @var \App\Repositories\Hero\HeroEloquentRepository
      */
     protected $heroRepository;
+    protected $productEloquentRepository;
 
     public function __construct(
+        ProductEloquentRepository $productEloquentRepository,
         HeroRepositoryInterface $heroRepository
     ) {
         $this->heroRepository = $heroRepository;
+        $this->productEloquentRepository = $productEloquentRepository;
     }
 
     /**
@@ -25,7 +29,9 @@ class TopController extends Controller
      */
     public function index()
     {
-        return view('dota.index');
+        $listItemDota = $this->productEloquentRepository->getNewItems();
+        $listSetDota = $this->productEloquentRepository->getNewItems();
+        return view('dota.index', compact('listItemDota', 'listSetDota'));
     }
 
     public function dotaHome()

@@ -19,6 +19,7 @@ class CreateProductsBaseTable extends Migration
             $table->integer('hero_id')->nullable();
             $table->tinyInteger('category_id')->nullable();
             $table->tinyInteger('type')->comment('1 - dota_item; 2 - dota_set');
+            $table->string('image')->nullable()->comment('image');
             $table->timestamps();
             $table->softDeletes();
         });
