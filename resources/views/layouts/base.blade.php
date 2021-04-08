@@ -24,7 +24,7 @@
     @yield('script-files')
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper" style="background: url({{ asset('images/background.png') }})">
     <div id="wrap">
         @yield('content')
 
