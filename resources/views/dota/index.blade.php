@@ -113,15 +113,14 @@
                                 </div>
                             </div>
                             <div style="max-height: 550px; overflow-y: scroll">
-                                @foreach([1,2,3,4,5,6,7] as $item)
+                                @foreach($productBestseller as $item)
                                     <div class="row m-0 m10b h90">
-                                        <div class="d-flex h90 zoom-hover">
-                                            <img class="object-fit-cover" src="{{ asset('images/dota2_1.png') }}" alt="">
+                                        <div class="col-4 d-flex h90 zoom-hover">
+                                            <img class="object-fit-contain" style="background-color: black" src="{{ asset(getImageUrl($item)) }}" alt="">
                                         </div>
-                                        <div class="p20l">
-                                            <div class="font-weight-bold">Guise of the Winged Bolt</div>
-                                            <a href="#" class="hero-hover">- Drow Ranger</a>
-                                            <div class="font-weight-bold text-blue">10,000</div>
+                                        <div class="col-8">
+                                            <div class="font-weight-bold">{{ $item['product_base']['name'] }}</div>
+                                            <div class="font-weight-bold text-blue">{{ number_format($item['price']) }}</div>
                                         </div>
                                     </div>
                                 @endforeach
@@ -137,18 +136,14 @@
                                 </div>
                             </div>
                             <div style="max-height: 550px; overflow-y: scroll">
-                                @foreach([1,2,3,4,5,6,7] as $item)
+                                @foreach($productRemarkable as $item)
                                     <div class="row m-0 m10b h90">
-                                        <div class="d-flex h90 zoom-hover">
-                                            <img class="object-fit-cover" src="{{ asset('images/dota2_1.png') }}" alt="">
-                                            <div>
-                                                <span>Hot</span>
-                                            </div>
+                                        <div class="col-4 d-flex h90 zoom-hover">
+                                            <img class="object-fit-contain" style="background-color: black" src="{{ asset(getImageUrl($item)) }}" alt="">
                                         </div>
-                                        <div class="p20l">
-                                            <div class="font-weight-bold">Guise of the Winged Bolt</div>
-                                            <a href="#" class="hero-hover">- Drow Ranger</a>
-                                            <div class="font-weight-bold text-blue">10,000</div>
+                                        <div class="col-8">
+                                            <div class="font-weight-bold">{{ $item['product_base']['name'] }}</div>
+                                            <div class="font-weight-bold text-blue">{{ number_format($item['price']) }}</div>
                                         </div>
                                     </div>
                                 @endforeach

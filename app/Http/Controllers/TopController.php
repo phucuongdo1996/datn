@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use App\Repositories\HeroEloquentRepository;
 use App\Repositories\ProductEloquentRepository;
 use App\Repositories\ProductNewEloquentRepository;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TopController extends Controller
 {
-    /**
-     * @var \App\Repositories\Hero\HeroEloquentRepository
-     */
     protected $heroRepository;
     protected $productEloquentRepository;
     protected $productNewEloquentRepository;
@@ -36,22 +34,24 @@ class TopController extends Controller
         $newItems = $this->productEloquentRepository->getNewItems();
         $newSets = $this->productEloquentRepository->getNewSets();
         $productNews = $this->productEloquentRepository->getProductNew();
-        return view('dota.index', compact('newItems', 'newSets', 'productNews'));
+        $productBestseller = $this->productEloquentRepository->getProductBestseller();
+        $productRemarkable = $this->productEloquentRepository->getProductRemarkable();
+        return view('dota.index', compact('newItems', 'newSets', 'productNews', 'productBestseller', 'productRemarkable'));
     }
 
-    public function dotaHome()
+    public function dotaListItem(Request $request)
     {
-        return view('dota.index');
-    }
-
-    public function dotaListItem()
-    {
-        return view('dota.list_item');
-    }
-
-    public function dotaListSet()
-    {
+        $params = $request->all();
         $listHero = $this->heroRepository->getListHero();
-        return view('dota.list_set', compact('listHero'));
+        $listItems = $this->productEloquentRepository->getListItems($params);
+        return view('dota.list_item', compact('listItems', 'listHero', 'params'));
+    }
+
+    public function dotaListSet(Request $request)
+    {
+        $params = $request->all();
+        $listHero = $this->heroRepository->getListHero();
+        $listSet = $this->productEloquentRepository->getListSet($params);
+        return view('dota.list_set', compact('listHero', 'listSet', 'params'));
     }
 }

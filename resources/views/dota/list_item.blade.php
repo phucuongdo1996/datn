@@ -1,5 +1,6 @@
 @extends('layouts.base')
 @section('styles')
+    <link rel="stylesheet" href="{{ asset('css/dota/common.css') }}">
 @endsection
 @section('content')
     @include('layouts.header')
@@ -36,12 +37,12 @@
                     <div class="col-9">
                         <div class="p5l">
                             <div class="row m-0 m10b">
-                                <div class="col-12 row item-block m5r h-100 p20">
+                                <form action="{{ route(DOTA_LIST_ITEM) }}" method="GET" class="col-12 row item-block m5r h-100 p20">
                                     <div class="col-6 p10lr m10b">
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-4 d-flex align-items-center"><label class="fs18">Tên sản phẩm</label></div>
-                                                <div class="col-8"><input class="form-control" type="text"></div>
+                                                <div class="col-8"><input name="product_name" class="form-control" type="text" value="{{ $params['product_name'] ?? '' }}"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -50,10 +51,10 @@
                                             <div class="row">
                                                 <div class="col-4 d-flex align-items-center"><label class="fs18">Tướng sở hữu</label></div>
                                                 <div class="col-8">
-                                                    <select class="form-control">
-                                                        <option value="">11111</option>
-                                                        <option value="">11111</option>
-                                                        <option value="">11111</option>
+                                                    <select name="hero_id" class="form-control">
+                                                        @foreach($listHero as $item)
+                                                        <option value="{{ $item['id'] }}" @if(isset($params['hero_id']) && $params['hero_id'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -65,11 +66,11 @@
                                                 <div class="col-4 d-flex align-items-center"><label class="fs18">Giá</label></div>
                                                 <div class="col-8 row">
                                                     <div class="w-45">
-                                                        <input type="text" class="form-control text-right" placeholder="1,000">
+                                                        <input name="price_from" type="text" class="form-control text-right convert-data" value="{{ $params['price_from'] ?? '' }}" placeholder="1,000">
                                                     </div>
                                                     <div class="w-10 d-flex justify-content-center align-items-center"> ~ </div>
                                                     <div class="w-45">
-                                                        <input type="text" class="form-control text-right" placeholder="1,000,000">
+                                                        <input name="price_to" type="text" class="form-control text-right convert-data" value="{{ $params['price_to'] ?? '' }}" placeholder="1,000,000">
                                                     </div>
 
                                                 </div>
@@ -77,23 +78,33 @@
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-center m10t">
-                                        <button class="btn btn-primary"> <i class="fas fa-search"></i> Kết quả</button>
+                                        <button type="submit" class="btn btn-primary"> <i class="fas fa-search"></i> Kết quả</button>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                             <div class="row m-0">
-                                <div class="item-block m5r h-100 p15 p20t">
-                                    <div class="row m-0" style="height: 700px; overflow-y: scroll; overflow-x: hidden">
-                                        @foreach([1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] as $item)
+                                <div class="col-12 item-block m5r h-100 p15 p20t">
+                                    <div id="paginate" class="d-flex justify-content-end m10t m20b">
+                                        {{ $listItems->links() }}
+                                    </div>
+                                    <div class="row m-0" style="height: 700px; overflow-y: auto; overflow-x: hidden">
+                                        @forelse($listItems as $item)
                                             <div class="col-2 p15l p15b">
                                                 <div class="d-flex zoom-hover" style="width: 100%; height: 100px">
-                                                    <img style="object-fit: fill" src="{{ asset('images/item_dota/item_dota_2.png') }}" alt="">
+                                                    <img style="object-fit: fill" src="{{ asset(URL_DOTA_IMAGES_ITEM . $item->productBase->image) }}" alt="">
                                                 </div>
-                                                <div class="p5t font-weight-bold">Guise of the Winged Bolt</div>
-                                                <a href="#" class="p5t hero-hover"> - Drow Ranger</a>
-                                                <div class="p5t font-weight-bold text-blue">10,000</div>
+                                                <div class="p5t font-weight-bold">{{ $item->productBase->name }}</div>
+                                                <a href="#" class="p5t hero-hover"> - {{ $item->productBase->hero->name ?? '' }}</a>
+                                                <div class="p5t font-weight-bold text-blue">{{ number_format($item->price) }}</div>
                                             </div>
-                                        @endforeach
+                                        @empty
+                                            <div class="col-12 d-flex justify-content-center p15l p15b">
+                                               <span class="fs20">Không có dữ liệu phù hợp</span>
+                                            </div>
+                                        @endforelse
+                                    </div>
+                                    <div id="paginate" class="d-flex justify-content-end p20t p10b">
+                                        {{ $listItems->links() }}
                                     </div>
                                 </div>
                             </div>

@@ -7,6 +7,12 @@ if (!function_exists('getImageUrl')) {
      */
     function getImageUrl($item)
     {
+        if (!is_array($item)) {
+            if ($item->productBase->type == TYPE_SET_CATEGORY) {
+                return URL_DOTA_IMAGES_SET . $item->productBase->image;
+            }
+            return ARRAY_URL_ITEM_IMAGES[$item->productBase->category_id] . $item->productBase->image;
+        }
         if ($item['product_base']['type'] == TYPE_SET_CATEGORY) {
             return URL_DOTA_IMAGES_SET . $item['product_base']['image'];
         }

@@ -15,16 +15,16 @@
                                 <div class="col-12 item-block m5r h-100 p15 p20t">
                                     <div class="row m-0 p20l p20r m20b">
                                         <div class="col-6 d-flex" style="height: 450px;">
-                                            <img class="w-100 object-fit-contain" src="{{ asset('images/item_dota/set_dota_1.jpg') }}" alt="">
+                                            <img class="w-100 object-fit-contain" src="{{ asset(getImageUrl($product)) }}" alt="">
                                         </div>
                                         <div class="col-6" style="height: 450px;">
-                                           <div class="font-weight-bold fs25 m15b">Guise of the Winged Bolt</div>
+                                           <div class="font-weight-bold fs25 m15b">{{ $product->productBase->name }}</div>
                                            <div class="row m-0 fs16 d-flex align-items-center m10b">
                                                <div class="col-3 font-weight-bold fs16 m15r">Tướng sở hữu: </div>
                                                <a href="#" class="d-flex align-items-center">
                                                    <div class="m10l m10r d-flex" style="width: 60px; height: 40px">
                                                        <img class="object-fit-cover w-100" src="{{ asset('images/hero_dota/drow_ranger.png') }}" alt="">
-                                                   </div> Drow Ranger</a>
+                                                   </div>{{ $product->productBase->hero->name }}</a>
                                            </div>
                                             <div class="row m-0 fs16 d-flex align-items-center m10b">
                                                 <div class="col-3 font-weight-bold fs16 m15r">Người bán: </div>
@@ -49,7 +49,7 @@
                                             </div>
                                             <div class="row m-0 fs16 d-flex align-items-center m10b">
                                                 <div class="col-3 font-weight-bold fs16 m15r">Giá: </div>
-                                                <div class="btn font-weight-bold fs20 text-blue">10,000</div>
+                                                <div class="btn font-weight-bold fs20 text-blue">{{ number_format($product->price) }}</div>
                                             </div>
                                             <div class="row m-0 fs16 d-flex align-items-center">
                                                <button id="open-modal" class="btn btn-primary">
@@ -90,7 +90,7 @@
                                                     </td>
                                                     <td class="font-weight-bold text-right text-blue">15,000</td>
                                                     <td class="text-center">
-                                                        <button class="btn btn-primary"><a class="color-white" href="{{ route(DOTA_DETAIL) }}"><i class="fas fa-shopping-cart m10r"></i>Mua sản phẩm</a></button>
+                                                        <button class="btn btn-primary"><a class="color-white" href="{{ route(DOTA_DETAIL, 2) }}"><i class="fas fa-shopping-cart m10r"></i>Mua sản phẩm</a></button>
                                                     </td>
                                                 </tr>
                                                 <tr>
