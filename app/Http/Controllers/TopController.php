@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Hero\HeroRepositoryInterface;
-use App\Repositories\Product\ProductEloquentRepository;
+use App\Repositories\HeroEloquentRepository;
+use App\Repositories\ProductEloquentRepository;
+use App\Repositories\ProductNewEloquentRepository;
 use Illuminate\Support\Facades\Auth;
 
 class TopController extends Controller
@@ -13,13 +14,16 @@ class TopController extends Controller
      */
     protected $heroRepository;
     protected $productEloquentRepository;
+    protected $productNewEloquentRepository;
 
     public function __construct(
         ProductEloquentRepository $productEloquentRepository,
-        HeroRepositoryInterface $heroRepository
+        HeroEloquentRepository $heroRepository,
+        ProductNewEloquentRepository $productNewEloquentRepository
     ) {
         $this->heroRepository = $heroRepository;
         $this->productEloquentRepository = $productEloquentRepository;
+        $this->productNewEloquentRepository = $productNewEloquentRepository;
     }
 
     /**
@@ -29,9 +33,10 @@ class TopController extends Controller
      */
     public function index()
     {
-        $listItemDota = $this->productEloquentRepository->getNewItems();
-        $listSetDota = $this->productEloquentRepository->getNewItems();
-        return view('dota.index', compact('listItemDota', 'listSetDota'));
+        $newItems = $this->productEloquentRepository->getNewItems();
+        $newSets = $this->productEloquentRepository->getNewSets();
+        $productNews = $this->productEloquentRepository->getProductNew();
+        return view('dota.index', compact('newItems', 'newSets', 'productNews'));
     }
 
     public function dotaHome()

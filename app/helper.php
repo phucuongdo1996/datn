@@ -1,37 +1,15 @@
 <?php
 
-use Carbon\Carbon;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
-use MathPHP\Finance;
-
-if (!function_exists('saveImageInFolder')) {
+if (!function_exists('getImageUrl')) {
     /**
-     * Save image
-     *
-     * @param  UploadedFile  $image
-     * @param $folderName
-     * @param  bool  $update
-     * @param  null  $imageName
-     * @return array|null
+     * @param $item
+     * @return string
      */
-    function saveImageInFolder(UploadedFile $image, $folderName, $update = false, $imageName = null)
+    function getImageUrl($item)
     {
-        try {
-            $imageName = $update ? $imageName : $image->hashName();
-            Storage::disk('public')->put('/' . $folderName . '/', $image);
-            $imageResize = resizeImage(getimagesize($image));
-            Image::make($image->path())->resize($imageResize[FLAG_ZERO], $imageResize[FLAG_ONE])
-                ->save(storage_path('/app/public/' . $folderName . '/' . THUMBNAIL_IMAGE_FIRST_NAME . $imageName));
-            return [
-                'avatar' => $imageName,
-                'avatar_thumbnail' => THUMBNAIL_IMAGE_FIRST_NAME . $imageName
-            ];
-        } catch (\Exception $exception) {
-            report($exception);
-            return null;
+        if ($item['product_base']['type'] == TYPE_SET_CATEGORY) {
+            return URL_DOTA_IMAGES_SET . $item['product_base']['image'];
         }
+        return ARRAY_URL_ITEM_IMAGES[$item['product_base']['category_id']] . $item['product_base']['image'];
     }
 }

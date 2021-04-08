@@ -14,14 +14,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(
-            \App\Repositories\User\UserRepositoryInterface::class,
-            \App\Repositories\User\UserEloquentRepository::class
-        );
-        $this->app->singleton(
-            \App\Repositories\Hero\HeroRepositoryInterface::class,
-            \App\Repositories\Hero\HeroEloquentRepository::class
-        );
+        //
     }
 
     /**

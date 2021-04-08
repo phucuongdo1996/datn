@@ -45,6 +45,18 @@ const ARRAY_COLOR_1 = [
 const URL_DOTA_IMAGES_ITEM = 'images/dota_images/item/';
 const URL_DOTA_IMAGES_ITEM_INFU = 'images/dota_images/item_infu/';
 const URL_DOTA_IMAGES_ITEM_TAUNT = 'images/dota_images/item_taunt/';
-const URL_DOTA_IMAGES_ITEM_COURIER = 'images/dota_images/item_courier/';
+const URL_DOTA_IMAGES_ITEM_COURIER = 'images/dota_images/courier/';
 const URL_DOTA_IMAGES_WARDS = 'images/dota_images/wards/';
 const URL_DOTA_IMAGES_SET = 'images/dota_images/set/';
+const URL_SLIDE_IMAGES = 'images/slide_images/';
+
+const ARRAY_URL_ITEM_IMAGES = [
+    1 => URL_DOTA_IMAGES_ITEM,
+    2 => URL_DOTA_IMAGES_ITEM_INFU,
+    3 => URL_DOTA_IMAGES_ITEM_TAUNT,
+    4 => URL_DOTA_IMAGES_ITEM_COURIER,
+    5 => URL_DOTA_IMAGES_ITEM_COURIER,
+    6 => URL_DOTA_IMAGES_WARDS,
+];
+
+const IMAGES_SLIDES = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];

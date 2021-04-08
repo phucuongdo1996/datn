@@ -12,9 +12,9 @@
                     <div class="col-8">
                         <div class="item-block m5r">
                             <div class="slide-logo" style="max-height: 350px">
-                                <img style="max-height: 350px; object-fit: fill" src="{{ asset('images/dota2_1.png') }}" alt="">
-                                <img style="max-height: 350px; object-fit: fill" src="{{ asset('images/logo.png') }}" alt="">
-                                <img style="max-height: 350px; object-fit: fill" src="{{ asset('images/logo_steam.png') }}" alt="">
+                                @foreach(IMAGES_SLIDES as $image)
+                                    <img style="max-height: 350px; object-fit: contain; background-color: black" src="{{ asset(URL_SLIDE_IMAGES . $image) }}" alt="">
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -28,15 +28,14 @@
                                 </div>
                             </div>
                             <div style="max-height: 290px; overflow-y: scroll">
-                                @foreach([1,2,3,4,5,6,7] as $item)
+                                @foreach($productNews as $item)
                                 <div class="row m-0 m10b h90">
-                                    <div class="d-flex h90 zoom-hover">
-                                        <img class="object-fit-cover" src="{{ asset('images/dota2_1.png') }}" alt="">
+                                    <div class="col-4 d-flex h90 zoom-hover">
+                                        <img class="object-fit-contain" style="background-color: black" src="{{ asset(getImageUrl($item)) }}" alt="">
                                     </div>
-                                    <div class="p20l">
-                                        <div class="font-weight-bold">Guise of the Winged Bolt</div>
-                                        <a href="#" class="hero-hover">- Drow Ranger</a>
-                                        <div class="font-weight-bold text-blue">10,000</div>
+                                    <div class="col-8">
+                                        <div class="font-weight-bold">{{ $item['product_base']['name'] }}</div>
+                                        <div class="font-weight-bold text-blue">{{ number_format($item['price']) }}</div>
                                     </div>
                                 </div>
                                 @endforeach
@@ -47,13 +46,13 @@
 
                 <div class="row m10b">
                     <div class=" row m-0 item-block p15 slide-bottom" style="height: 220px; width: 100%">
-                        @foreach([1,2,3,4,5,6,7,8,9,10] as $item)
-                            <a href="" class="background-style position-relative" style="background-image: url({{ asset('images/dota2_1.png') }})">
+                        @foreach($newSets as $item)
+                            <a href="" class="background-style position-relative" style="background-image: url({{ asset(URL_DOTA_IMAGES_SET . $item['product_base']['image']) }})">
                                 <div class="bg-linear-gradient"></div>
                                 <div class="title-carousel-image text-center">
-                                    <p class="p5t font-weight-bold">Guise of the Winged Bolt</p>
-                                    <p class="p5t"> - Drow Ranger</p>
-                                    <p class="p5t font-weight-bold text-danger">10,000</p>
+                                    <p class="p5t font-weight-bold">{{ $item['product_base']['name'] }}</p>
+                                    <p class="p5t"> - {{ $item['product_base']['hero']['name'] }}</p>
+                                    <p class="p5t font-weight-bold text-danger">{{ number_format($item['price']) }}</p>
                                 </div>
                             </a>
                         @endforeach
@@ -70,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="row m-0" style="height: 550px; overflow-y: scroll; overflow-x: hidden">
-                            @foreach($listItemDota as $item)
+                            @foreach($newItems as $item)
                                 <div class="col-2 p15l p15b">
                                     <div class="d-flex zoom-hover" style="width: 100%; height: 90px">
                                         <img style="object-fit: fill" src="{{ asset(URL_DOTA_IMAGES_ITEM . $item['product_base']['image']) }}" alt="">
@@ -91,7 +90,7 @@
                                 </div>
                             </div>
                             <div class="row m-0" style="height: 550px; overflow-y: scroll; overflow-x: hidden">
-                                @foreach($listSetDota as $item)
+                                @foreach($newSets as $item)
                                     <div class="col-2 p15l p15b">
                                         <div class="d-flex zoom-hover" style="width: 100%; height: 90px">
                                             <img style="object-fit: fill" src="{{ asset(URL_DOTA_IMAGES_SET . $item['product_base']['image']) }}" alt="">
