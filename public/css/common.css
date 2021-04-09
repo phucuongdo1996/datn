@@ -40,22 +40,6 @@
     color: blue !important;
 }
 
-#category-item-dota .item-category {
-    font-size: 16px;
-    padding: 10px;
-    display: block;
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #f3f3f3;
-    letter-spacing: .5px;
-}
-
-#category-item-dota .item-category:hover {
-    background-color: #0099FF;
-    padding-left: 20px !important;
-    color: white;
-}
-
 #table-custom th {
     text-align: center;
     font-size: 16px;
@@ -269,4 +253,19 @@
 .label-radio-custom:after {
     display: none !important;
 }
+.hover-product:hover {
+    /*background-color: #c0c0c070 !important;*/
+}
+.hover-product img {
+    height: 90px;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    transition: 0.5s all ease-in-out;
+}
+
+.hover-product:hover img {
+    transform: scale(1.3);
+}
+
 

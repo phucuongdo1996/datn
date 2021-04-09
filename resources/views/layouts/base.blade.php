@@ -24,8 +24,8 @@
     @yield('script-files')
 </head>
 <body>
-<div id="wrapper" style="background: url({{ asset('images/background.png') }})">
-    <div id="wrap">
+<div id="wrapper" style="background-color: #c0c0c08c">
+    <div id="wrap" style="background: unset !important;">
         @yield('content')
 
         @include('layouts.footer')

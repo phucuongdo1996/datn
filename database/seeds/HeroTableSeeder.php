@@ -13,9 +13,10 @@ class HeroTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        for ($i = 0; $i < 110; $i++) {
+        for ($i = 1; $i < 89; $i++) {
             DB::table('heros')->insert([
                 'name' => $faker->firstName . ' ' . $faker->lastName,
+                'image' => $i . '.png',
             ]);
         }
     }

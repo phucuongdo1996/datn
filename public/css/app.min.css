@@ -1428,7 +1428,7 @@ body {
   background-color: #ffffff;
   position: relative;
   font-size: 13px;
-  font-family: "Noto Sans", "Noto Sans CJK JP", sans-serif;
+  font-family: "Times New Roman", "Times New Roman", sans-serif;
 }
 
 .centered {
@@ -2309,7 +2309,7 @@ body {
   font-weight: inherit;
   font-style: inherit;
   font-size: 100%;
-  font-family: "Noto Sans", "Noto Sans CJK JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", "\6E38\30B4\30B7\30C3\30AF", "\6E38\30B4\30B7\30C3\30AF\4F53", "Yu Gothic", YuGothic, "\30E1\30A4\30EA\30AA", Meiryo, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic", sans-serif;
+  font-family: "Times New Roman", "Times New Roman", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", "\6E38\30B4\30B7\30C3\30AF", "\6E38\30B4\30B7\30C3\30AF\4F53", "Yu Gothic", YuGothic, "\30E1\30A4\30EA\30AA", Meiryo, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic", sans-serif;
   vertical-align: baseline;
   margin: 0;
   padding: 0;
@@ -2405,7 +2405,7 @@ body {
   font-weight: inherit;
   font-style: inherit;
   font-size: 100%;
-  font-family: "Noto Sans", "Noto Sans CJK JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", "\6E38\30B4\30B7\30C3\30AF", "\6E38\30B4\30B7\30C3\30AF\4F53", "Yu Gothic", YuGothic, "\30E1\30A4\30EA\30AA", Meiryo, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic", sans-serif;
+  font-family: "Calisto MT", "Calisto MT", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans", "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF", "\6E38\30B4\30B7\30C3\30AF", "\6E38\30B4\30B7\30C3\30AF\4F53", "Yu Gothic", YuGothic, "\30E1\30A4\30EA\30AA", Meiryo, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic", sans-serif;
   vertical-align: baseline;
   margin: 0;
   padding: 0;

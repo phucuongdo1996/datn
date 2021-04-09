@@ -24,7 +24,7 @@
                                                <a href="#" class="d-flex align-items-center">
                                                    <div class="m10l m10r d-flex" style="width: 60px; height: 40px">
                                                        <img class="object-fit-cover w-100" src="{{ asset('images/hero_dota/drow_ranger.png') }}" alt="">
-                                                   </div>{{ $product->productBase->hero->name }}</a>
+                                                   </div>{{ $product->productBase->hero->name ?? 'Tất cả tướng' }}</a>
                                            </div>
                                             <div class="row m-0 fs16 d-flex align-items-center m10b">
                                                 <div class="col-3 font-weight-bold fs16 m15r">Người bán: </div>

@@ -58,6 +58,10 @@ class ProductEloquentRepository extends BaseRepository
             return $query->whereHas('productBase', function ($query) use ($params) {
                 $query->where('name', 'like', '%' . $params['product_name'] . '%');
             });
+        })->when(isset($params['hero_id']), function ($query) use ($params) {
+            return $query->whereHas('productBase', function ($query) use ($params) {
+                $query->where('hero_id', $params['hero_id']);
+            });
         })
             ->with('productBase.hero')->paginate(60);
     }

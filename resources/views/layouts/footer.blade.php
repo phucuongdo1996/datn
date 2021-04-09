@@ -1,6 +1,6 @@
 <div id="mainWrap">
     <div id="main">
-        <div id="kvWrap" style="padding-left: 10%; padding-right: 10%; background-color: #f4f6f9">
+        <div id="kvWrap" style="padding-left: 10%; padding-right: 10%;">
             <div class="row p20t">
                 <div class="col-4">
                     <div class="item-block m10b m5r p15" style="height: 300px">

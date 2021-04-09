@@ -11,4 +11,6 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.sass('resources/sass/custom/custom.scss', 'public/css/app.min.css');
+mix.sass('resources/sass/custom/custom.scss', 'public/css/app.min.css')
+    .sass('resources/sass/dota/common.scss', 'public/css/dota/common.min.css')
+    .sass('resources/sass/dota/list_item.scss', 'public/css/dota/list_item.min.css');

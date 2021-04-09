@@ -49,6 +49,7 @@ const URL_DOTA_IMAGES_ITEM_COURIER = 'images/dota_images/courier/';
 const URL_DOTA_IMAGES_WARDS = 'images/dota_images/wards/';
 const URL_DOTA_IMAGES_SET = 'images/dota_images/set/';
 const URL_SLIDE_IMAGES = 'images/slide_images/';
+const URL_DOTA_HERO_IMAGES = 'images/dota_images/heros/';
 
 const ARRAY_URL_ITEM_IMAGES = [
     1 => URL_DOTA_IMAGES_ITEM,
