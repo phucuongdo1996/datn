@@ -1,4 +1,4 @@
-var detail = (function () {
+var detailFunction = (function () {
     let modules = {};
     modules.buildHistoryChart = function () {
         Highcharts.chart('history-pay-chart', {
@@ -53,14 +53,24 @@ var detail = (function () {
             }]
         });
     }
+
+    modules.clickBuyItem = function () {
+        let isLogin = $('#user-id').val() == '';
+        console.log($('#user-id').val(), isLogin)
+        if (isLogin) {
+            $('#login-form').modal('show');
+        } else {
+            $('#exampleModalCenter').modal('show')
+        }
+    }
     return modules;
 }(window.jQuery, window, document));
 
 $(document).ready(function () {
-   detail.buildHistoryChart();
+    detailFunction.buildHistoryChart();
 
-   $('#open-modal').on('click', function () {
-       $('#exampleModalCenter').modal('show')
+   $('.btn-buy-item').on('click', function () {
+       detailFunction.clickBuyItem();
    });
 
    $('#pay-submit').on('click', function () {

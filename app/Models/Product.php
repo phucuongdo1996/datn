@@ -25,6 +25,11 @@ class Product extends Model
         'price',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
     public function productBase()
     {
         return $this->belongsTo(ProductBase::class, 'product_base_id', 'id');
