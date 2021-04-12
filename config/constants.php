@@ -4,7 +4,9 @@
  * Define const for route name
  */
 
+const SHOW_LOGIN = 'show.login';
 const LOGIN = 'login';
+const LOGOUT = 'logout';
 const TOP = 'dota';
 
 const DOTA_LIST_ITEM = 'dota.list.item';
@@ -24,6 +26,9 @@ const ADMIN_INDEX = 'admin.index';
 const ADMIN_EDIT_PRODUCT = 'admin.edit.product';
 const ADMIN_ADD_STEAM_CODE = 'admin.add.steam.code';
 
+/**
+ * Define const for type item
+ */
 const TYPE_ITEM_CATEGORY = 1;
 const TYPE_SET_CATEGORY = 2;
 
@@ -42,6 +47,10 @@ const ARRAY_COLOR = [
 const ARRAY_COLOR_1 = [
     '#2F868C', '#E56C9B', '#f7a35c', '#0377FF', '#FF0000',
 ];
+
+/**
+ * Define const for folder images
+ */
 const URL_DOTA_IMAGES_ITEM = 'images/dota_images/item/';
 const URL_DOTA_IMAGES_ITEM_INFU = 'images/dota_images/item_infu/';
 const URL_DOTA_IMAGES_ITEM_TAUNT = 'images/dota_images/item_taunt/';
@@ -61,3 +70,10 @@ const ARRAY_URL_ITEM_IMAGES = [
 ];
 
 const IMAGES_SLIDES = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
+
+
+/**
+ * Define const for Session flash
+ */
+const STR_FLASH_SUCCESS = 'flash_success';
+const STR_FLASH_ERROR = 'flash_error';

@@ -10,17 +10,17 @@
         <div id="main">
             <div id="kvWrap" style="padding-left: 10%; padding-right: 10%">
                 <div class="row m10b">
-                    <div class="col-8">
+                    <div class="col-9">
                         <div class="item-block m5r p15">
-                            <div class="slide-logo" style="max-height: 320px">
+                            <div class="slide-logo" style="max-height: 450px">
                                 @foreach(IMAGES_SLIDES as $image)
-                                    <img style="max-height: 350px; object-fit: contain; background-color: black" src="{{ asset(URL_SLIDE_IMAGES . $image) }}" alt="">
+                                    <img style="max-height: 450px; object-fit: contain; background-color: black" src="{{ asset(URL_SLIDE_IMAGES . $image) }}" alt="">
                                 @endforeach
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="item-block h-100 m5l p15" style="max-height: 350px">
+                    <div class="col-3">
+                        <div class="item-block h-100 m5l p15" style="max-height: 480px">
                             <div class="row m-0">
                                 <div class="col-12 m10b">
                                     <p class="fs20 fw-bold m-0">Mới cập nhật
@@ -28,19 +28,9 @@
                                     </p>
                                 </div>
                             </div>
-                            <div style="max-height: 290px; overflow-y: scroll">
+                            <div style="max-height: 420px; overflow-y: scroll">
                                 @foreach($productNews as $item)
-                                    <a class="" href="{{ route(DOTA_DETAIL, $item['id']) }}">
-                                        <div class="row m-0 m10b h90 hover-product">
-                                            <div class="col-4 d-flex h90 overflow-hidden">
-                                                <img class="object-fit-contain" style="background-color: black" src="{{ asset(getImageUrl($item)) }}" alt="">
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="font-weight-bold">{{ $item['product_base']['name'] }}</div>
-                                                <div class="font-weight-bold text-blue">{{ number_format($item['price']) }}</div>
-                                            </div>
-                                        </div>
-                                    </a>
+                                    @include('dota.product_item_horizontal')
                                 @endforeach
                             </div>
                         </div>
@@ -48,14 +38,14 @@
                 </div>
 
                 <div class="row m10b">
-                    <div class=" row m-0 item-block p15 slide-bottom" style="height: 220px; width: 100%">
+                    <div class=" row m-0 item-block p15 slide-bottom background-invi" style="height: 220px; width: 100%">
                         @foreach($newSets as $item)
                             <a href="{{ route(DOTA_DETAIL, $item['id']) }}" class="background-style position-relative" style="background-image: url({{ asset(URL_DOTA_IMAGES_SET . $item['product_base']['image']) }})">
                                 <div class="bg-linear-gradient"></div>
                                 <div class="title-carousel-image text-center">
-                                    <p class="p5t font-weight-bold">{{ $item['product_base']['name'] }}</p>
-                                    <p class="p5t"> - {{ $item['product_base']['hero']['name'] }}</p>
-                                    <p class="p5t font-weight-bold text-danger">{{ number_format($item['price']) }}</p>
+                                    <p class="p5t font-weight-bold">{{ mb_strimwidth($item['product_base']['name'], 0, 25, ' ...') }}</p>
+                                    <p class="p5t">{{ $item['product_base']['hero']['name'] }}</p>
+                                    <p class="p5t font-weight-bold text-danger">$ {{ number_format($item['price']) }}</p>
                                 </div>
                             </a>
                         @endforeach
@@ -64,7 +54,7 @@
 
                 <div class="row">
                     <div class="col-9">
-                        <div class="item-block m10b m5r p15" style="height: 660px">
+                        <div class="item-block m10b m5r p15 background-invi" style="height: 660px">
                             <div class="row m-0">
                                 <div class="col-12 m10b d-flex justify-content-between">
                                     <p class="fs20 fw-bold m-0">Item đang bán</p>
@@ -78,7 +68,7 @@
                             </div>
                         </div>
 
-                        <div class="item-block m10b m5r p15" style="height: 660px">
+                        <div class="item-block m10b m5r p15 background-invi" style="height: 660px">
                             <div class="row m-0">
                                 <div class="col-12 m10b d-flex justify-content-between">
                                     <p class="fs20 fw-bold m-0">Set đang bán</p>
@@ -103,17 +93,7 @@
                             </div>
                             <div style="max-height: 550px; overflow-y: scroll">
                                 @foreach($productBestseller as $item)
-                                    <a href="{{ route(DOTA_DETAIL, $item['id']) }}">
-                                        <div class="row m-0 m10b h90 hover-product">
-                                            <div class="col-4 d-flex h90 overflow-hidden">
-                                                <img class="object-fit-contain" style="background-color: black" src="{{ asset(getImageUrl($item)) }}" alt="">
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="font-weight-bold">{{ $item['product_base']['name'] }}</div>
-                                                <div class="font-weight-bold text-blue">{{ number_format($item['price']) }}</div>
-                                            </div>
-                                        </div>
-                                    </a>
+                                    @include('dota.product_item_horizontal')
                                 @endforeach
                             </div>
                         </div>
@@ -128,17 +108,7 @@
                             </div>
                             <div style="max-height: 550px; overflow-y: scroll">
                                 @foreach($productRemarkable as $item)
-                                    <a href="{{ route(DOTA_DETAIL, $item['id']) }}">
-                                        <div class="row m-0 m10b h90 hover-product">
-                                            <div class="col-4 d-flex h90 overflow-hidden">
-                                                <img class="object-fit-contain" style="background-color: black" src="{{ asset(getImageUrl($item)) }}" alt="">
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="font-weight-bold">{{ $item['product_base']['name'] }}</div>
-                                                <div class="font-weight-bold text-blue">{{ number_format($item['price']) }}</div>
-                                            </div>
-                                        </div>
-                                    </a>
+                                    @include('dota.product_item_horizontal')
                                 @endforeach
                             </div>
                         </div>

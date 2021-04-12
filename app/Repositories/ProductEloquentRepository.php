@@ -35,19 +35,19 @@ class ProductEloquentRepository extends BaseRepository
     public function getProductNew()
     {
         $ids = resolve(ProductNewEloquentRepository::class)->getIdsItems();
-        return $this->model->with('productBase')->whereIn('product_base_id', $ids)->orderBy('price')->limit(20)->get()->toArray();
+        return $this->model->with('productBase.hero')->whereIn('product_base_id', $ids)->orderBy('price')->limit(20)->get()->toArray();
     }
 
     public function getProductBestseller()
     {
         $ids = resolve(ProductBestsellerEloquentRepository::class)->getIdsItems();
-        return $this->model->with('productBase')->whereIn('product_base_id', $ids)->orderBy('price')->limit(20)->get()->toArray();
+        return $this->model->with('productBase.hero')->whereIn('product_base_id', $ids)->orderBy('price')->limit(20)->get()->toArray();
     }
 
     public function getProductRemarkable()
     {
         $ids = resolve(ProductRemarkableEloquentRepository::class)->getIdsItems();
-        return $this->model->with('productBase')->whereIn('product_base_id', $ids)->orderBy('price')->limit(20)->get()->toArray();
+        return $this->model->with('productBase.hero')->whereIn('product_base_id', $ids)->orderBy('price')->limit(20)->get()->toArray();
     }
 
     public function getListItems($params)
@@ -62,6 +62,14 @@ class ProductEloquentRepository extends BaseRepository
             return $query->whereHas('productBase', function ($query) use ($params) {
                 $query->where('hero_id', $params['hero_id']);
             });
+        })->when(isset($params['category_id']), function ($query) use ($params) {
+            return $query->whereHas('productBase', function ($query) use ($params) {
+                $query->where('category_id', $params['category_id']);
+            });
+        })->when(isset($params['price_from']), function ($query) use ($params) {
+            $query->where('price', '>=', convertNumber($params['price_from']));
+        })->when(isset($params['price_to']), function ($query) use ($params) {
+            $query->where('price', '<=', convertNumber($params['price_to']));
         })
             ->with('productBase.hero')->paginate(60);
     }

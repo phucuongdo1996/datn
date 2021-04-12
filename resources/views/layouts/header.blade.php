@@ -17,16 +17,31 @@
                             <li><a>Liên hệ</a></li>
                         </ul>
                     </div><!-- mainNav -->
+                    @if(!$currentUser)
 
-                    <div id="memberNav">
+                    <div id="memberNav" style="padding: 10px 0">
                         <ul>
-                            @if(!$currentUser)
-                                <li><a href="" class="registrationBtn">Đăng nhập</a>
-                            @else
-                                <li><a href="" class="registrationBtn">{{ trans('attributes.dota.header.home') }}</a></li>
-                            @endif
+                            <li>
+                                <a href="{{ route(SHOW_LOGIN) }}" class="text-white effect01" style="padding: 0 60px">
+                                    <span>Đăng nhập</span>
+                                </a>
+                            </li>
                         </ul>
-                    </div><!-- memberNav -->
+                    </div>
+                    @else
+                        <div id="dropdown-menu">
+                            <div class="dropdown" style="cursor: pointer">
+                                <div class="d-flex align-items-center" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img style="border-radius: 50%; width: 50px" src="{{ asset('images/avatar_user/img_avatar.png') }}" alt="">
+                                    <div class="p10l fs16">{{ $currentUser->nick_name }}</div>
+                                </div>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item p15" href="{{ route(USER_INFO) }}"><i class="fas fa-info-circle"></i> Tài khoản</a>
+                                    <a class="dropdown-item p15" href="{{ route(LOGOUT) }}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div><!-- globalNavInner -->
             </nav><!--globalNav-->
         </div><!--globalNavWrap-->

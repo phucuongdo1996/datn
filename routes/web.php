@@ -16,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 /*
 | Web Routes no need to login
 */
-Route::get('login', 'Auth\LoginController@create')->name(LOGIN);
+Route::get('/test', function () {
+    dd(str_contains(1245, '4'));
+});
+Route::get('login', 'Auth\LoginController@create')->name(SHOW_LOGIN);
+Route::post('login', 'Auth\LoginController@login')->name(LOGIN);
+Route::get('logout', 'Auth\LoginController@logout')->name(LOGOUT);
 Route::get('/', 'TopController@index')->name(TOP);
 
 Route::prefix('admin')->group(function () {
@@ -30,12 +35,14 @@ Route::prefix('dota')->group(function () {
     Route::get('/list-item', 'TopController@dotaListItem')->name(DOTA_LIST_ITEM);
     Route::get('/list-set', 'TopController@dotaListSet')->name(DOTA_LIST_SET);
     Route::get('/detail/{id}', 'DotaController@detail')->name(DOTA_DETAIL);
-    Route::prefix('user')->group(function () {
-        Route::get('/list-item', 'UserController@listItem')->name(USER_LIST_ITEM);
-        Route::get('/store-product', 'UserController@storeProduct')->name(USER_STORE_PRODUCT);
-        Route::get('/history', 'UserController@history')->name(USER_HISTORY);
-        Route::get('/info', 'UserController@info')->name(USER_INFO);
-        Route::get('/recharge-money', 'UserController@rechargeMoney')->name(USER_RECHARGE_MONEY);
+    Route::middleware(['auth'])->group(function () {
+        Route::prefix('user')->group(function () {
+            Route::get('/list-item', 'UserController@listItem')->name(USER_LIST_ITEM);
+            Route::get('/store-product', 'UserController@storeProduct')->name(USER_STORE_PRODUCT);
+            Route::get('/history', 'UserController@history')->name(USER_HISTORY);
+            Route::get('/info', 'UserController@info')->name(USER_INFO);
+            Route::get('/recharge-money', 'UserController@rechargeMoney')->name(USER_RECHARGE_MONEY);
+        });
     });
 });
 Route::prefix('steam-code')->group(function () {

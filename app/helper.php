@@ -19,3 +19,10 @@ if (!function_exists('getImageUrl')) {
         return ARRAY_URL_ITEM_IMAGES[$item['product_base']['category_id']] . $item['product_base']['image'];
     }
 }
+
+if (!function_exists('convertNumber')) {
+    function convertNumber($text)
+    {
+        return mb_ereg_replace(',', '', $text);
+    }
+}

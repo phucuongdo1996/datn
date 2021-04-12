@@ -21,11 +21,11 @@
                                 <div id="category-item-dota">
                                     <ul>
                                         <a href="{{ route(DOTA_LIST_ITEM) }}">
-                                            <li class="item-category font-weight-bold active">Tất cả</li>
+                                            <li class="item-category font-weight-bold @if(!isset($params['category_id'])) active @endif">Tất cả</li>
                                         </a>
                                         @foreach($listCategory as $item)
                                             <a href="{{ route(DOTA_LIST_ITEM, ['category_id' => $item['id']]) }}">
-                                                <li class="item-category font-weight-bold">{{ $item['name'] }}</li>
+                                                <li class="item-category font-weight-bold @if(isset($params['category_id']) && $params['category_id'] == $item['id']) active @endif">{{ $item['name'] }}</li>
                                             </a>
                                         @endforeach
                                     </ul>
@@ -38,6 +38,7 @@
                         <div class="p5l">
                             <div class="row m-0 m10b">
                                 <form action="{{ route(DOTA_LIST_ITEM) }}" method="GET" class="col-12 row item-block m5r h-100 p20">
+                                    <input type="hidden" name="category_id" value="{{ $params['category_id'] ?? '' }}">
                                     <div class="col-6 p10lr m10b">
                                         <div class="form-group">
                                             <div class="row">
@@ -52,8 +53,9 @@
                                                 <div class="col-4 d-flex align-items-center"><label class="fs18">Tướng sở hữu</label></div>
                                                 <div class="col-8">
                                                     <select name="hero_id" class="form-control">
+                                                        <option value="">Tất cả</option>
                                                         @foreach($listHero as $item)
-                                                        <option value="{{ $item['id'] }}" @if(isset($params['hero_id']) && $params['hero_id'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
+                                                            <option value="{{ $item['id'] }}" @if(isset($params['hero_id']) && $params['hero_id'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -66,11 +68,19 @@
                                                 <div class="col-4 d-flex align-items-center"><label class="fs18">Giá</label></div>
                                                 <div class="col-8 row">
                                                     <div class="w-45">
-                                                        <input name="price_from" type="text" class="form-control text-right convert-data" value="{{ $params['price_from'] ?? '' }}" placeholder="1,000">
+                                                        <input name="price_from" type="text"
+                                                               class="form-control text-right convert-data"
+                                                               value="{{ $params['price_from'] ?? '' }}"
+                                                               placeholder="1,000">
                                                     </div>
-                                                    <div class="w-10 d-flex justify-content-center align-items-center"> ~ </div>
+                                                    <div class="w-10 d-flex justify-content-center align-items-center">
+                                                        ~
+                                                    </div>
                                                     <div class="w-45">
-                                                        <input name="price_to" type="text" class="form-control text-right convert-data" value="{{ $params['price_to'] ?? '' }}" placeholder="1,000,000">
+                                                        <input name="price_to" type="text"
+                                                               class="form-control text-right convert-data"
+                                                               value="{{ $params['price_to'] ?? '' }}"
+                                                               placeholder="1,000,000">
                                                     </div>
 
                                                 </div>
@@ -88,7 +98,7 @@
                                         {{ $listItems->links() }}
                                     </div>
                                     <div style="height: 700px; overflow-y: auto; overflow-x: hidden">
-                                        <div class="row m-0" >
+                                        <div class="row m-0">
                                             @forelse($listItems as $item)
                                                 @include('dota.product_item', ['type' => 'collection'])
                                             @empty
@@ -107,12 +117,12 @@
 
                     </div>
                 </div>
-                </div>
-            </div><!-- kvWrap -->
+            </div>
+        </div><!-- kvWrap -->
         </div>
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('/dist/js/top_index.min.js') }}"></script>
-    <script src="{{ asset('/js/dota/dota.js') }}"></script>
+{{--    <script src="{{ asset('/dist/js/top_index.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('/js/dota/dota.js') }}"></script>--}}
 @endsection
