@@ -14,7 +14,7 @@
                         <span>{{ $item['product_base']['hero']['name'] ?? 'Tất cả tướng' }}</span>
                     </div>
                 </div>
-                <div class="col-12 product-price p10t p10b font-weight-bold text-blue text-center" style="height: fit-content">$ {{ number_format($item['price']) }}</div>
+                <div class="col-12 product-price p10t p10b font-weight-bold text-center" style="height: fit-content"><i class="fas fa-coins text-gold" ></i> {{ number_format($item['price']) }}</div>
             </div>
         </div>
     </div>

@@ -2,10 +2,22 @@
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/dota/common.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dota/index.css') }}">
+
+    <script>
+        const body = document.body;
+        const btn = document.querySelectorAll('.button')[0];
+
+        btn.addEventListener('mouseenter', () => {
+            body.classList.add('show');
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            body.classList.remove('show');
+        });
+    </script>
 @endsection
 @section('content')
     @include('layouts.header')
-
     <div id="mainWrap" class="p80t">
         <div id="main">
             <div id="kvWrap" style="padding-left: 10%; padding-right: 10%">
@@ -57,8 +69,10 @@
                         <div class="item-block m10b m5r p15 background-invi" style="height: 660px">
                             <div class="row m-0">
                                 <div class="col-12 m10b d-flex justify-content-between">
-                                    <p class="fs20 fw-bold m-0">Item đang bán</p>
-                                    <button class="btn btn-primary"><a class="text-white" href="{{ route(DOTA_LIST_ITEM) }}">Xem thêm >></a></button>
+                                    <p class="fs20 fw-bold m-0 align-self-center p10l">Item đang bán</p>
+                                    <a class="text-white" href="{{ route(DOTA_LIST_ITEM) }}">
+                                        <button class="btn btn-load-more"><span>Xem thêm <i class="fas fa-arrow-alt-circle-right"></i></span></button>
+                                    </a>
                                 </div>
                             </div>
                             <div class="row m-0" style="height: 550px; overflow-y: scroll; overflow-x: hidden">
@@ -71,8 +85,10 @@
                         <div class="item-block m10b m5r p15 background-invi" style="height: 660px">
                             <div class="row m-0">
                                 <div class="col-12 m10b d-flex justify-content-between">
-                                    <p class="fs20 fw-bold m-0">Set đang bán</p>
-                                    <button class="btn btn-primary"><a class="text-white" href="{{ route(DOTA_LIST_SET) }}">Xem thêm >></a></button>
+                                    <p class="fs20 fw-bold m-0 align-self-center p10l">Set đang bán</p>
+                                    <a class="text-white" href="{{ route(DOTA_LIST_SET) }}">
+                                        <button class="btn btn-load-more"><span>Xem thêm <i class="fas fa-arrow-alt-circle-right"></i></span></button>
+                                    </a>
                                 </div>
                             </div>
                             <div class="row m-0" style="height: 550px; overflow-y: scroll; overflow-x: hidden">

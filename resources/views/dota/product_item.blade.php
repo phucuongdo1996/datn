@@ -14,7 +14,7 @@
                         <span>{{ $item['product_base']['hero']['name'] ?? 'Tất cả tướng' }}</span>
                     </div>
                 </div>
-                <div class="product-price p10t p10b font-weight-bold text-blue text-center">$ {{ number_format($item['price']) }}</div>
+                <div class="product-price p10t p10b font-weight-bold text-center"><i class="fas fa-coins text-gold" ></i> {{ number_format($item['price']) }}</div>
             </div>
         </div>
     </a>
@@ -34,7 +34,7 @@
                         <span>{{ $item->productBase->hero->name ?? 'Tất cả tướng' }}</span>
                     </div>
                 </div>
-                <div class="product-price p10t p10b font-weight-bold text-blue text-center">$ {{ number_format($item->price) }}</div>
+                <div class="product-price p10t p10b font-weight-bold text-center"><i class="fas fa-coins text-gold" ></i> {{ number_format($item->price) }}</div>
             </div>
         </div>
     </a>

@@ -33,7 +33,10 @@
                             <div class="dropdown" style="cursor: pointer">
                                 <div class="d-flex align-items-center" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img style="border-radius: 50%; width: 50px" src="{{ asset('images/avatar_user/img_avatar.png') }}" alt="">
-                                    <div class="p10l fs16">{{ $currentUser->nick_name }}</div>
+                                    <div class="p10l fs16">
+                                        <div class="text-right font-weight-bold m5b">{{ $currentUser->nick_name }} <i class="fas fa-caret-down"></i></div>
+                                        <div class="text-right text-gold"><i class="fas fa-coins"></i> 4,000,000</div>
+                                    </div>
                                 </div>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item p15" href="{{ route(USER_INFO) }}"><i class="fas fa-info-circle"></i> Tài khoản</a>

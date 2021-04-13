@@ -154,3 +154,44 @@ body {
     }
 }
 
+.text-gold {
+    color: #FFFF00;
+}
+
+.btn-load-more {
+    color: white;
+    position: relative;
+    margin: auto;
+    transition: all 0.2s ease;
+    padding: 8px 20px;
+    background: #00000059;
+    border-radius: 32px;
+}
+.btn-load-more:hover {
+    color: white;
+}
+.btn-load-more:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 32px;
+    background: rgb(0,0,0);
+    width: 45px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+.btn-load-more:hover:before {
+    width: 100%;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(66,66,108,1) 48%, rgba(100,121,126,1) 100%);
+}
+.btn-load-more:active {
+    transform: scale(0.96);
+}
+.btn-load-more span {
+    position: relative;
+}
+
+
