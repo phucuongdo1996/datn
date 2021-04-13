@@ -266,53 +266,36 @@
     <div class="modal fade" id="login-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 750px">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Đăng nhập</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="row m0 h100 col-12">
-                            <div class="d-flex h100" style="width: 150px">
-                                <img class="w-100 object-fit-contain" src="{{ asset('images/item_dota/set_dota_1.jpg') }}" alt="">
-                            </div>
-                            <div style="min-width: 450px; max-width: 550px">
-                                <div class="d-flex align-items-center font-weight-bold m10l m10b fs20 justify-content-center">Guise of the Winged Bolt</div>
-                                <div class="d-flex align-items-center m10l justify-content-center fs16">Drow ranger</div>
-                            </div>
+                <div class="modal-body" style="">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times-circle"></i></button>
+                    <div class="row" style="min-height: 500px">
+                        <div class="col-6 d-flex">
+                            <img class="w-100 object-fit-contain" style="border-radius: 20px" src="{{ asset('images/dota_images/bg_login.jpeg') }}" alt="">
                         </div>
-                        <div class="row m0 m20t col-12">
-                            <div class="row m0 col-12 border p10t p10b">
-                                <div class="col-12 font-weight-bold fs16 m10t"> Thông tin thanh toán</div>
-                                <div class="row m0 col-12 m10t form-group">
-                                    <div class="col-6 d-flex align-items-center">Tài khoản hiện có</div>
-                                    <div class="form-control col-6 text-right">2,000,000</div>
-                                </div>
-                                <div class="row m0 col-12 m10t form-group">
-                                    <div class="col-6 d-flex align-items-center">Giá sản phẩm (đã bao gồm VAT)</div>
-                                    <div class="form-control col-6 text-right">15,000</div>
-                                </div>
-                                <div class="row m0 col-12 m10t form-group">
-                                    <div class="col-6 d-flex align-items-center">Tài khoản còn lại</div>
-                                    <div class="form-control col-6 text-right">1,985,000</div>
+                        <div class="col-6">
+                            <div class="d-flex justify-content-center" style="padding-top: 90px; padding-bottom: 30px">
+                                <div class="d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; padding: 10px; border-radius: 50%; background-color: grey">
+                                    <i class="fas fa-user" style="font-size: 40px"></i>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row m0 m20t col-12 p25l">
-                            <input type="checkbox" style="display: block; width: unset">
-                            <div class="m10l">Đồng ý và tiến hành thanh toán</div>
+                            <div>
+                                <input type="text" class="form-control m15b" placeholder="Tài khoản">
+                                <input type="text" class="form-control m15b" placeholder="Mật khẩu">
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button class="btn" style="padding: 10px 30px; background-color: grey; border-radius: 32px"><span>Đăng nhập</span></button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button id="pay-submit" type="button" class="btn btn-primary">Thanh toán</button>
-                </div>
+{{--                <div class="modal-footer">--}}
+{{--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>--}}
+{{--                    <button id="pay-submit" type="button" class="btn btn-primary">Thanh toán</button>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>
+    @include('layouts.footer')
 @endsection
 @section('js')
     <script src="{{ asset('js/dota/detail.js') }}"></script>

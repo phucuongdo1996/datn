@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="{{ asset('css/datepicker.standalone.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dota/common.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/loading.min.css') }}">
     @yield('styles')
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
@@ -30,10 +32,9 @@
     <div class="position-fixed w-100 h-100" style="background: url('/images/background.jpeg'); filter: blur(1.5px)"></div>
     <div id="wrap">
         @yield('content')
-
-        @include('layouts.footer')
     </div>
 </div>
+@include('layouts.loading')
 </body>
 <script>
     @if(\Illuminate\Support\Facades\Session::has(STR_FLASH_SUCCESS))

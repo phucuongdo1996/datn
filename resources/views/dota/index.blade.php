@@ -17,8 +17,8 @@
     </script>
 @endsection
 @section('content')
-    @include('layouts.header')
-    <div id="mainWrap" class="p80t">
+    <div id="mainWrap" class="p80t dota-index" style="display: none">
+        @include('layouts.header')
         <div id="main">
             <div id="kvWrap" style="padding-left: 10%; padding-right: 10%">
                 <div class="row m10b">
@@ -132,12 +132,16 @@
                     </div>
                 </div>
             </div><!-- kvWrap -->
-        </div>
+        @include('layouts.footer')
     </div>
+
 @endsection
 @section('js')
     <script>
-        $(document).ready(function () {
+
+        function load(callback) {
+            $('#modal-loading').modal('show');
+
             $('.slide-logo').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -179,6 +183,17 @@
                     }
                 ]
             });
+
+            callback();
+        }
+        $(document).ready(function () {
+            load(function () {
+                $('.dota-index').show();
+                setTimeout(function () {
+                    $('#modal-loading').modal('hide');
+                }, 1000);
+            });
+
         });
     </script>
 @endsection
