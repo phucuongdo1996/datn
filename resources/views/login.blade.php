@@ -31,7 +31,6 @@
             padding-bottom: 5px;
             padding-left: 5px;
         }
-
     </style>
 </head>
 <body>

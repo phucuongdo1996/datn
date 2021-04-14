@@ -51,10 +51,10 @@
                                                 <div class="col-3 font-weight-bold fs16 m15r">Giá: </div>
                                                 <div class="btn font-weight-bold fs20 text-blue">{{ number_format($product->price) }}</div>
                                             </div>
-                                            <div class="row m-0 fs16 d-flex align-items-center">
-                                               <button class="btn btn-primary btn-buy-item">
-                                                   <i class="fas fa-shopping-cart m10r"></i>Mua sản phẩm
-                                               </button>
+                                            <div class="row m-0 fs16 d-flex">
+                                                <button class="btn btn-load-more m0 btn-buy-item">
+                                                    <span><i class="fas fa-shopping-cart m10r"></i>Mua sản phẩm</span>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -153,8 +153,9 @@
                 </div>
             </div><!-- kvWrap -->
         </div>
-    </div>
-
+    @include('layouts.footer')
+@endsection
+@section('modal')
     <div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 750px">
             <div class="modal-content" style="background-color: unset; border: none">
@@ -167,7 +168,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="modal fade" id="modal-success" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 750px">
@@ -272,30 +272,32 @@
                         <div class="col-6 d-flex">
                             <img class="w-100 object-fit-contain" style="border-radius: 20px" src="{{ asset('images/dota_images/bg_login.jpeg') }}" alt="">
                         </div>
-                        <div class="col-6">
+                        <form id="form-login" class="col-6">
+                            @csrf
                             <div class="d-flex justify-content-center" style="padding-top: 90px; padding-bottom: 30px">
                                 <div class="d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; padding: 10px; border-radius: 50%; background-color: grey">
                                     <i class="fas fa-user" style="font-size: 40px"></i>
                                 </div>
                             </div>
                             <div>
-                                <input type="text" class="form-control m15b" placeholder="Tài khoản">
-                                <input type="text" class="form-control m15b" placeholder="Mật khẩu">
+                                <div class="fail-login" style="display: none;">
+                                    <p class="m0">Email hoặc mật khẩu không đúng.</p>
+                                    <p class="m0">Vui lòng kiểm tra lại!</p>
+                                </div>
+                                <input type="text" name="email" class="form-control" placeholder="Tài khoản">
+                                <p class="error-message p10t" data-error="email"></p>
+                                <input type="password" name="password" class="form-control 15t" placeholder="Mật khẩu">
+                                <p class="error-message p10t" data-error="password"></p>
                             </div>
                             <div class="d-flex justify-content-center">
-                                <button class="btn" style="padding: 10px 30px; background-color: grey; border-radius: 32px"><span>Đăng nhập</span></button>
+                                <button type="button" id="button-login" class="btn" style="padding: 10px 30px; background-color: grey; border-radius: 32px"><span>Đăng nhập</span></button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
-{{--                <div class="modal-footer">--}}
-{{--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>--}}
-{{--                    <button id="pay-submit" type="button" class="btn btn-primary">Thanh toán</button>--}}
-{{--                </div>--}}
             </div>
         </div>
     </div>
-    @include('layouts.footer')
 @endsection
 @section('js')
     <script src="{{ asset('js/dota/detail.js') }}"></script>

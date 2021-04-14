@@ -31,7 +31,7 @@ let loginFunction = (function () {
                 modules.clearMessageValidate();
                 $('.fail-login').show();
                 $('input').addClass('input-error');
-                toastr.error('Đăng nhập thất bại', 'Lỗi!')
+                toastr.error('Đăng nhập thất bại', 'Lỗi!');
             }
         });
         submitAjax.fail(function (response) {

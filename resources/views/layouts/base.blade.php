@@ -34,6 +34,7 @@
         @yield('content')
     </div>
 </div>
+@yield('modal')
 @include('layouts.loading')
 </body>
 <script>

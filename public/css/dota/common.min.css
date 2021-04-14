@@ -28,6 +28,21 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+.input-error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  padding: 5px 0 0 5px;
+}
+
+.fail-login p {
+  color: red;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
 .product-item {
   height: 100%;
   border: 1px solid #c0c0c08c !important;

@@ -116,23 +116,18 @@ var Common = (function () {
         });
     };
 
-    modules.showMessageValidate = function (messageList) {
-        $('body').find('p.error-message').hide();
-        $("body").find('input').removeClass('input-error');
-        $("body").find('select').removeClass('input-error');
+    modules.clearMessageValidate = function () {
+        $('p.error-message').text('');
+        $('input.input-error').removeClass('input-error');
+        $('.fail-login').hide();
+    };
 
+    modules.showMessageValidate = function (messageList) {
+        modules.clearMessageValidate();
         $.each(messageList, function (key, value) {
             $('p.error-message[data-error=' + key + ']').text(value).show();
             $('input[name=' + key + ']').addClass('input-error');
-            $('select[name=' + key + ']').addClass('input-error');
-
         });
-
-        $('html, body').animate({
-            scrollTop: (
-                $(document).find('p.error-message[data-error=' + Object.keys(messageList)[0] + ']').offset().top - 300
-            )
-        }, 0);
     };
 
     modules.sortTable = function(index, tableClassWithTr, tablePrevievWithTr, number) {

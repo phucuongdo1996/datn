@@ -1,6 +1,5 @@
 @extends('layouts.base')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/dota/common.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dota/index.css') }}">
 
     <script>

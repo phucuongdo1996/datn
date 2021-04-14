@@ -63,6 +63,33 @@ var detailFunction = (function () {
             $('#exampleModalCenter').modal('show')
         }
     }
+
+    modules.login = function () {
+        let formData = new FormData($('#form-login')[0]);
+        let submitAjax = $.ajax({
+            url: '/login',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+        })
+        submitAjax.done(function (response) {
+            if (response.login == true) {
+                location.reload();
+            } else {
+                $('.fail-login').show();
+                toastr.error('Đăng nhập thất bại', 'Lỗi!');
+                $('#button-login').prop('disabled', false)
+            }
+        });
+        submitAjax.fail(function (response) {
+            $('#button-login').prop('disabled', false)
+            let messageList = response.responseJSON.errors;
+            $('.fail-login').hide();
+            Common.showMessageValidate(messageList);
+        })
+    }
+
     return modules;
 }(window.jQuery, window, document));
 
@@ -80,5 +107,10 @@ $(document).ready(function () {
            $('#loading').modal('hide');
            $('#modal-success').modal('show');
        }, 2000)
+   });
+
+   $('#button-login').on('click', function () {
+       $(this).prop('disabled', true);
+       detailFunction.login();
    })
 });
