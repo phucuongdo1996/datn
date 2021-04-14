@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Market;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 
 class MarketEloquentRepository extends BaseRepository
 {
@@ -104,5 +106,16 @@ class MarketEloquentRepository extends BaseRepository
     {
         $record = $this->model->select('product_id')->where('product_id', $productId)->where('status', TRADE_SELLING)->first();
         return $record ? $record->product_id : null;
+    }
+
+    public function getDataChartProductDetail($productBaseId)
+    {
+        $date = new \DateTime('-30 days');
+        $date = $date->format('Y-m-d');
+        $sql = "select DATE(market.created_at) as date,  AVG(market.price) as avg_price
+                from market, products, products_base 
+                where market.product_id = products.id and products.product_base_id = products_base.id and products_base.id = ? and market.created_at > ? and market.status = 2
+                group by DATE(market.created_at) order by DATE(market.created_at)";
+        return DB::select($sql, [$productBaseId, $date]);
     }
 }

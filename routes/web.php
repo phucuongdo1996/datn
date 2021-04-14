@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 | Web Routes no need to login
 */
 Route::get('/test', function () {
-    dd(str_contains(1245, '4'));
+    dd(strtotime('2021/01/03'), time());
 });
 Route::get('login', 'Auth\LoginController@create')->name(SHOW_LOGIN);
 Route::post('login', 'Auth\LoginController@login')->name(LOGIN);
@@ -35,6 +35,7 @@ Route::prefix('dota')->group(function () {
     Route::get('/list-item', 'TopController@dotaListItem')->name(DOTA_LIST_ITEM);
     Route::get('/list-set', 'TopController@dotaListSet')->name(DOTA_LIST_SET);
     Route::get('/detail/{id}', 'DotaController@detail')->name(DOTA_DETAIL);
+    Route::post('/get-data-detail', 'ChartController@getDataChartDetail');
     Route::middleware(['auth'])->group(function () {
         Route::prefix('user')->group(function () {
             Route::get('/list-item', 'UserController@listItem')->name(USER_LIST_ITEM);

@@ -12,6 +12,7 @@
                         <div class="p5l">
                             <div class="row m-0">
                                 <input id="user-id" type="hidden" value="{{ $currentUser ? $currentUser->id : '' }}">
+                                <input id="product-base-id" type="hidden" value="{{ $product->productBase->id }}">
                                 <div class="col-12 item-block m5r h-100 p15 p20t">
                                     <div class="row m-0 p20l p20r m20b">
                                         <div class="col-6 d-flex" style="height: 450px;">

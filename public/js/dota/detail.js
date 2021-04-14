@@ -1,6 +1,7 @@
 var detailFunction = (function () {
     let modules = {};
-    modules.buildHistoryChart = function () {
+    modules.buildHistoryChart = function (data) {
+        console.log(data.price)
         Highcharts.chart('history-pay-chart', {
             chart: {
                 type: 'line'
@@ -19,7 +20,7 @@ var detailFunction = (function () {
             },
             xAxis: {
                 type: 'date',
-                categories: ['01/01', '02/01', '03/01', '04/01', '05/01', '06/01', '07/01', '08/01', '09/01', '10/01', '11/01', '12/01']
+                categories: data.date
             },
             yAxis: {
                 title: {
@@ -49,7 +50,7 @@ var detailFunction = (function () {
 
             series: [{
                 name: 'Giá',
-                data: [10000, 12000, 11000, 15000, 19000, 22000, 21000, 21500, 21500, 21000, 21200, 22000]
+                data: data.price
             }]
         });
     }
@@ -62,6 +63,25 @@ var detailFunction = (function () {
         } else {
             $('#exampleModalCenter').modal('show')
         }
+    }
+
+    modules.getDataChart = function () {
+        let formData = new FormData();
+        formData.append("_token", $('meta[name="csrf-token"]').attr('content'));
+        formData.append('product_base_id', $('#product-base-id').val())
+        let submitAjax = $.ajax({
+            url: '/dota/get-data-detail',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false
+        })
+        submitAjax.done(function (response) {
+            modules.buildHistoryChart(response);
+        });
+        submitAjax.fail(function (response) {
+            console.log(response)
+        })
     }
 
     modules.login = function () {
@@ -94,7 +114,7 @@ var detailFunction = (function () {
 }(window.jQuery, window, document));
 
 $(document).ready(function () {
-    detailFunction.buildHistoryChart();
+    detailFunction.getDataChart();
 
    $('.btn-buy-item').on('click', function () {
        detailFunction.clickBuyItem();

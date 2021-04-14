@@ -10,6 +10,12 @@ class DotaController extends Controller
     private $productEloquentRepository;
     private $marketEloquentRepository;
 
+    /**
+     * DotaController constructor.
+     *
+     * @param ProductEloquentRepository $productEloquentRepository
+     * @param MarketEloquentRepository $marketEloquentRepository
+     */
     public function __construct(
         ProductEloquentRepository $productEloquentRepository,
         MarketEloquentRepository $marketEloquentRepository

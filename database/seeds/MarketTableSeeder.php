@@ -16,23 +16,29 @@ class MarketTableSeeder extends Seeder
         $userIds = \App\Models\User::all()->pluck('id')->toArray();
         $products = \App\Models\Product::select('id', 'price')->get()->toArray();
         $count = count($products);
-        $half = floor($count / 2);
-        for ($i = 0; $i < $half; $i++) {
+        for ($i = 0; $i < 5000; $i++) {
+            $randomProduct = $i % $count;
+            $date = date("Y-m-d H:i:s", rand(1609599600, 1618395069));
             DB::table('market')->insert([
                 'seller_id' => $userIds[array_rand($userIds, 1)],
-                'product_id' => $products[$i]['id'],
-                'price' => $products[$i]['price'],
-                'status' => TRADE_SELLING
+                'product_id' => $products[$randomProduct]['id'],
+                'price' => $products[$randomProduct]['price'],
+                'status' => TRADE_SELLING,
+                'created_at' => $date,
+                'updated_at' => $date,
             ]);
-        }
-        for ($i = $half; $i < $count; $i++) {
-            DB::table('market')->insert([
-                'seller_id' => $userIds[array_rand($userIds, 1)],
-                'buyer_id' => $userIds[array_rand($userIds, 1)],
-                'product_id' => $products[$i]['id'],
-                'price' => $products[$i]['price'],
-                'status' => TRADE_DONE
-            ]);
+            for ($k = 1; $k < 6; $k++) {
+                $date2 = date("Y-m-d H:i:s", rand(1609599600, 1618395069));
+                DB::table('market')->insert([
+                    'seller_id' => $userIds[array_rand($userIds, 1)],
+                    'buyer_id' => $userIds[array_rand($userIds, 1)],
+                    'product_id' => $products[$randomProduct]['id'],
+                    'price' => rand($products[$randomProduct]['price'] * 0.9, $products[$randomProduct]['price'] * 1.1),
+                    'status' => TRADE_DONE,
+                    'created_at' => $date2,
+                    'updated_at' => $date2,
+                ]);
+            }
         }
     }
 }

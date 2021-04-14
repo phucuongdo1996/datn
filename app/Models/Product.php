@@ -25,11 +25,17 @@ class Product extends Model
         'price',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function productBase()
     {
         return $this->belongsTo(ProductBase::class, 'product_base_id', 'id');

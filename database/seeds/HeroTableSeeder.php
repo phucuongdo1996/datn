@@ -12,6 +12,7 @@ class HeroTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('heros')->truncate();
         $faker = Faker\Factory::create();
         for ($i = 1; $i < 89; $i++) {
             DB::table('heros')->insert([
