@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\MarketEloquentRepository;
 use App\Repositories\ProductEloquentRepository;
-use Illuminate\Support\Facades\Auth;
 
 class DotaController extends Controller
 {
     private $productEloquentRepository;
+    private $marketEloquentRepository;
 
     public function __construct(
-        ProductEloquentRepository $productEloquentRepository
+        ProductEloquentRepository $productEloquentRepository,
+        MarketEloquentRepository $marketEloquentRepository
     ) {
         $this->productEloquentRepository = $productEloquentRepository;
+        $this->marketEloquentRepository = $marketEloquentRepository;
     }
 
     /**
@@ -20,7 +23,9 @@ class DotaController extends Controller
      */
     public function detail($id)
     {
-        $product = $this->productEloquentRepository->find($id);
+        $productId = $this->marketEloquentRepository->getProductDetailSelling($id);
+        abort_if(!$productId, 404);
+        $product = $this->productEloquentRepository->find($productId);
         abort_if(!$product, 404);
         return view('dota.detail', compact('product'));
     }

@@ -18,71 +18,71 @@ class ProductEloquentRepository extends BaseRepository
         return Product::class;
     }
 
+    /**
+     * @return mixed
+     */
     public function getNewItems()
     {
-        return $this->model->whereHas('productBase', function ($query) {
-            return $query->where('type', TYPE_ITEM_CATEGORY);
-        })->with('productBase.hero')->limit(100)->get()->toArray();
+        $ids = resolve(MarketEloquentRepository::class)->getNewItems();
+        return $this->model->whereIn('id', $ids)->with('productBase.hero')->limit(100)->get()->toArray();
     }
 
+    /**
+     * @return mixed
+     */
     public function getNewSets()
     {
-        return $this->model->whereHas('productBase', function ($query) {
-            return $query->where('type', TYPE_SET_CATEGORY);
-        })->with('productBase.hero')->limit(100)->get()->toArray();
+        $ids = resolve(MarketEloquentRepository::class)->getNewSets();
+        return $this->model->whereIn('id', $ids)->with('productBase.hero')->limit(100)->get()->toArray();
     }
 
+    /**
+     * @return mixed
+     */
     public function getProductNew()
     {
-        $ids = resolve(ProductNewEloquentRepository::class)->getIdsItems();
-        return $this->model->with('productBase.hero')->whereIn('product_base_id', $ids)->orderBy('price')->limit(20)->get()->toArray();
+        $productBaseIds = resolve(ProductNewEloquentRepository::class)->getIdsItems();
+        $ids = resolve(MarketEloquentRepository::class)->getProductByProductBaseIds($productBaseIds, TRADE_SELLING);
+        return $this->model->whereIn('id', $ids)->with('productBase.hero')->orderBy('price')->limit(20)->get()->toArray();
     }
 
+    /**
+     * @return mixed
+     */
     public function getProductBestseller()
     {
-        $ids = resolve(ProductBestsellerEloquentRepository::class)->getIdsItems();
-        return $this->model->with('productBase.hero')->whereIn('product_base_id', $ids)->orderBy('price')->limit(20)->get()->toArray();
+        $productBaseIds = resolve(ProductBestsellerEloquentRepository::class)->getIdsItems();
+        $ids = resolve(MarketEloquentRepository::class)->getProductByProductBaseIds($productBaseIds, TRADE_SELLING);
+        return $this->model->whereIn('id', $ids)->with('productBase.hero')->orderBy('price')->limit(20)->get()->toArray();
     }
 
+    /**
+     * @return mixed
+     */
     public function getProductRemarkable()
     {
-        $ids = resolve(ProductRemarkableEloquentRepository::class)->getIdsItems();
-        return $this->model->with('productBase.hero')->whereIn('product_base_id', $ids)->orderBy('price')->limit(20)->get()->toArray();
+        $productBaseIds = resolve(ProductRemarkableEloquentRepository::class)->getIdsItems();
+        $ids = resolve(MarketEloquentRepository::class)->getProductByProductBaseIds($productBaseIds, TRADE_SELLING);
+        return $this->model->whereIn('id', $ids)->with('productBase.hero')->orderBy('price')->limit(20)->get()->toArray();
     }
 
+    /**
+     * @param $params
+     * @return mixed
+     */
     public function getListItems($params)
     {
-        return $this->model->whereHas('productBase', function ($query) {
-            return $query->where('type', TYPE_ITEM_CATEGORY);
-        })->when(isset($params['product_name']), function ($query) use ($params) {
-            return $query->whereHas('productBase', function ($query) use ($params) {
-                $query->where('name', 'like', '%' . $params['product_name'] . '%');
-            });
-        })->when(isset($params['hero_id']), function ($query) use ($params) {
-            return $query->whereHas('productBase', function ($query) use ($params) {
-                $query->where('hero_id', $params['hero_id']);
-            });
-        })->when(isset($params['category_id']), function ($query) use ($params) {
-            return $query->whereHas('productBase', function ($query) use ($params) {
-                $query->where('category_id', $params['category_id']);
-            });
-        })->when(isset($params['price_from']), function ($query) use ($params) {
-            $query->where('price', '>=', convertNumber($params['price_from']));
-        })->when(isset($params['price_to']), function ($query) use ($params) {
-            $query->where('price', '<=', convertNumber($params['price_to']));
-        })
-            ->with('productBase.hero')->paginate(60);
+        $ids = resolve(MarketEloquentRepository::class)->getListItems($params);
+        return $this->model->whereIn('id', $ids)->with('productBase.hero')->paginate(60);
     }
 
+    /**
+     * @param $params
+     * @return mixed
+     */
     public function getListSet($params)
     {
-        return $this->model->whereHas('productBase', function ($query) {
-            return $query->where('type', TYPE_SET_CATEGORY);
-        })->when(isset($params['hero_id']), function ($query) use ($params) {
-            return $query->whereHas('productBase', function ($query) use ($params) {
-                $query->where('hero_id', $params['hero_id']);
-            });
-        })
-            ->with('productBase.hero')->orderBy('price')->paginate(60);
+        $ids = resolve(MarketEloquentRepository::class)->getListSet($params);
+        return $this->model->whereIn('id', $ids)->with('productBase.hero')->paginate(60);
     }
 }

@@ -77,3 +77,7 @@ const IMAGES_SLIDES = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
  */
 const STR_FLASH_SUCCESS = 'flash_success';
 const STR_FLASH_ERROR = 'flash_error';
+
+const TRADE_CANCELED = 0;
+const TRADE_SELLING = 1;
+const TRADE_DONE = 2;
