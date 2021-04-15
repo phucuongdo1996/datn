@@ -39,12 +39,12 @@
                             <div class="row m-0">
                                 <div class="col-12 item-block m5r h-100 p15 p20t" style="">
                                     <div id="paginate" class="d-flex justify-content-end m10t m20b">
-                                        {{ $listSet->links() }}
+                                        {{ $listSet->appends(request()->query()) }}
                                     </div>
                                     <div style="height: 800px; overflow-y: auto; overflow-x: hidden">
                                         <div class="row m-0">
                                             @forelse($listSet as $item)
-                                                @include('dota.product_item', ['type' => 'collection'])
+                                                @include('dota.product_item')
                                             @empty
                                                 <div class="col-12 d-flex justify-content-center p15l p15b">
                                                     <span class="fs20">Không có dữ liệu phù hợp</span>

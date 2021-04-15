@@ -99,7 +99,7 @@ class MarketEloquentRepository extends BaseRepository
      */
     public function getListItems($params)
     {
-        return $this->model->select('product_id')->whereHas('product', function ($query) use ($params) {
+        return $this->model->whereHas('product', function ($query) use ($params) {
             return $query->whereHas('productBase', function ($query) {
                 return $query->where('type', TYPE_ITEM_CATEGORY);
             })
@@ -115,12 +115,13 @@ class MarketEloquentRepository extends BaseRepository
                     return $query->whereHas('productBase', function ($query) use ($params) {
                         $query->where('category_id', $params['category_id']);
                     });
-                })->when(isset($params['price_from']), function ($query) use ($params) {
-                    $query->where('price', '>=', convertNumber($params['price_from']));
-                })->when(isset($params['price_to']), function ($query) use ($params) {
-                    $query->where('price', '<=', convertNumber($params['price_to']));
                 });
-        })->where('status', TRADE_SELLING)->get()->toArray();
+        })->when(isset($params['price_from']), function ($query) use ($params) {
+            $query->where('price', '>=', convertNumber($params['price_from']));
+        })->when(isset($params['price_to']), function ($query) use ($params) {
+            $query->where('price', '<=', convertNumber($params['price_to']));
+        })
+            ->where('status', TRADE_SELLING)->paginate(30);
     }
 
     /**
@@ -129,7 +130,7 @@ class MarketEloquentRepository extends BaseRepository
      */
     public function getListSet($params)
     {
-        return $this->model->select('product_id')->whereHas('product', function ($query) use ($params) {
+        return $this->model->whereHas('product', function ($query) use ($params) {
             return $query->whereHas('productBase', function ($query) {
                 return $query->where('type', TYPE_SET_CATEGORY);
             })
@@ -138,7 +139,7 @@ class MarketEloquentRepository extends BaseRepository
                         $query->where('hero_id', $params['hero_id']);
                     });
                 });
-        })->where('status', TRADE_SELLING)->get()->toArray();
+        })->where('status', TRADE_SELLING)->paginate(30);
     }
 
     /**
