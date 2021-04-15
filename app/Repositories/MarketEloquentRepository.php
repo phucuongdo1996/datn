@@ -19,23 +19,66 @@ class MarketEloquentRepository extends BaseRepository
     }
 
     /**
+     * Get new items
+     *
      * @return mixed
      */
     public function getNewItems()
     {
-        return $this->model->select('product_id')->whereHas('product.productBase', function ($query) {
+        return $this->model->whereHas('product.productBase', function ($query) {
             return $query->where('type', TYPE_ITEM_CATEGORY);
-        })->where('status', TRADE_SELLING)->get()->toArray();
+        })->where('status', TRADE_SELLING)->limit(50)->get()->toArray();
     }
 
     /**
+     * Get new sets
+     *
      * @return mixed
      */
     public function getNewSets()
     {
-        return $this->model->select('product_id')->whereHas('product.productBase', function ($query) {
+        return $this->model->whereHas('product.productBase', function ($query) {
             return $query->where('type', TYPE_SET_CATEGORY);
-        })->where('status', TRADE_SELLING)->get()->toArray();
+        })->where('status', TRADE_SELLING)->limit(50)->get()->toArray();
+    }
+
+    /**
+     * Get product new
+     *
+     * @return mixed
+     */
+    public function getProductNew()
+    {
+        $productBaseIds = resolve(ProductNewEloquentRepository::class)->getIdsItems();
+        return $this->model->whereHas('product.productBase', function ($query) use ($productBaseIds) {
+            return $query->whereIn('id', $productBaseIds);
+        })->where('status', TRADE_SELLING)->limit(15)->get()->toArray();
+    }
+
+    /**
+     * Get product bestseller
+     *
+     * @return mixed
+     */
+    public function getProductBestseller()
+    {
+        $productBaseIds = resolve(ProductBestsellerEloquentRepository::class)->getIdsItems();
+        return $this->model->whereHas('product.productBase', function ($query) use ($productBaseIds) {
+            return $query->whereIn('id', $productBaseIds);
+        })->where('status', TRADE_SELLING)->limit(15)->get()->toArray();
+    }
+
+    /**
+     * Get product remarkable
+     *
+     * @return mixed
+     */
+    public function getProductRemarkable()
+    {
+        $productBaseIds = resolve(ProductRemarkableEloquentRepository::class)->getIdsItems();
+        return $this->model->whereHas('product.productBase', function ($query) use ($productBaseIds) {
+            return $query->whereIn('id', $productBaseIds);
+        })->where('status', TRADE_SELLING)->limit(15)->get()->toArray();
     }
 
     /**
@@ -99,13 +142,13 @@ class MarketEloquentRepository extends BaseRepository
     }
 
     /**
-     * @param $productId
-     * @return |null
+     * @param $id
+     * @return array
      */
-    public function getProductDetailSelling($productId)
+    public function getProductDetailSelling($id)
     {
-        $record = $this->model->select('product_id')->where('product_id', $productId)->where('status', TRADE_SELLING)->first();
-        return $record ? $record->product_id : null;
+        $record = $this->model->where('id', $id)->where('status', TRADE_SELLING)->first();
+        return $record ? $record->append('seller_name')->toArray() : [];
     }
 
     public function getDataChartProductDetail($productBaseId)
@@ -117,5 +160,14 @@ class MarketEloquentRepository extends BaseRepository
                 where market.product_id = products.id and products.product_base_id = products_base.id and products_base.id = ? and market.created_at > ? and market.status = 2
                 group by DATE(market.created_at) order by DATE(market.created_at)";
         return DB::select($sql, [$productBaseId, $date]);
+    }
+
+    public function getSameProducts($productBaseId, $productId)
+    {
+        return $this->model->with('product')
+            ->where('product_id', '<>', $productId)
+            ->whereHas('product', function ($query) use ($productBaseId) {
+                return $query->where('product_base_id', $productBaseId);
+            })->where('status', TRADE_SELLING)->orderBy('price')->paginate(10);
     }
 }

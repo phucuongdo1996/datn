@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->integer('product_base_id');
             $table->integer('user_id');
             $table->integer('price');
+            $table->integer('special')->default(FLAG_ZERO);
             $table->timestamps();
             $table->softDeletes();
         });

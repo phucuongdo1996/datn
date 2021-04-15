@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\CategoryEloquentRepository;
 use App\Repositories\HeroEloquentRepository;
+use App\Repositories\MarketEloquentRepository;
 use App\Repositories\ProductEloquentRepository;
 use App\Repositories\ProductNewEloquentRepository;
 use Illuminate\Http\Request;
@@ -15,17 +16,20 @@ class TopController extends Controller
     protected $productEloquentRepository;
     protected $productNewEloquentRepository;
     protected $categoryEloquentRepository;
+    protected $marketEloquentRepository;
 
     public function __construct(
         ProductEloquentRepository $productEloquentRepository,
         HeroEloquentRepository $heroRepository,
         ProductNewEloquentRepository $productNewEloquentRepository,
-        CategoryEloquentRepository $categoryEloquentRepository
+        CategoryEloquentRepository $categoryEloquentRepository,
+        MarketEloquentRepository $marketEloquentRepository
     ) {
         $this->heroRepository = $heroRepository;
         $this->productEloquentRepository = $productEloquentRepository;
         $this->productNewEloquentRepository = $productNewEloquentRepository;
         $this->categoryEloquentRepository = $categoryEloquentRepository;
+        $this->marketEloquentRepository = $marketEloquentRepository;
     }
 
     /**
@@ -35,11 +39,11 @@ class TopController extends Controller
      */
     public function index()
     {
-        $newItems = $this->productEloquentRepository->getNewItems();
-        $newSets = $this->productEloquentRepository->getNewSets();
-        $productNews = $this->productEloquentRepository->getProductNew();
-        $productBestseller = $this->productEloquentRepository->getProductBestseller();
-        $productRemarkable = $this->productEloquentRepository->getProductRemarkable();
+        $newItems = $this->marketEloquentRepository->getNewItems();
+        $newSets = $this->marketEloquentRepository->getNewSets();
+        $productNews = $this->marketEloquentRepository->getProductNew();
+        $productBestseller = $this->marketEloquentRepository->getProductBestseller();
+        $productRemarkable = $this->marketEloquentRepository->getProductRemarkable();
         return view('dota.index', compact('newItems', 'newSets', 'productNews', 'productBestseller', 'productRemarkable'));
     }
 
@@ -49,6 +53,7 @@ class TopController extends Controller
         $listCategory = $this->categoryEloquentRepository->getAll()->toArray();
         $listHero = $this->heroRepository->getListHero();
         $listItems = $this->productEloquentRepository->getListItems($params);
+        dd($listItems);
         return view('dota.list_item', compact('listItems', 'listHero', 'listCategory', 'params'));
     }
 

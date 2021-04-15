@@ -206,6 +206,17 @@ body {
 .btn-load-more span {
     position: relative;
 }
+
+.icon-user {
+    display: flex;
+    width: 30px;
+    height: 30px;
+
+    img {
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}
 //.btn:hover {
 //    box-shadow: 0 0 10px 0 white inset, 0 0 10px 2px white;
 //    border: 1px solid grey;

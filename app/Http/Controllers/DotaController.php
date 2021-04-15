@@ -25,14 +25,14 @@ class DotaController extends Controller
     }
 
     /**
+     * @param $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function detail($id)
     {
-        $productId = $this->marketEloquentRepository->getProductDetailSelling($id);
-        abort_if(!$productId, 404);
-        $product = $this->productEloquentRepository->find($productId);
-        abort_if(!$product, 404);
-        return view('dota.detail', compact('product'));
+        $market = $this->marketEloquentRepository->getProductDetailSelling($id);
+        abort_if(empty($market), 404);
+        $sameProducts = $this->marketEloquentRepository->getSameProducts($market['product']['product_base_id'], $market['product']['id']);
+        return view('dota.detail', compact('market', 'sameProducts'));
     }
 }

@@ -217,3 +217,15 @@ body {
   position: relative;
 }
 
+.icon-user {
+  display: flex;
+  width: 30px;
+  height: 30px;
+}
+
+.icon-user img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+

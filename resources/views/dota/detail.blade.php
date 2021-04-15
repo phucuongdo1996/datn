@@ -12,27 +12,27 @@
                         <div class="p5l">
                             <div class="row m-0">
                                 <input id="user-id" type="hidden" value="{{ $currentUser ? $currentUser->id : '' }}">
-                                <input id="product-base-id" type="hidden" value="{{ $product->productBase->id }}">
+                                <input id="product-base-id" type="hidden" value="{{ $market['product']['product_base']['id'] }}">
                                 <div class="col-12 item-block m5r h-100 p15 p20t">
                                     <div class="row m-0 p20l p20r m20b">
                                         <div class="col-6 d-flex" style="height: 450px;">
-                                            <img class="w-100 object-fit-contain" src="{{ asset(getImageUrl($product)) }}" alt="">
+                                            <img class="w-100 object-fit-contain" src="{{ asset(getImageUrl($market['product'])) }}" alt="">
                                         </div>
-                                        <div class="col-6" style="height: 450px;">
-                                           <div class="font-weight-bold fs25 m15b">{{ $product->productBase->name }}</div>
+                                        <div class="col-6 p30l" style="height: 450px;">
+                                           <div class="font-weight-bold fs25 m15b" style="color: {{ SPECIAL_COLOR[$market['product']['special']] }}">{{ $market['product_name'] }} ({{ SPECIAL_TEXT[$market['product']['special']] }})</div>
                                            <div class="row m-0 fs16 d-flex align-items-center m10b">
                                                <div class="col-3 font-weight-bold fs16 m15r">Tướng sở hữu: </div>
                                                <a href="#" class="d-flex align-items-center">
                                                    <div class="m10l m10r d-flex" style="width: 60px; height: 40px">
-                                                       <img class="object-fit-cover w-100" src="{{ isset($product->productBase->hero->image) ? asset(URL_DOTA_HERO_IMAGES . $product->productBase->hero->image) : asset(URL_DOTA_HERO_IMAGES . 'default.png') }}" alt="">
-                                                   </div>{{ $product->productBase->hero->name ?? 'Tất cả tướng' }}</a>
+                                                       <img class="object-fit-cover w-100" src="{{ isset($market['hero_image']) ? asset(URL_DOTA_HERO_IMAGES . $market['hero_image']) : asset(URL_DOTA_HERO_IMAGES . 'default.png') }}" alt="">
+                                                   </div>{{ $market['hero_name'] ?? 'Tất cả tướng' }}</a>
                                            </div>
                                             <div class="row m-0 fs16 d-flex align-items-center m10b">
                                                 <div class="col-3 font-weight-bold fs16 m15r">Người bán: </div>
                                                 <a href="#" class="d-flex align-items-center">
                                                     <div class="m10l m10r d-flex" style="width: 60px; height: 40px">
                                                         <img class="object-fit-cover w-100" src="{{ asset('images/avatar_user/img_avatar.png') }}" alt="">
-                                                    </div>{{ $product->user->nick_name }}</a>
+                                                    </div>{{ $market['seller_name'] }}</a>
                                             </div>
                                             <div class="row m-0 fs16 d-flex align-items-center m10b">
                                                 <div class="col-3 font-weight-bold fs16 m15r">Thuộc tính đặc biệt: </div>
@@ -50,7 +50,7 @@
                                             </div>
                                             <div class="row m-0 fs16 d-flex align-items-center m10b">
                                                 <div class="col-3 font-weight-bold fs16 m15r">Giá: </div>
-                                                <div class="btn font-weight-bold fs20 text-blue">{{ number_format($product->price) }}</div>
+                                                <div class="col-6 btn font-weight-bold fs20" style="background-color: #80808091; padding: 8px 20px; border-radius: 10px"><i class="fas fa-coins text-gold"></i> {{ number_format($market['price']) }}</div>
                                             </div>
                                             <div class="row m-0 fs16 d-flex">
                                                 <button class="btn btn-load-more m0 btn-buy-item">
@@ -78,71 +78,40 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <div class="d-flex align-items-center font-weight-bold m10l">Guise of the Winged Bolt</div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <div class="d-flex align-items-center font-weight-bold m10l">Ten user 1</div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="font-weight-bold text-right text-blue">15,000</td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-primary"><a class="color-white" href="{{ route(DOTA_DETAIL, 2) }}"><i class="fas fa-shopping-cart m10r"></i>Mua sản phẩm</a></button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <div class="d-flex align-items-center font-weight-bold m10l">Guise of the Winged Bolt</div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <div class="d-flex align-items-center font-weight-bold m10l">Ten user 1</div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="font-weight-bold text-right text-blue">15,000</td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-primary"><i class="fas fa-shopping-cart m10r"></i>Mua sản phẩm</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <div class="d-flex align-items-center font-weight-bold m10l">Guise of the Winged Bolt</div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <div class="d-flex align-items-center font-weight-bold m10l">Ten user 1</div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="font-weight-bold text-right text-blue">15,000</td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-primary"><i class="fas fa-shopping-cart m10r"></i>Mua sản phẩm</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <div class="d-flex align-items-center font-weight-bold m10l">Guise of the Winged Bolt</div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <div class="d-flex align-items-center font-weight-bold m10l">Ten user 1</div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="font-weight-bold text-right text-blue">15,000</td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-primary"><i class="fas fa-shopping-cart m10r"></i>Mua sản phẩm</button>
-                                                    </td>
-                                                </tr>
 
+                                            @forelse($sameProducts as $market)
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex">
+                                                            <div class="d-flex align-items-center font-weight-bold m10l" style="color: {{ SPECIAL_COLOR[$market->product->special] }}">{{ $market->product->productBase->name }} ({{ SPECIAL_TEXT[$market->product->special] }})</div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex">
+                                                            <div class="icon-user">
+                                                                <img src="{{ asset('images/avatar_user/img_avatar.png') }}" alt="">
+                                                            </div>
+                                                            <div class="d-flex align-items-center font-weight-bold m10l">{{ $market->seller->nick_name }}</div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="font-weight-bold text-right">{{ number_format($market->price) }}</td>
+                                                    <td class="text-center">
+                                                        <a href="{{ route(DOTA_DETAIL, $market->id) }}">
+                                                            <button class="btn btn-load-more m0">
+                                                                <span><i class="fas fa-info-circle m10r"></i>Xem sản phẩm</span>
+                                                            </button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="4">
+                                                        <div class="text-center">
+                                                            Không có dữ liệu
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
                                             </tbody>
                                         </table>
                                     </div>

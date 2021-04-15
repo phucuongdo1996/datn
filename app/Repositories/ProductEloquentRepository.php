@@ -19,54 +19,6 @@ class ProductEloquentRepository extends BaseRepository
     }
 
     /**
-     * @return mixed
-     */
-    public function getNewItems()
-    {
-        $ids = resolve(MarketEloquentRepository::class)->getNewItems();
-        return $this->model->whereIn('id', $ids)->with('productBase.hero')->limit(100)->get()->toArray();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNewSets()
-    {
-        $ids = resolve(MarketEloquentRepository::class)->getNewSets();
-        return $this->model->whereIn('id', $ids)->with('productBase.hero')->limit(100)->get()->toArray();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProductNew()
-    {
-        $productBaseIds = resolve(ProductNewEloquentRepository::class)->getIdsItems();
-        $ids = resolve(MarketEloquentRepository::class)->getProductByProductBaseIds($productBaseIds, TRADE_SELLING);
-        return $this->model->whereIn('id', $ids)->with('productBase.hero')->orderBy('price')->limit(20)->get()->toArray();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProductBestseller()
-    {
-        $productBaseIds = resolve(ProductBestsellerEloquentRepository::class)->getIdsItems();
-        $ids = resolve(MarketEloquentRepository::class)->getProductByProductBaseIds($productBaseIds, TRADE_SELLING);
-        return $this->model->whereIn('id', $ids)->with('productBase.hero')->orderBy('price')->limit(20)->get()->toArray();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProductRemarkable()
-    {
-        $productBaseIds = resolve(ProductRemarkableEloquentRepository::class)->getIdsItems();
-        $ids = resolve(MarketEloquentRepository::class)->getProductByProductBaseIds($productBaseIds, TRADE_SELLING);
-        return $this->model->whereIn('id', $ids)->with('productBase.hero')->orderBy('price')->limit(20)->get()->toArray();
-    }
-
-    /**
      * @param $params
      * @return mixed
      */

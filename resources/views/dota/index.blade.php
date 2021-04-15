@@ -1,19 +1,6 @@
 @extends('layouts.base')
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/dota/index.css') }}">
-
-    <script>
-        const body = document.body;
-        const btn = document.querySelectorAll('.button')[0];
-
-        btn.addEventListener('mouseenter', () => {
-            body.classList.add('show');
-        });
-
-        btn.addEventListener('mouseleave', () => {
-            body.classList.remove('show');
-        });
-    </script>
 @endsection
 @section('content')
     <div id="mainWrap" class="p80t dota-index" style="display: none">
@@ -51,12 +38,12 @@
                 <div class="row m10b">
                     <div class=" row m-0 item-block p15 slide-bottom background-invi" style="height: 220px; width: 100%">
                         @foreach($newSets as $item)
-                            <a href="{{ route(DOTA_DETAIL, $item['id']) }}" class="background-style position-relative" style="background-image: url({{ asset(URL_DOTA_IMAGES_SET . $item['product_base']['image']) }})">
+                            <a href="{{ route(DOTA_DETAIL, $item['id']) }}" class="background-style position-relative" style="background-image: url({{ asset(URL_DOTA_IMAGES_SET . $item['product_image']) }})">
                                 <div class="bg-linear-gradient"></div>
                                 <div class="title-carousel-image text-center">
-                                    <p class="p5t font-weight-bold">{{ mb_strimwidth($item['product_base']['name'], 0, 25, ' ...') }}</p>
-                                    <p class="p5t">{{ $item['product_base']['hero']['name'] }}</p>
-                                    <p class="p5t font-weight-bold text-danger">$ {{ number_format($item['price']) }}</p>
+                                    <p class="p5t font-weight-bold">{{ mb_strimwidth($item['product_name'], 0, 25, ' ...') }}</p>
+                                    <p class="p5t">{{ $item['hero_name'] }}</p>
+                                    <p class="p5t font-weight-bold text-danger"><i class="fas fa-coins text-gold"></i> {{ number_format($item['price']) }}</p>
                                 </div>
                             </a>
                         @endforeach
@@ -76,7 +63,7 @@
                             </div>
                             <div class="row m-0" style="height: 550px; overflow-y: scroll; overflow-x: hidden">
                                 @foreach($newItems as $item)
-                                    @include('dota.product_item', ['type' => 'array'])
+                                    @include('dota.product_item')
                                 @endforeach
                             </div>
                         </div>
@@ -92,7 +79,7 @@
                             </div>
                             <div class="row m-0" style="height: 550px; overflow-y: scroll; overflow-x: hidden">
                                 @foreach($newSets as $item)
-                                    @include('dota.product_item', ['type' => 'array'])
+                                    @include('dota.product_item')
                                 @endforeach
                             </div>
                         </div>

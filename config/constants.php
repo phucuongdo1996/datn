@@ -81,3 +81,7 @@ const STR_FLASH_ERROR = 'flash_error';
 const TRADE_CANCELED = 0;
 const TRADE_SELLING = 1;
 const TRADE_DONE = 2;
+
+const FLAG_ZERO = 0;
+const SPECIAL_TEXT = ['Common', 'Uncommon', 'Rare', 'Mythical', 'Immortal', 'Legendary', 'Ancient'];
+const SPECIAL_COLOR = ['unset', '#99CCFF', '#3333FF', '#6600CC', '#FF9900', '#FF33CC', '#FF3300'];

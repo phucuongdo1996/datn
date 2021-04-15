@@ -40,4 +40,24 @@ class Product extends Model
     {
         return $this->belongsTo(ProductBase::class, 'product_base_id', 'id');
     }
+
+    public function getProductNameAttribute()
+    {
+        return $this->productBase->name;
+    }
+
+    public function getProductImageAttribute()
+    {
+        return $this->productBase->image;
+    }
+
+    public function getHeroNameAttribute()
+    {
+        return isset($this->productBase->hero) ? $this->productBase->hero->name : null;
+    }
+
+    public function getHeroImageAttribute()
+    {
+        return isset($this->productBase->hero) ? $this->productBase->hero->image : null;
+    }
 }

@@ -21,7 +21,8 @@ class ProductsTableSeeder extends Seeder
                 DB::table('products')->insert([
                     'product_base_id' => $productBases[array_rand($productBases, 1)],
                     'user_id' => $userIds[array_rand($userIds, 1)],
-                    'price' => rand($price * 0.9, $price * 1.1)
+                    'price' => rand($price * 0.9, $price * 1.1),
+                    'special' => rand(0, 6)
                 ]);
             }
         }
