@@ -35,7 +35,7 @@
                                     <img style="border-radius: 50%; width: 50px" src="{{ asset('images/avatar_user/img_avatar.png') }}" alt="">
                                     <div class="p10l fs16">
                                         <div class="text-right font-weight-bold m5b">{{ $currentUser->nick_name }} <i class="fas fa-caret-down"></i></div>
-                                        <div class="text-right text-gold"><i class="fas fa-coins"></i> 4,000,000</div>
+                                        <div class="text-right text-gold"><i class="fas fa-coins"></i> {{ number_format($currentUser->money_own) }}</div>
                                     </div>
                                 </div>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

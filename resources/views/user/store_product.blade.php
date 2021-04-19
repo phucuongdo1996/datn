@@ -14,56 +14,55 @@
                     <div class="col-9">
                         <div class="p5l">
                             <div class="row m-0 m10b">
-                                <div class="col-12 item-block m5r h-100 p15 p20t">
+                                <form method="GET" action="{{ route(USER_STORE_PRODUCT) }}" class="col-12 item-block m5r h-100 p15 p20t">
                                     <div class="row m-0">
                                         <div class="col-4 p10lr">
-                                            <input class="form-control" type="text" placeholder="Tên sản phẩm...">
+                                            <input class="form-control" type="text" placeholder="Tên sản phẩm..." name="product_name" value="{{ $params['product_name'] ?? '' }}">
                                         </div>
                                         <div class="col-4 p10lr" >
-                                            <select class="form-control" name="" id="">
+                                            <select class="form-control" name="category_id" id="">
                                                 <option value="">Tất cả</option>
-                                                <option value="">Alchemit</option>
-                                                <option value="">Anti-mage</option>
-                                                <option value="">Drow ranger</option>
+                                                @foreach($listCategory as $item)
+                                                    <option value="{{ $item['id'] }}" @if(isset($params['category_id']) && $params['category_id'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="col-4 p10lr" >
-                                            <select class="form-control" name="" id="">
-                                                <option value="">Tất cả</option>
-                                                <option value="">Alchemit</option>
-                                                <option value="">Anti-mage</option>
-                                                <option value="">Drow ranger</option>
+                                            <select class="form-control" name="hero_id" id="">
+                                                <option value="">Tất cả tướng</option>
+                                                @foreach($listHero as $item)
+                                                    <option value="{{ $item['id'] }}" @if(isset($params['hero_id']) && $params['hero_id'] == $item['id']) selected @endif>{{ $item['name'] }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row m-0 m15t">
                                         <div class="col-12 d-flex align-items-center justify-content-center">
-                                            <button class="btn btn-primary min-w115"><i class="fas fa-search m10r"></i>Lọc</button>
+                                            <button class="btn btn-load-more"><span><i class="fas fa-search m10r"></i>Kết quả</span></button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
 
                             <div class="row m-0">
-                                <div class="item-block m5r h-100 p15 p20t">
-                                    <div class="row m-0" style="height: 700px; overflow-y: scroll; overflow-x: hidden">
-                                        @foreach([1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] as $item)
-                                            <div class="col-2 m0 p15b p15r">
-                                                <div class="d-flex position-relative hovereffect">
-                                                    <img class="w-100 h-110" style="object-fit: fill" src="{{ asset('images/item_dota/item_dota_2.png') }}" alt="">
-                                                    <div class="overlay d-flex justify-content-center align-items-center h100">
-                                                        <div>
-                                                            <button class="btn btn-primary fs18 sell-item" style="min-width: 100px">
-                                                                Thu hồi
-                                                            </button>
-                                                        </div>
-                                                    </div>
+                                <div class="col-12 item-block m5r h-100 p15 p20t">
+                                    <div id="paginate" class="d-flex justify-content-end m10t m20b">
+                                        {{ $products->appends(request()->query()) }}
+                                    </div>
+                                    <div style="height: 700px; overflow-y: auto; overflow-x: hidden">
+                                        <div class="row m-0" >
+                                            @forelse($products as $item)
+                                                @include('user.product_item_selling')
+                                            @empty
+                                                <div class="col-12 d-flex justify-content-center p15l p15b">
+                                                    <span class="fs20">Không có dữ liệu phù hợp</span>
                                                 </div>
-                                                <div class="d-flex align-items-center justify-content-center p5">
-                                                   <span class="font-weight-bold">10,000,000</span>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                                            @endforelse
+                                        </div>
+                                    </div>
+
+                                    <div id="paginate" class="d-flex justify-content-end m10t m20b">
+                                        {{ $products->links() }}
                                     </div>
                                 </div>
                             </div>

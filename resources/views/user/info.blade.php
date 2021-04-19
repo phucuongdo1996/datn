@@ -27,7 +27,7 @@
                                                     <span class="font-weight-bold">Tên user</span>
                                                 </div>
                                                 <div class="col-9">
-                                                    <span>Cường</span>
+                                                    <span>{{ $currentUser->nick_name }}</span>
                                                 </div>
                                             </div>
                                             <div class="row m0 m10t">
@@ -35,7 +35,7 @@
                                                     <span class="font-weight-bold">Mã giao dịch</span>
                                                 </div>
                                                 <div class="col-9">
-                                                    <span>U254KV</span>
+                                                    <span>{{ strtoupper($currentUser->user_code) }}</span>
                                                 </div>
                                             </div>
                                             <div class="row m0 m10t">
@@ -43,7 +43,8 @@
                                                     <span class="font-weight-bold">Steam url</span>
                                                 </div>
                                                 <div class="col-9">
-                                                    <div class="" >https://steamcommunity.com/tradeoffer/new/?partner=156547879&token=Q2JfDmNs</div>
+                                                    <div class="" >
+                                                        {{ $currentUser->steam_url }}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -52,14 +53,14 @@
                                         <div class="col-2"></div>
                                         <div class="col-8">
                                             <div class="p10">
-                                                <div class="border">
-                                                    <div class="p10t p10b p20l p20r">
+                                                <div class="">
+                                                    <div class="p10t p10b p20l p20r white-color" style="border-radius: 20px">
                                                         <div class="row m0">
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
                                                                 Số dư tài khoản:
                                                             </div>
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
-                                                                29,000,000
+                                                                <i class="fas fa-coins m10r"></i>{{ number_format($currentUser->money_own) }}
                                                             </div>
                                                         </div>
                                                         <div class="row m0">
@@ -67,21 +68,21 @@
                                                                 Tổng tiền đã nạp:
                                                             </div>
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
-                                                                44,000,000
+                                                                <i class="fas fa-coins m10r"></i> 44,000,000
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="p10">
-                                                <div class="border">
-                                                    <div class="p10t p10b p20l p20r">
+                                                <div class="">
+                                                    <div class="p10t p10b p20l p20r white-color" style="border-radius: 20px">
                                                         <div class="row m0">
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
                                                                 Số sản phẩm sở hữu:
                                                             </div>
-                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
-                                                                20
+                                                            <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center text-right">
+                                                                {{ $currentUser->products()->count() }}
                                                             </div>
                                                         </div>
                                                         <div class="row m0">
@@ -89,7 +90,7 @@
                                                                 Số sản phẩm đang bán:
                                                             </div>
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
-                                                                14
+                                                                {{ $currentUser->marketSeller()->where('status', TRADE_SELLING)->count() }}
                                                             </div>
                                                         </div>
                                                         <div class="row m0">
@@ -97,21 +98,22 @@
                                                                 Tổng tiền sản phẩm đang bán:
                                                             </div>
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
-                                                                25,000,000
+                                                                <i class="fas fa-coins m10r"></i> {{ number_format($currentUser->marketSeller()->where('status', TRADE_SELLING)->sum('price')) }}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="p10">
-                                                <div class="border">
-                                                    <div class="p10t p10b p20l p20r">
+                                                <div class="">
+                                                    <div class="p10t p10b p20l p20r white-color" style="border-radius: 20px">
                                                         <div class="row m0">
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
                                                                 Số sản phẩm đã bán:
                                                             </div>
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
-                                                                24
+
+                                                                {{ $currentUser->marketSeller()->where('status', TRADE_DONE)->count() }}
                                                             </div>
                                                         </div>
                                                         <div class="row m0">
@@ -119,7 +121,7 @@
                                                                 Tổng tiền sản phẩm đã bán:
                                                             </div>
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
-                                                               35,250,000
+                                                                <i class="fas fa-coins m10r"></i>{{ number_format($currentUser->marketSeller()->where('status', TRADE_DONE)->sum('price')) }}
                                                             </div>
                                                         </div>
                                                         <div class="row m0">
@@ -127,7 +129,7 @@
                                                                 Số sản phẩm đã mua:
                                                             </div>
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
-                                                                29
+                                                                {{ number_format($currentUser->marketBuyer()->where('status', TRADE_DONE)->count()) }}
                                                             </div>
                                                         </div>
                                                         <div class="row m0">
@@ -135,7 +137,7 @@
                                                                 Tổng tiền sản phẩm đã mua:
                                                             </div>
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
-                                                                14,000,000
+                                                                <i class="fas fa-coins m10r"></i>{{ number_format($currentUser->marketBuyer()->where('status', TRADE_DONE)->sum('price')) }}
                                                             </div>
                                                         </div>
                                                     </div>

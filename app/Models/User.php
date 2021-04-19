@@ -28,4 +28,19 @@ class User extends Authenticatable
         'steam_url',
         'money_own',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'user_id', 'id');
+    }
+
+    public function marketSeller()
+    {
+        return $this->hasMany(Market::class, 'seller_id', 'id');
+    }
+
+    public function marketBuyer()
+    {
+        return $this->hasMany(Market::class, 'buyer_id', 'id');
+    }
 }

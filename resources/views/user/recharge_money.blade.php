@@ -68,7 +68,7 @@
                                                     <div>
                                                         <div class="m10b">Bạn vui lòng chuyển khoản với nội dung:</div>
                                                         <div class="d-flex justify-content-center">
-                                                            <input class="form-control font-weight-bold w-auto text-center" value="NAPTK U254KV" disabled>
+                                                            <input class="form-control font-weight-bold w-auto text-center" value="NAPTK {{ strtoupper($currentUser->user_code) }}" disabled>
                                                         </div>
                                                     </div>
 
