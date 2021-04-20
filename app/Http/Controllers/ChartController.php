@@ -4,18 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Repositories\MarketEloquentRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ChartController extends Controller
 {
     private $marketEloquentRepository;
 
+    /**
+     * ChartController constructor.
+     *
+     * @param MarketEloquentRepository $marketEloquentRepository
+     */
     public function __construct(
         MarketEloquentRepository $marketEloquentRepository
     ) {
         $this->marketEloquentRepository = $marketEloquentRepository;
     }
 
+    /**
+     * Lấy data [Dữ liệu biểu đồ biến động giá]
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getDataChartDetail(Request $request)
     {
         $data = $this->marketEloquentRepository->getDataChartProductDetail($request->product_base_id);

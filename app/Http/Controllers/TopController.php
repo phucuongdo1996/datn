@@ -41,7 +41,7 @@ class TopController extends Controller
     }
 
     /**
-     * Show dota site
+     * Show màn hình Top [Màn hình chính]
      *
      * @return mixed
      */
@@ -56,7 +56,7 @@ class TopController extends Controller
     }
 
     /**
-     * Dota list item
+     * Show màn hình [Màn hình danh sách Item dota]
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -71,7 +71,7 @@ class TopController extends Controller
     }
 
     /**
-     * Dota list set
+     * Show màn hình [Màn hình danh sách Set dota]
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View

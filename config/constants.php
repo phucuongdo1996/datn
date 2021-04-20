@@ -21,6 +21,8 @@ const USER_STORE_PRODUCT = 'user.store.product';
 const USER_HISTORY = 'user.history';
 const USER_INFO = 'user.info';
 const USER_RECHARGE_MONEY = 'user.recharge.money';
+const USER_SELL_ITEM = 'user.sell.item';
+const USER_VALIDATE_SELL_ITEM = 'user.validate.sell.item';
 
 const ADMIN_INDEX = 'admin.index';
 const ADMIN_EDIT_PRODUCT = 'admin.edit.product';
@@ -70,6 +72,7 @@ const ARRAY_URL_ITEM_IMAGES = [
 ];
 
 const IMAGES_SLIDES = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
+const MAX_RECORDS_PAGINATE = 30;
 
 
 /**

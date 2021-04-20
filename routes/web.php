@@ -23,19 +23,31 @@ Route::get('login', 'Auth\LoginController@create')->name(SHOW_LOGIN);
 Route::post('login', 'Auth\LoginController@login')->name(LOGIN);
 Route::get('logout', 'Auth\LoginController@logout')->name(LOGOUT);
 Route::get('/', 'TopController@index')->name(TOP);
-
+/**
+ * Admin routes.
+ */
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index')->name(ADMIN_INDEX);
     Route::get('/edit-product', 'AdminController@editProduct')->name(ADMIN_EDIT_PRODUCT);
     Route::get('/add-steam-code', 'AdminController@addSteamCode')->name(ADMIN_ADD_STEAM_CODE);
 });
 
+/**
+ * User routes
+ */
 Route::prefix('dota')->group(function () {
+    /**
+     * Global routes
+     */
     Route::get('/', 'TopController@index')->name(DOTA_HOME);
     Route::get('/list-item', 'TopController@dotaListItem')->name(DOTA_LIST_ITEM);
     Route::get('/list-set', 'TopController@dotaListSet')->name(DOTA_LIST_SET);
     Route::get('/detail/{id}', 'DotaController@detail')->name(DOTA_DETAIL);
     Route::post('/get-data-detail', 'ChartController@getDataChartDetail');
+
+    /**
+     * Auth routes
+     */
     Route::middleware(['auth'])->group(function () {
         Route::prefix('user')->group(function () {
             Route::get('/list-item', 'UserController@listItem')->name(USER_LIST_ITEM);
@@ -43,6 +55,8 @@ Route::prefix('dota')->group(function () {
             Route::get('/history', 'UserController@history')->name(USER_HISTORY);
             Route::get('/info', 'UserController@info')->name(USER_INFO);
             Route::get('/recharge-money', 'UserController@rechargeMoney')->name(USER_RECHARGE_MONEY);
+            Route::post('/validation-sell-item', 'UserController@validateSellItem')->name(USER_VALIDATE_SELL_ITEM);
+            Route::post('/sell-item', 'UserController@sellItem')->name(USER_SELL_ITEM);
         });
     });
 });

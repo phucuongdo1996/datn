@@ -67,6 +67,9 @@
                                     <div class="row m-0 m20b p20l fs20 font-weight-bold" style="color: #28a745">
                                         Sản phẩm tương tự
                                     </div>
+                                    <div id="paginate" class="d-flex justify-content-end m10t m20b">
+                                        {{ $sameProducts->appends(request()->query()) }}
+                                    </div>
                                     <div class="row m-0">
                                         <table id="table-custom" class="table table-bordered table-striped border m0 table-border-custom">
                                             <thead>
@@ -114,6 +117,9 @@
                                             @endforelse
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div id="paginate" class="d-flex justify-content-end m10t m20b">
+                                        {{ $sameProducts->links() }}
                                     </div>
                                 </div>
                             </div>

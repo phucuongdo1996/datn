@@ -5,13 +5,14 @@
                 <img class="zoom-hover" style="object-fit: fill" src="{{ asset(getImageUrl($item)) }}" alt="">
                 <div class="overlay d-flex justify-content-center align-items-center">
                     <div>
-                        <button class="btn btn-primary fs18 sell-item" style="min-width: 100px" data-product-id="{{ $item->id }}">
+                        <button class="btn btn-primary fs18 sell-item" style="min-width: 100px" data-product-id="{{ $item->id }}" data-product-base-id="{{ $item->product_base_id }}"
+                                data-product-name="{{ $item->product_name }}" data-image="{{ asset(getImageUrl($item)) }}" data-hero-name="{{ $item->hero_name ?? 'Tất cả tướng' }}">
                             Bán
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="p10t font-weight-bold">{{ mb_strimwidth($item->product_name, 0, 25, '...') }}</div>
+            <div class="p10t font-weight-bold" style="color: {{ SPECIAL_COLOR[$item->special] }}">{{ mb_strimwidth($item->product_name, 0, 25, '...') }}</div>
             <div class="d-flex product-hero p10t" style="bottom: 0">
                 <div class="icon-hero">
                     <img class="not-zoom" src="{{ isset($item->hero_image) ? asset(URL_DOTA_HERO_IMAGES . $item->hero_image) : asset(URL_DOTA_HERO_IMAGES . 'default.png') }}" alt="">

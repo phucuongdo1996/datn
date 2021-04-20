@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Market;
-use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MarketEloquentRepository extends BaseRepository
@@ -19,7 +19,7 @@ class MarketEloquentRepository extends BaseRepository
     }
 
     /**
-     * Get new items
+     * Lấy data [Item đang bán] hiển thị ở Màn hình chính.
      *
      * @return mixed
      */
@@ -31,7 +31,7 @@ class MarketEloquentRepository extends BaseRepository
     }
 
     /**
-     * Get new sets
+     * Lấy data [Set đang bán] hiển thị ở Màn hình chính.
      *
      * @return mixed
      */
@@ -43,7 +43,7 @@ class MarketEloquentRepository extends BaseRepository
     }
 
     /**
-     * Get product new
+     * Lấy data [Sản phẩm Mới cập nhật] hiển thị ở Màn hình chính.
      *
      * @return mixed
      */
@@ -56,7 +56,7 @@ class MarketEloquentRepository extends BaseRepository
     }
 
     /**
-     * Get product bestseller
+     * Lấy data [Sản phẩm Bán chạy nhất] hiển thị ở Màn hình chính.
      *
      * @return mixed
      */
@@ -69,7 +69,7 @@ class MarketEloquentRepository extends BaseRepository
     }
 
     /**
-     * Get product remarkable
+     * Lấy data [Sản phẩm Đáng chú ý] hiển thị ở Màn hình chính.
      *
      * @return mixed
      */
@@ -94,6 +94,8 @@ class MarketEloquentRepository extends BaseRepository
     }
 
     /**
+     * Lấy data [Các item đang bán]
+     *
      * @param $params
      * @return mixed
      */
@@ -125,6 +127,8 @@ class MarketEloquentRepository extends BaseRepository
     }
 
     /**
+     * Lấy data [Các Set đang bán]
+     *
      * @param $params
      * @return mixed
      */
@@ -143,6 +147,8 @@ class MarketEloquentRepository extends BaseRepository
     }
 
     /**
+     * Lấy data [Chi tiết sản phẩm đang bán]
+     *
      * @param $id
      * @return array
      */
@@ -163,6 +169,13 @@ class MarketEloquentRepository extends BaseRepository
         return DB::select($sql, [$productBaseId, $date]);
     }
 
+    /**
+     * Lấy data [Các sản phẩm tương tự]
+     *
+     * @param $productBaseId
+     * @param $productId
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
     public function getSameProducts($productBaseId, $productId)
     {
         return $this->model->with('product')
@@ -170,5 +183,25 @@ class MarketEloquentRepository extends BaseRepository
             ->whereHas('product', function ($query) use ($productBaseId) {
                 return $query->where('product_base_id', $productBaseId);
             })->where('status', TRADE_SELLING)->orderBy('price')->paginate(10);
+    }
+
+    public function sellItem($data)
+    {
+        DB::beginTransaction();
+        $user = Auth::user();
+        try {
+            $user->marketSeller()->create([
+                'product_id' => $data['product_id'],
+                'price' => $data['price'],
+                'price_real' => $data['price'] * 0.9,
+                'status' => TRADE_SELLING
+            ]);
+            DB::commit();
+            return true;
+        } catch (\Exception $exception) {
+            report($exception);
+            DB::rollBack();
+            return false;
+        }
     }
 }

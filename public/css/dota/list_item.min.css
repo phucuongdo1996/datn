@@ -1,1 +1,24 @@
-#category-item-dota{height:500px;overflow-y:auto}#category-item-dota .item-category{font-size:16px;padding:10px;display:block;margin-bottom:5px;border-bottom:1px solid #f3f3f3;letter-spacing:.5px}#category-item-dota .item-category:hover{background-color:hsla(0,0%,75.3%,.44);padding-left:20px!important}#category-item-dota li.active{background-color:grey;pointer-events:none}
+#category-item-dota {
+  height: 500px;
+  overflow-y: auto;
+}
+
+#category-item-dota .item-category {
+  font-size: 16px;
+  padding: 10px;
+  display: block;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #f3f3f3;
+  letter-spacing: 0.5px;
+}
+
+#category-item-dota .item-category:hover {
+  background-color: #c0c0c070;
+  padding-left: 20px !important;
+}
+
+#category-item-dota li.active {
+  background-color: #808080;
+  pointer-events: none;
+}
+

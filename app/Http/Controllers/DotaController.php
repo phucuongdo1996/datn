@@ -25,6 +25,8 @@ class DotaController extends Controller
     }
 
     /**
+     * Show màn hình [Chi tiết sản phẩm]
+     *
      * @param $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

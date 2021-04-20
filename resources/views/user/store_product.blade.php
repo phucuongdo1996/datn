@@ -74,57 +74,45 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal-sell-item" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+    <div class="modal fade" id="modal-withdraw-item" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 800px">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Bán sản phẩm</h5>
+                    <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Thu hồi sản phẩm</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="row m0 h100 col-12">
                             <div class="d-flex h100" style="width: 150px">
-                                <img class="w-100 object-fit-contain" src="{{ asset('images/item_dota/set_dota_1.jpg') }}" alt="">
+                                <img id="modal-product-image" class="w-100 object-fit-contain" src="{{ asset('images/item_dota/set_dota_1.jpg') }}" alt="">
                             </div>
                             <div style="min-width: 450px; max-width: 550px">
-                                <div class="d-flex align-items-center font-weight-bold m10l m10b fs20 justify-content-center">Guise of the Winged Bolt</div>
-                                <div class="d-flex align-items-center m10l justify-content-center fs16">Drow ranger</div>
+                                <div id="modal-product-name" class="d-flex align-items-center font-weight-bold m10l m10b fs20 justify-content-center">Guise of the Winged Bolt</div>
+                                <div id="modal-hero-name" class="d-flex align-items-center m10l justify-content-center fs16">Drow ranger</div>
+                                <div class="d-flex align-items-center justify-content-center m0 m20t p25l fs20">
+                                    <div class="d-flex align-items-center font-weight-bold m15r">Giá đang bán:</div>
+                                    <div class=""><i class="fas fa-coins m5r"></i><span id="modal-product-price">{{ number_format(10000000) }}</span></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row m0 m20t col-12">
-                            <div class="w-100 border">
-                                <div class="w-100" id="history-pay-chart-sell"></div>
-                            </div>
-                        </div>
 
-                        <div class="row m0 m20t col-12 p25l">
-                           <div class="col-2 d-flex align-items-center font-weight-bold">Giá bán</div>
-                           <div class="col-4">
-                               <input type="text" class="form-control convert-number-double-decimal text-right" name="amount_sell">
-                           </div>
-                            <div class="col-2 d-flex align-items-center font-weight-bold">Giá thực nhận</div>
-                            <div class="col-4">
-                                <input type="text" class="form-control convert-number-double-decimal text-right" name="amount_real">
-                            </div>
                         </div>
-
                         <div class="row m0 m20t col-12 p25l">
-                            <input type="checkbox" style="display: block; width: unset">
-                            <div class="m10l">Đồng ý và tiến hành rao bán</div>
+                            <input id="check-submit" name="check_submit" type="checkbox" style="display: block; width: unset; transform: scale(1.5)">
+                            <div class="m10l fs16 font-weight-bold pointer-event"><label for="check-submit">Đồng ý thu hồi sản phẩm này</label></div>
+                            <p class="error-message" data-error="check_submit"></p>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button id="pay-submit" type="button" class="btn btn-primary">Hoàn tất</button>
+                    <button id="withdraw-submit" type="button" class="btn m-0 btn-load-more" disabled><span><i class="fas fa-check-circle m10r"></i>Thu hồi</span></button>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 @section('js')
-
+    <script src="{{ asset('js/user/store_item.js') }}"></script>
 @endsection

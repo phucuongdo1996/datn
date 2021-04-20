@@ -122,7 +122,8 @@
 }
 
 .menu-user-item-active {
-    background-color: #ddd;
+    color: white !important;
+    background-color: #00000059;
 }
 
 

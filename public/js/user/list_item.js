@@ -1,7 +1,7 @@
 let listItem = (function () {
     let modules = {};
 
-    modules.buildHistoryChart = function () {
+    modules.buildHistoryChart = function (data) {
         Highcharts.chart('history-pay-chart-sell', {
             chart: {
                 type: 'line',
@@ -22,7 +22,7 @@ let listItem = (function () {
             },
             xAxis: {
                 type: 'date',
-                categories: ['01/01', '02/01', '03/01', '04/01', '05/01', '06/01', '07/01', '08/01', '09/01', '10/01', '11/01', '12/01']
+                categories: data.date
             },
             yAxis: {
                 title: {
@@ -52,8 +52,83 @@ let listItem = (function () {
 
             series: [{
                 name: 'Giá',
-                data: [10000, 12000, 11000, 15000, 19000, 22000, 21000, 21500, 21500, 21000, 21200, 22000]
+                data: data.price
             }]
+        });
+    }
+
+    modules.getDataChart = function (productBaseId) {
+        let formData = new FormData();
+        formData.append("_token", $('meta[name="csrf-token"]').attr('content'));
+        formData.append('product_base_id', productBaseId)
+        let submitAjax = $.ajax({
+            url: '/dota/get-data-detail',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false
+        })
+        submitAjax.done(function (response) {
+            modules.buildHistoryChart(response);
+        });
+        submitAjax.fail(function (response) {
+            console.log(response)
+        })
+    }
+
+    modules.showModal = function (object) {
+        Common.clearMessageValidate();
+        $('#modal-product-image').prop('src', object.data('image'))
+        $('#modal-product-name').text(object.data('product-name'))
+        $('#modal-hero-name').text(object.data('hero-name'))
+        $('#check-submit').prop('checked', false);
+        $('input[name=product_id]').val(object.data('product-id'))
+        $('#modal-sell-item').modal('show')
+    }
+
+    modules.sellItem = function () {
+        let formData = new FormData($('#form-sell-item')[0]);
+        formData.append("_token", $('meta[name="csrf-token"]').attr('content'));
+        Common.convertNumeralForForm(formData);
+        let submitAjax = $.ajax({
+            url: '/dota/user/sell-item',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false
+        })
+        submitAjax.done(function (response) {
+            location.reload();
+        });
+        submitAjax.fail(function (response) {
+            $('#pay-submit').prop('disabled', false);
+            let messageList = response.responseJSON.errors;
+            Common.showMessageValidate(messageList)
+        });
+    }
+
+    modules.validateSellItem = function () {
+        let formData = new FormData($('#form-sell-item')[0]);
+        formData.append("_token", $('meta[name="csrf-token"]').attr('content'));
+        Common.convertNumeralForForm(formData);
+        let submitAjax = $.ajax({
+            url: '/dota/user/validation-sell-item',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false
+        })
+        submitAjax.done(function (response) {
+            if (response.check == true) {
+                $('#modal-sell-item').modal('hide');
+                $('#modal-loading').modal('show');
+                modules.sellItem()
+            }
+        });
+        submitAjax.fail(function (response) {
+            $('#pay-submit').prop('disabled', false);
+            let messageList = response.responseJSON.errors;
+            Common.showMessageValidate(messageList)
         });
     }
 
@@ -61,20 +136,29 @@ let listItem = (function () {
 }(window.jQuery, window, document));
 
 $(document).ready(function () {
-   $('.sell-item').on('click', function () {
-       listItem.buildHistoryChart()
-       $('#modal-sell-item').modal('show')
-   });
+    $('.sell-item').on('click', function () {
+        listItem.getDataChart($(this).data('product-base-id'))
+        listItem.showModal($(this));
+    });
 
-   $('input[name=amount_sell]').on('keyup', function () {
-       let value1 = Common.convertStringToNumber($(this).val());
-       let value2 = value1 * 0.9;
-       $('input[name=amount_real]').val(Common.numberFormat(value2, 2))
-   });
+    $('input[name=price]').on('keyup', function () {
+        let value1 = Common.convertStringToNumber($(this).val());
+        let value2 = value1 * 0.9;
+        $('input[name=price_real]').val(Common.numberFormat(value2, 2))
+    });
 
-    $('input[name=amount_real]').on('keyup', function () {
+    $('#check-submit').on('click', function () {
+        $('#pay-submit').prop('disabled', !$(this).prop('checked'))
+    });
+
+    $('#pay-submit').on('click', function () {
+        $(this).prop('disabled', true);
+        listItem.validateSellItem();
+    });
+
+    $('input[name=price_real]').on('keyup', function () {
         let value1 = Common.convertStringToNumber($(this).val());
         let value2 = value1 * 100 / 90;
-        $('input[name=amount_sell]').val(Common.numberFormat(value2, 2))
+        $('input[name=price]').val(Common.numberFormat(value2, 2))
     })
 });

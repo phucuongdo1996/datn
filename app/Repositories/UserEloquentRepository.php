@@ -52,7 +52,7 @@ class UserEloquentRepository extends BaseRepository
                     return $query->where('hero_id', $params['hero_id']);
                 });
             })
-            ->paginate(10);
+            ->orderBy('id', 'DESC')->paginate(MAX_RECORDS_PAGINATE);
     }
 
     public function getProductsSellingByUser($params)
@@ -73,6 +73,6 @@ class UserEloquentRepository extends BaseRepository
                     return $query->where('hero_id', $params['hero_id']);
                 });
             })
-            ->paginate(60);
+            ->orderBy('id', 'DESC')->paginate(MAX_RECORDS_PAGINATE);
     }
 }

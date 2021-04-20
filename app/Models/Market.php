@@ -24,6 +24,7 @@ class Market extends Model
         'buyer_id',
         'product_id',
         'price',
+        'price_real',
         'status',
     ];
 
