@@ -84,7 +84,7 @@ class UserController extends Controller
      */
     public function history()
     {
-        $userHistory = $this->userHistoryEloquentRepository->getHistories();
+        $userHistory = Auth::user()->userHistory;
         return view('user.history', compact('userHistory'));
     }
 
