@@ -57,6 +57,8 @@ Route::prefix('dota')->group(function () {
             Route::get('/recharge-money', 'UserController@rechargeMoney')->name(USER_RECHARGE_MONEY);
             Route::post('/validation-sell-item', 'UserController@validateSellItem')->name(USER_VALIDATE_SELL_ITEM);
             Route::post('/sell-item', 'UserController@sellItem')->name(USER_SELL_ITEM);
+            Route::post('/withdraw-item', 'UserController@withdrawItem')->name(USER_WITHDRAW_ITEM);
+            Route::post('/buy-item', 'UserController@buyItem')->name(USER_BUY_ITEM);
         });
     });
 });

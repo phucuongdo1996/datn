@@ -1,7 +1,6 @@
 var detailFunction = (function () {
     let modules = {};
     modules.buildHistoryChart = function (data) {
-        console.log(data.price)
         Highcharts.chart('history-pay-chart', {
             chart: {
                 type: 'line'
@@ -57,12 +56,15 @@ var detailFunction = (function () {
 
     modules.clickBuyItem = function () {
         let isLogin = $('#user-id').val() == '';
-        console.log($('#user-id').val(), isLogin)
         if (isLogin) {
             $('#login-form').modal('show');
         } else {
-            $('#exampleModalCenter').modal('show')
+            modules.showFormBuyItem();
         }
+    }
+
+    modules.showFormBuyItem = function () {
+        $('#modal-buy-item').modal('show')
     }
 
     modules.getDataChart = function () {
@@ -110,6 +112,28 @@ var detailFunction = (function () {
         })
     }
 
+    modules.buyItem = function () {
+        let formData = new FormData();
+        formData.append("_token", $('meta[name="csrf-token"]').attr('content'));
+        formData.append("market_id", $('#market-id').val());
+        let submitAjax = $.ajax({
+            url: '/dota/user/buy-item',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+        })
+        submitAjax.done(function (response) {
+            if (response.save == true) {
+                window.location.href = '/dota/user/list-item'
+            } else {
+                location.reload();
+            }
+        });
+        submitAjax.fail(function (response) {
+        })
+    }
+
     return modules;
 }(window.jQuery, window, document));
 
@@ -121,16 +145,17 @@ $(document).ready(function () {
    });
 
    $('#pay-submit').on('click', function () {
-       $('#exampleModalCenter').modal('hide');
-       $('#loading').modal('show');
-       setTimeout(function () {
-           $('#loading').modal('hide');
-           $('#modal-success').modal('show');
-       }, 2000)
+       $('#modal-buy-item').modal('hide');
+       $('#modal-loading').modal('show');
+       detailFunction.buyItem();
    });
 
    $('#button-login').on('click', function () {
        $(this).prop('disabled', true);
        detailFunction.login();
-   })
+   });
+
+    $('#check-submit').on('click', function () {
+        $('#pay-submit').prop('disabled', !$(this).prop('checked'))
+    });
 });

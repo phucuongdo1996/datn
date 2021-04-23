@@ -126,4 +126,39 @@ class UserController extends Controller
     {
         return response()->json(['check' => true]);
     }
+
+    /**
+     * Xử lý Request [Thu hồi sản phẩm]
+     *
+     * @param Request $request
+     */
+    public function withdrawItem(Request $request)
+    {
+        if ($this->marketEloquentRepository->withdrawItem($request->all())) {
+            Session::flash(STR_FLASH_SUCCESS, 'Thu hồi sản phẩm thành công!');
+        } else {
+            Session::flash(STR_FLASH_ERROR, 'Có lỗi trong quá trình xử lý, Thu hồi sản phẩm thất bại!');
+        }
+    }
+
+    /**
+     * Xử lý Request [Mua sản phẩm]
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function buyItem(Request $request)
+    {
+        if ($this->marketEloquentRepository->buyItem($request->all())) {
+            Session::flash(STR_FLASH_SUCCESS, 'Mua sản phẩm thành công!');
+            return response()->json([
+                'save' => true
+            ]);
+        } else {
+            Session::flash(STR_FLASH_ERROR, 'Có lỗi trong quá trình xử lý, Mua sản phẩm thất bại!');
+            return response()->json([
+                'save' => false
+            ]);
+        }
+    }
 }

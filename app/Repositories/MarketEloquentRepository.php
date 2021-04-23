@@ -123,7 +123,8 @@ class MarketEloquentRepository extends BaseRepository
         })->when(isset($params['price_to']), function ($query) use ($params) {
             $query->where('price', '<=', convertNumber($params['price_to']));
         })
-            ->where('status', TRADE_SELLING)->paginate(30);
+            ->where('status', TRADE_SELLING)
+            ->orderBy('price')->paginate(30);
     }
 
     /**
@@ -143,7 +144,9 @@ class MarketEloquentRepository extends BaseRepository
                         $query->where('hero_id', $params['hero_id']);
                     });
                 });
-        })->where('status', TRADE_SELLING)->paginate(30);
+        })
+            ->where('status', TRADE_SELLING)
+            ->orderBy('price')->paginate(30);
     }
 
     /**
@@ -158,14 +161,20 @@ class MarketEloquentRepository extends BaseRepository
         return $record ? $record->append('seller_name')->toArray() : [];
     }
 
+    /**
+     * Lấy dữ liệu [Biểu đồ giá biên động sản phẩm]
+     *
+     * @param $productBaseId
+     * @return array
+     */
     public function getDataChartProductDetail($productBaseId)
     {
         $date = new \DateTime('-30 days');
         $date = $date->format('Y-m-d');
-        $sql = "select DATE(market.created_at) as date,  AVG(market.price) as avg_price
+        $sql = "select DATE(market.updated_at) as date,  AVG(market.price) as avg_price
                 from market, products, products_base 
-                where market.product_id = products.id and products.product_base_id = products_base.id and products_base.id = ? and market.created_at > ? and market.status = 2
-                group by DATE(market.created_at) order by DATE(market.created_at)";
+                where market.product_id = products.id and products.product_base_id = products_base.id and products_base.id = ? and market.updated_at > ? and market.status = 2
+                group by DATE(market.updated_at) order by DATE(market.updated_at)";
         return DB::select($sql, [$productBaseId, $date]);
     }
 
@@ -185,6 +194,12 @@ class MarketEloquentRepository extends BaseRepository
             })->where('status', TRADE_SELLING)->orderBy('price')->paginate(10);
     }
 
+    /**
+     * Xử lý Logic [Rao bán item]
+     *
+     * @param $data
+     * @return bool
+     */
     public function sellItem($data)
     {
         DB::beginTransaction();
@@ -198,6 +213,81 @@ class MarketEloquentRepository extends BaseRepository
             ]);
             DB::commit();
             return true;
+        } catch (\Exception $exception) {
+            report($exception);
+            DB::rollBack();
+            return false;
+        }
+    }
+
+    /**
+     * Xử lý Logic [Thu hồi item]
+     *
+     * @param $data
+     * @return bool
+     */
+    public function withdrawItem($data)
+    {
+        DB::beginTransaction();
+        try {
+            $this->update($data['market_id'], [
+                'status' => TRADE_CANCELED
+            ]);
+            DB::commit();
+            return true;
+        } catch (\Exception $exception) {
+            report($exception);
+            DB::rollBack();
+            return false;
+        }
+    }
+
+    /**
+     * Xử lý Logic [Mua item]
+     *
+     * @param $data
+     * @return bool
+     */
+    public function buyItem($data)
+    {
+        DB::beginTransaction();
+        $userBuyer = Auth::user();
+        try {
+            $marketProduct = $this->find($data['market_id']);
+            $userSeller = resolve(UserEloquentRepository::class)->find($marketProduct->seller_id);
+            if ($userBuyer->money_own >= $marketProduct->price) {
+                $userBuyer->money_own -= $marketProduct->price;
+                $marketProduct->status = TRADE_DONE;
+                $userSeller->money_own += $marketProduct->price_real;
+                $marketProduct->product()->update([
+                    'user_id' => $userBuyer->id
+                ]);
+                $userSeller->save();
+                $userBuyer->save();
+                $marketProduct->save();
+                resolve(AdminRevenueEloquentRepository::class)->create([
+                    'type' => REVENUE_AGENCY,
+                    'value' => $marketProduct->price - $marketProduct->price_real
+                ]);
+                resolve(UserHistoryEloquentRepository::class)->createMultiple([
+                    [
+                        'user_id' => $userBuyer->id,
+                        'product_id' => $marketProduct->product_id,
+                        'purchase_money' => $marketProduct->price,
+                        'type' => USER_HISTORY_BUY_ITEM
+                    ],
+                    [
+                        'user_id' => $userSeller->id,
+                        'product_id' => $marketProduct->product_id,
+                        'purchase_money' => $marketProduct->price_real,
+                        'type' => USER_HISTORY_SELL_ITEM
+                    ]
+                ]);
+                DB::commit();
+                return true;
+            }
+            DB::rollBack();
+            return false;
         } catch (\Exception $exception) {
             report($exception);
             DB::rollBack();

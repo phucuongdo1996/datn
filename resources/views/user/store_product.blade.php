@@ -75,7 +75,7 @@
     </div>
 
     <div class="modal fade" id="modal-withdraw-item" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 800px">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 650px">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Thu hồi sản phẩm</h5>
@@ -107,6 +107,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <input id="market-id-withdraw" type="hidden">
                     <button id="withdraw-submit" type="button" class="btn m-0 btn-load-more" disabled><span><i class="fas fa-check-circle m10r"></i>Thu hồi</span></button>
                 </div>
             </div>

@@ -32,8 +32,8 @@ class DotaController extends Controller
      */
     public function detail($id)
     {
-        $market = $this->marketEloquentRepository->getProductDetailSelling($id);
-        abort_if(empty($market), 404);
+        $market = $this->marketEloquentRepository->find($id);
+        abort_if(empty($market) || $market->status != TRADE_SELLING, 404);
         $sameProducts = $this->marketEloquentRepository->getSameProducts($market['product']['product_base_id'], $market['product']['id']);
         return view('dota.detail', compact('market', 'sameProducts'));
     }

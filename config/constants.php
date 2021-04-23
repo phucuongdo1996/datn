@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Define const for route name
+ * Định nghĩa tên các Routes.
  */
 
 const SHOW_LOGIN = 'show.login';
@@ -22,6 +22,8 @@ const USER_HISTORY = 'user.history';
 const USER_INFO = 'user.info';
 const USER_RECHARGE_MONEY = 'user.recharge.money';
 const USER_SELL_ITEM = 'user.sell.item';
+const USER_WITHDRAW_ITEM = 'user.withdraw.item';
+const USER_BUY_ITEM = 'user.buy.item';
 const USER_VALIDATE_SELL_ITEM = 'user.validate.sell.item';
 
 const ADMIN_INDEX = 'admin.index';
@@ -29,11 +31,14 @@ const ADMIN_EDIT_PRODUCT = 'admin.edit.product';
 const ADMIN_ADD_STEAM_CODE = 'admin.add.steam.code';
 
 /**
- * Define const for type item
+ * Loại sản phẩm.
  */
-const TYPE_ITEM_CATEGORY = 1;
-const TYPE_SET_CATEGORY = 2;
+const TYPE_ITEM_CATEGORY = 1; // Set dota
+const TYPE_SET_CATEGORY = 2; // Item dota
 
+/**
+ * Mảng màu.
+ */
 const ARRAY_COLOR = [
     '#2F868C', '#E56C9B', '#f7a35c', '#0377FF', '#FF0000',
     '#D28CD4', '#90ed7d', '#6AF9C4', '#fdec6d', '#24CBE5',
@@ -51,7 +56,7 @@ const ARRAY_COLOR_1 = [
 ];
 
 /**
- * Define const for folder images
+ * URL path Lưu file ảnh.
  */
 const URL_DOTA_IMAGES_ITEM = 'images/dota_images/item/';
 const URL_DOTA_IMAGES_ITEM_INFU = 'images/dota_images/item_infu/';
@@ -72,19 +77,42 @@ const ARRAY_URL_ITEM_IMAGES = [
 ];
 
 const IMAGES_SLIDES = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
-const MAX_RECORDS_PAGINATE = 30;
-
 
 /**
- * Define const for Session flash
+ * Số bản ghi tối đa.
+ */
+const MAX_RECORDS_PAGINATE = 30;
+
+/**
+ * Trạng thái Session flash.
  */
 const STR_FLASH_SUCCESS = 'flash_success';
 const STR_FLASH_ERROR = 'flash_error';
 
-const TRADE_CANCELED = 0;
-const TRADE_SELLING = 1;
-const TRADE_DONE = 2;
+/**
+ * Trạng thái sản phẩm trên Market.
+ */
+const TRADE_CANCELED = 0; // Đã huỷ
+const TRADE_SELLING = 1; // Đang bán
+const TRADE_DONE = 2; // Hoàn tất
 
 const FLAG_ZERO = 0;
-const SPECIAL_TEXT = ['Common', 'Uncommon', 'Rare', 'Mythical', 'Immortal', 'Legendary', 'Ancient'];
-const SPECIAL_COLOR = ['unset', '#99CCFF', '#3333FF', '#6600CC', '#FF9900', '#FF33CC', '#FF3300'];
+
+/**
+ * Tên & màu đặc biệt của sản phẩm.
+ */
+const SPECIAL_TEXT = ['Common', 'Uncommon', 'Rare', 'Mythical', 'Immortal', 'Legendary', 'Ancient']; // Tên đặc biệt
+const SPECIAL_COLOR = ['unset', '#99CCFF', '#3333FF', '#6600CC', '#FF9900', '#FF33CC', '#FF3300']; // Màu đặc biệt
+
+/**
+ * Loại doanh thu.
+ */
+const REVENUE_AGENCY = 1; // Doanh thu từ trung gian giao dịch
+const REVENUE_STEAM_CODE = 2; // Doanh thu từ Steam code
+
+/**
+ * Lịch sử giao dịch : Loại giao dịch.
+ */
+const USER_HISTORY_BUY_ITEM = 1; // Mua sản phẩm
+const USER_HISTORY_SELL_ITEM = 2; // Bán sản phẩm
+const USER_HISTORY_BUY_STEAM_CODE = 3; // Mua stean code

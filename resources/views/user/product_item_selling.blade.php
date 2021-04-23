@@ -5,8 +5,8 @@
                 <img class="zoom-hover" style="object-fit: fill" src="{{ asset(getImageUrl($item->product)) }}" alt="">
                 <div class="overlay d-flex justify-content-center align-items-center">
                     <div>
-                        <button class="btn btn-primary fs18 withdraw-item" style="min-width: 100px" data-product-id="{{ $item->id }}" data-product-image="{{ asset(getImageUrl($item->product)) }}"
-                                data-product-name="{{ $item->product_name }}" data-hero-name="{{ $item->hero_name ?? 'Tất cả tướng' }}" data-product-price="{{ number_format($item->price) }}">
+                        <button class="btn btn-primary fs18 withdraw-item" style="min-width: 100px" data-market-id="{{ $item->id }}" data-product-image="{{ asset(getImageUrl($item->product)) }}"
+                                data-product-name="{{ $item->product_name }}" data-product-special="{{ $item->product->special }}" data-hero-name="{{ $item->hero_name ?? 'Tất cả tướng' }}" data-product-price="{{ number_format($item->price) }}">
                             Thu hồi
                         </button>
                     </div>

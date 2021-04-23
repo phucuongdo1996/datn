@@ -52,7 +52,7 @@ class UserEloquentRepository extends BaseRepository
                     return $query->where('hero_id', $params['hero_id']);
                 });
             })
-            ->orderBy('id', 'DESC')->paginate(MAX_RECORDS_PAGINATE);
+            ->orderBy('updated_at', 'DESC')->paginate(MAX_RECORDS_PAGINATE);
     }
 
     public function getProductsSellingByUser($params)
