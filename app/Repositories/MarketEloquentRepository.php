@@ -272,12 +272,14 @@ class MarketEloquentRepository extends BaseRepository
                 resolve(UserHistoryEloquentRepository::class)->createMultiple([
                     [
                         'user_id' => $userBuyer->id,
+                        'partner_id' => $userSeller->id,
                         'product_id' => $marketProduct->product_id,
                         'purchase_money' => $marketProduct->price,
                         'type' => USER_HISTORY_BUY_ITEM
                     ],
                     [
                         'user_id' => $userSeller->id,
+                        'partner_id' => $userBuyer->id,
                         'product_id' => $marketProduct->product_id,
                         'purchase_money' => $marketProduct->price_real,
                         'type' => USER_HISTORY_SELL_ITEM

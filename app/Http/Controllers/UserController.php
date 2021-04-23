@@ -9,6 +9,7 @@ use App\Repositories\MarketEloquentRepository;
 use App\Repositories\ProductEloquentRepository;
 use App\Repositories\UserEloquentRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -79,7 +80,8 @@ class UserController extends Controller
      */
     public function history()
     {
-        return view('user.history');
+        $userHistory = Auth::user()->userHistory;
+        return view('user.history', compact('userHistory'));
     }
 
     /**

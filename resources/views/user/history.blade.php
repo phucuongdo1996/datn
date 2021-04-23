@@ -79,40 +79,10 @@
                             </div>
 
                             <div class="row m-0">
-                                <div class="item-block h-100 p15 p20t">
-                                    <div class="row m-0" style="height: 700px; overflow-y: scroll; overflow-x: hidden">
-                                        @foreach([1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] as $item)
-                                            @php($random = rand(0, 1))
-                                        @php($number = number_format(rand(1, 20) * 10000))
-                                        @if($random == 0)
-                                            <div class="row col-12 m0 p15 justify-content-between border-bottom">
-                                                <div>
-                                                    <div class="fs16 m10b">
-                                                        <span class="font-weight-bold">Cường</span> đã mua <span class="font-weight-bold">Guise of the Winged Bolt</span> với giá <span class="font-weight-bold">{{ $number }}</span>.
-                                                    </div>
-                                                    <div class="text-blue fs14">
-                                                        {{ date('h:i d/m/Y', rand(1575126000, 1606748400)) }}
-                                                    </div>
-                                                </div>
-                                                <div class="fs18" style="color: green">
-                                                    + {{ $number }}
-                                                </div>
-                                            </div>
-                                            @else
-                                                <div class="row col-12 m0 p15 justify-content-between border-bottom">
-                                                    <div>
-                                                        <div class="fs16 m10b">
-                                                            <span class="font-weight-bold">Bạn</span> đã mua <span class="font-weight-bold">Guise of the Winged Bolt</span> từ <span class="font-weight-bold">Cường</span> với giá <span class="font-weight-bold">{{ $number }}</span>.
-                                                        </div>
-                                                        <div class="text-blue fs14">
-                                                            {{ date('h:i d/m/Y', rand(1575126000, 1606748400)) }}
-                                                        </div>
-                                                    </div>
-                                                    <div class="fs18" style="color: red">
-                                                        - {{ $number }}
-                                                    </div>
-                                                </div>
-                                            @endif
+                                <div class="col-12 item-block h-100 p15 p20t">
+                                    <div style="height: 700px; overflow-y: auto; overflow-x: hidden">
+                                        @foreach($userHistory as $item)
+                                            @include('user.history_item', ['data' => $item])
                                         @endforeach
                                     </div>
                                 </div>
