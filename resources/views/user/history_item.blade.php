@@ -13,6 +13,7 @@
             - {{ number_format($data->purchase_money) }}
         </div>
     </div>
+    @break
     @case(USER_HISTORY_SELL_ITEM)
     <div class="row m0 p15 justify-content-between border-bottom" style="height: 70px">
         <div>
@@ -27,4 +28,5 @@
             + {{ number_format($data->purchase_money) }}
         </div>
     </div>
+    @break
 @endswitch

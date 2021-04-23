@@ -8,6 +8,7 @@ use App\Repositories\HeroEloquentRepository;
 use App\Repositories\MarketEloquentRepository;
 use App\Repositories\ProductEloquentRepository;
 use App\Repositories\UserEloquentRepository;
+use App\Repositories\UserHistoryEloquentRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -19,6 +20,7 @@ class UserController extends Controller
     private $productEloquentRepository;
     private $userEloquentRepository;
     private $marketEloquentRepository;
+    private $userHistoryEloquentRepository;
 
     /**
      * UserController constructor.
@@ -34,13 +36,15 @@ class UserController extends Controller
         ProductEloquentRepository $productEloquentRepository,
         CategoryEloquentRepository $categoryEloquentRepository,
         HeroEloquentRepository $heroEloquentRepository,
-        MarketEloquentRepository $marketEloquentRepository
+        MarketEloquentRepository $marketEloquentRepository,
+        UserHistoryEloquentRepository $userHistoryEloquentRepository
     ) {
         $this->categoryEloquentRepository = $categoryEloquentRepository;
         $this->heroEloquentRepository = $heroEloquentRepository;
         $this->productEloquentRepository = $productEloquentRepository;
         $this->userEloquentRepository = $userEloquentRepository;
         $this->marketEloquentRepository = $marketEloquentRepository;
+        $this->userHistoryEloquentRepository = $userHistoryEloquentRepository;
     }
 
     /**
@@ -80,7 +84,7 @@ class UserController extends Controller
      */
     public function history()
     {
-        $userHistory = Auth::user()->userHistory;
+        $userHistory = $this->userHistoryEloquentRepository->getHistories();
         return view('user.history', compact('userHistory'));
     }
 
