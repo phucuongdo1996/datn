@@ -84,7 +84,7 @@ class UserController extends Controller
      */
     public function history()
     {
-        $userHistory = Auth::user()->userHistory;
+        $userHistory = Auth::user()->userHistory()->orderBy('id', 'DESC')->get();
         return view('user.history', compact('userHistory'));
     }
 
