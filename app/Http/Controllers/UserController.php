@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Api\BaoKim\BaoKimApi;
+use App\Http\Requests\GetUrlBaoKimRequest;
 use App\Http\Requests\SellItemRequest;
 use App\Repositories\CategoryEloquentRepository;
 use App\Repositories\HeroEloquentRepository;
@@ -106,6 +108,19 @@ class UserController extends Controller
     public function rechargeMoney()
     {
         return view('user.recharge_money');
+    }
+
+    /**
+     * Lấy Url chuyển trang thanh toán qua Bao Kim
+     *
+     * @param GetUrlBaoKimRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getUrlBaoKim(GetUrlBaoKimRequest $request)
+    {
+        return response()->json([
+            'url_redirect' => BaoKimApi::getUrlRedirect($request->all())
+        ], 200);
     }
 
     /**

@@ -59,6 +59,7 @@ Route::prefix('dota')->group(function () {
             Route::post('/sell-item', 'UserController@sellItem')->name(USER_SELL_ITEM);
             Route::post('/withdraw-item', 'UserController@withdrawItem')->name(USER_WITHDRAW_ITEM);
             Route::post('/buy-item', 'UserController@buyItem')->name(USER_BUY_ITEM);
+            Route::post('/get-url-bao-kim', 'UserController@getUrlBaoKim');
         });
     });
 });

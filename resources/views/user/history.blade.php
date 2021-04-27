@@ -10,51 +10,20 @@
                     <div class="col-3">
                         @include('user.menu')
                     </div>
-
+                    <input id="user-id" type="hidden" name="user_id" value="{{ $currentUser->id }}">
                     <div class="col-9">
                         <div class="p5l">
                             <div class="row m-0 m10b">
                                 <div class="col-12 item-block m5r h-100 p15 p20t">
-                                    <div class="row m-0">
-                                        <div class="col-4 p10lr">
-                                            <input class="form-control date-time" type="text" value="01/01/2021" placeholder="01/01/2021">
-                                        </div>
-                                        <div class="col-4 p10lr">
-                                            <input class="form-control date-time" type="text" value="{{ date('m/d/Y', time()) }}" placeholder="01/01/2021">
-                                        </div>
-                                        <div class="col-4 p10lr" >
-                                            <select class="form-control" name="" id="">
-                                                <option value="">Tất cả</option>
-                                                <option value="">Bán</option>
-                                                <option value="">Mua</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 m15t">
-                                        <div class="col-12 d-flex align-items-center justify-content-center">
-                                            <button class="btn btn-primary min-w115"><i class="fas fa-search m10r"></i>Lọc</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row m-0 m10b">
-                                <div class="col-12 item-block m5r h-100 p15 p20t">
-                                    <div class="p15l fs18 ">
-                                        <a id="show-chart" class="text-underline text-blue" data-toggle="collapse" href="#collapseChart" aria-expanded="false" aria-controls="collapseChart">Xem biểu đồ</a>
-                                    </div>
-                                    <div class="collapse m15t" id="collapseChart">
-                                        <div class="border p15t p15r p15b">
-                                            <div id="chart-history-user"></div>
-                                        </div>
-
-                                        <div class="row m0 p20t">
+                                    <div class="row m0">
+                                        @php($thu = $userHistory->where('type', USER_HISTORY_SELL_ITEM)->sum('purchase_money'))
+                                        @php($chi = $userHistory->where('type', USER_HISTORY_BUY_ITEM)->sum('purchase_money'))
                                             <div class="col-4 row m0">
                                                 <div class="col-4 d-flex align-items-center justify-content-center">
                                                     <label class="fs18">Tổng thu</label>
                                                 </div>
                                                 <div class="col-8 p15r">
-                                                    <input type="text" value="{{ number_format(rand(1111111, 9999999), 2) }}" class="form-control text-right" style="color: green">
+                                                    <input type="text" value="{{ number_format($thu, 2) }}" class="form-control text-right" style="color: green">
                                                 </div>
                                             </div>
                                             <div class="col-4 row m0">
@@ -62,7 +31,7 @@
                                                     <label class="fs18">Tổng chi</label>
                                                 </div>
                                                 <div class="col-8 p15r">
-                                                    <input type="text" value="{{ number_format(rand(1111111, 9999999), 2) }}" class="form-control text-right" style="color: red">
+                                                    <input type="text" value="{{ number_format($chi, 2) }}" class="form-control text-right" style="color: red">
                                                 </div>
                                             </div>
                                             <div class="col-4 row m0">
@@ -70,11 +39,10 @@
                                                     <label class="fs18">Chênh lệch</label>
                                                 </div>
                                                 <div class="col-8 p15r">
-                                                    <input type="text" value="{{ number_format(rand(1111111, 9999999), 2) }}" class="form-control text-right" style="color: green">
+                                                    <input type="text" value="{{ number_format($thu-$chi, 2) }}" class="form-control text-right" style="color: {{ $thu-$chi > 0 ? 'green' : 'red' }}">
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -147,5 +115,5 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('/js/user/history.js') }}"></script>
+    <script src="{{ asset('js/user/history.js') }}"></script>
 @endsection

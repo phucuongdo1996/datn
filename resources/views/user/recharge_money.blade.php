@@ -94,58 +94,59 @@
                                             <div class="row m0 m15b">
                                                 <div class="col-12">Bạn vui lòng chọn một trong số các mức nạp (Nếu bạn muốn nạp mức cao hơn hãy liên hệ chuyển khoản trực tiếp) </div>
                                             </div>
-                                            <div class="row m0 m15b">
+                                            <form id="form-data" class="row m0 m15b">
                                                 <div class="col-3 p10">
-                                                    <input type="radio" id="radio-1" name="money_pay" value="100000" class="radio-custom">
+                                                    <input type="radio" id="radio-1" name="total_amount" value="100000" class="radio-custom">
                                                     <label for="radio-1" class="form-control d-flex justify-content-center align-items-center label-radio-custom p20" style="border: 2px solid #dee2e6">
                                                         <span class="font-weight-bold">100,000</span>
                                                     </label>
                                                 </div>
                                                 <div class="col-3 p10">
-                                                    <input type="radio" id="radio-2" name="money_pay" value="100000" class="radio-custom">
+                                                    <input type="radio" id="radio-2" name="total_amount" value="200000" class="radio-custom">
                                                     <label for="radio-2" class="form-control d-flex justify-content-center align-items-center label-radio-custom p20" style="border: 2px solid #dee2e6">
                                                         <span class="font-weight-bold">200,000</span>
                                                     </label>
                                                 </div>
                                                 <div class="col-3 p10">
-                                                    <input type="radio" id="radio-3" name="money_pay" value="100000" class="radio-custom">
+                                                    <input type="radio" id="radio-3" name="total_amount" value="500000" class="radio-custom">
                                                     <label for="radio-3" class="form-control d-flex justify-content-center align-items-center label-radio-custom p20" style="border: 2px solid #dee2e6">
                                                         <span class="font-weight-bold">500,000</span>
                                                     </label>
                                                 </div>
                                                 <div class="col-3 p10">
-                                                    <input type="radio" id="radio-4" name="money_pay" value="100000" class="radio-custom">
+                                                    <input type="radio" id="radio-4" name="total_amount" value="1000000" class="radio-custom">
                                                     <label for="radio-4" class="form-control d-flex justify-content-center align-items-center label-radio-custom p20" style="border: 2px solid #dee2e6">
                                                         <span class="font-weight-bold">1,000,000</span>
                                                     </label>
                                                 </div>
                                                 <div class="col-3 p10">
-                                                    <input type="radio" id="radio-5" name="money_pay" value="100000" class="radio-custom">
+                                                    <input type="radio" id="radio-5" name="total_amount" value="1500000" class="radio-custom">
                                                     <label for="radio-5" class="form-control d-flex justify-content-center align-items-center label-radio-custom p20" style="border: 2px solid #dee2e6">
                                                         <span class="font-weight-bold">1,500,000</span>
                                                     </label>
                                                 </div>
                                                 <div class="col-3 p10">
-                                                    <input type="radio" id="radio-6" name="money_pay" value="100000" class="radio-custom">
+                                                    <input type="radio" id="radio-6" name="total_amount" value="2000000" class="radio-custom">
                                                     <label for="radio-6" class="form-control d-flex justify-content-center align-items-center label-radio-custom p20" style="border: 2px solid #dee2e6">
                                                         <span class="font-weight-bold">2,000,000</span>
                                                     </label>
                                                 </div>
                                                 <div class="col-3 p10">
-                                                    <input type="radio" id="radio-7" name="money_pay" value="100000" class="radio-custom">
+                                                    <input type="radio" id="radio-7" name="total_amount" value="3000000" class="radio-custom">
                                                     <label for="radio-7" class="form-control d-flex justify-content-center align-items-center label-radio-custom p20" style="border: 2px solid #dee2e6">
                                                         <span class="font-weight-bold">3,000,000</span>
                                                     </label>
                                                 </div>
                                                 <div class="col-3 p10">
-                                                    <input type="radio" id="radio-8" name="money_pay" class="radio-custom">
+                                                    <input type="radio" id="radio-8" name="total_amount" value="5000000" class="radio-custom">
                                                     <label for="radio-8" class="form-control d-flex justify-content-center align-items-center label-radio-custom p20" style="border: 2px solid #dee2e6">
                                                         <span class="font-weight-bold">5,000,000</span>
                                                     </label>
                                                 </div>
-                                            </div>
+                                            </form>
+                                            <p class="error-message" data-error="total_amount"></p>
                                             <div class="row m0 justify-content-end m10b">
-                                                <button class="btn btn-primary"><i class="fas fa-credit-card"></i> Thanh toán</button>
+                                                <button id="btn-redirect-bao-kim" class="btn btn-primary"><i class="fas fa-credit-card"></i> Thanh toán</button>
                                             </div>
                                             <div class="row m0">
                                                 <div class="text-red" style="font-style: italic">(Số dư tài khoản sẽ được
@@ -165,57 +166,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal-sell-item" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 800px">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Bán sản phẩm</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="row m0 h100 col-12">
-                            <div class="d-flex h100" style="width: 150px">
-                                <img class="w-100 object-fit-contain" src="{{ asset('images/item_dota/set_dota_1.jpg') }}" alt="">
-                            </div>
-                            <div style="min-width: 450px; max-width: 550px">
-                                <div class="d-flex align-items-center font-weight-bold m10l m10b fs20 justify-content-center">Guise of the Winged Bolt</div>
-                                <div class="d-flex align-items-center m10l justify-content-center fs16">Drow ranger</div>
-                            </div>
-                        </div>
-                        <div class="row m0 m20t col-12">
-                            <div class="w-100 border">
-                                <div class="w-100" id="history-pay-chart-sell"></div>
-                            </div>
-                        </div>
-
-                        <div class="row m0 m20t col-12 p25l">
-                           <div class="col-2 d-flex align-items-center font-weight-bold">Giá bán</div>
-                           <div class="col-4">
-                               <input type="text" class="form-control convert-number-double-decimal text-right" name="amount_sell">
-                           </div>
-                            <div class="col-2 d-flex align-items-center font-weight-bold">Giá thực nhận</div>
-                            <div class="col-4">
-                                <input type="text" class="form-control convert-number-double-decimal text-right" name="amount_real">
-                            </div>
-                        </div>
-
-                        <div class="row m0 m20t col-12 p25l">
-                            <input type="checkbox" style="display: block; width: unset">
-                            <div class="m10l">Đồng ý và tiến hành rao bán</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button id="pay-submit" type="button" class="btn btn-primary">Hoàn tất</button>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 @section('js')
-    <script src="{{ asset('/js/user/recharge-money.js') }}"></script>
+    <script src="{{ asset('js/user/recharge-money.js') }}"></script>
 @endsection

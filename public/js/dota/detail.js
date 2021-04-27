@@ -134,11 +134,48 @@ var detailFunction = (function () {
         })
     }
 
+    modules.sendOrder = function () {
+        let formData = new FormData();
+        formData.append("_token", $('meta[name="csrf-token"]').attr('content'));
+        formData.append("market_id", $('#market-id').val());
+        let submitAjax = $.ajax({
+            url: 'https://sandbox.baokim.vn/payment/api/v4/order/send',
+            type: 'POST',
+            data: {
+                "mrc_order_id": "3052kBFlVcDTMZ5Z",
+                "total_amount": 8,
+                "description": "eqxI4W4HFUPwyNxH",
+                "url_success": "abk7XKg37d6bJHjG",
+                "merchant_id": 8,
+                "url_detail": "RPEF5JjBawPtAnwT",
+                "lang": "sMOpnGOwh246qgqW",
+                "bpm_id": 18,
+                "accept_bank": "ABi3NK6SJoxOCeby",
+                "accept_cc": "xhQhwajpY6WghowL",
+                "accept_qrpay": "Js7wlJYIS1JIfiJm",
+                "accept_e_wallet": "a1UW630UbULvXFJG",
+                "webhooks": "0YvqxR11rvvQDTVE",
+                "customer_email": "NUwsDFkMkq5mofTd",
+                "customer_phone": "b3PvayJ8ycfcddGa",
+                "customer_name": "DEw68quVK4nnbh0x",
+                "customer_address": "Lrfr5l6bETkne7y8"
+            },
+            // processData: false,
+            // contentType: false,
+        })
+        submitAjax.done(function (response) {
+            console.log(999, response)
+        });
+        submitAjax.fail(function (response) {
+        })
+    }
+
     return modules;
 }(window.jQuery, window, document));
 
 $(document).ready(function () {
     detailFunction.getDataChart();
+    detailFunction.sendOrder()
 
    $('.btn-buy-item').on('click', function () {
        detailFunction.clickBuyItem();
@@ -158,4 +195,37 @@ $(document).ready(function () {
     $('#check-submit').on('click', function () {
         $('#pay-submit').prop('disabled', !$(this).prop('checked'))
     });
+
+    // var settings = {
+    //     "async": true,
+    //     "crossDomain": true,
+    //     "url": "https://sandbox.baokim.vn/payment/api/v4/order/send",
+    //     "method": "POST",
+    //     "data": {
+    //         "mrc_order_id": "3052kBFlVcDTMZ5Z",
+    //         "total_amount": 8,
+    //         "description": "eqxI4W4HFUPwyNxH",
+    //         "url_success": "abk7XKg37d6bJHjG",
+    //         "merchant_id": 8,
+    //         "url_detail": "RPEF5JjBawPtAnwT",
+    //         "lang": "sMOpnGOwh246qgqW",
+    //         "bpm_id": 18,
+    //         "accept_bank": "ABi3NK6SJoxOCeby",
+    //         "accept_cc": "xhQhwajpY6WghowL",
+    //         "accept_qrpay": "Js7wlJYIS1JIfiJm",
+    //         "accept_e_wallet": "a1UW630UbULvXFJG",
+    //         "webhooks": "0YvqxR11rvvQDTVE",
+    //         "customer_email": "NUwsDFkMkq5mofTd",
+    //         "customer_phone": "b3PvayJ8ycfcddGa",
+    //         "customer_name": "DEw68quVK4nnbh0x",
+    //         "customer_address": "Lrfr5l6bETkne7y8"
+    //     },
+    //     "headers": {
+    //         "Access-Control-Allow-Origin" : "*"
+    //     }
+    // }
+    //
+    // $.ajax(settings).done(function (response) {
+    //     console.log(response);
+    // });
 });

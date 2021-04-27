@@ -126,8 +126,6 @@
     <script>
 
         function load(callback) {
-            $('#modal-loading').modal('show');
-
             $('.slide-logo').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -175,9 +173,6 @@
         $(document).ready(function () {
             load(function () {
                 $('.dota-index').show();
-                setTimeout(function () {
-                    $('#modal-loading').modal('hide');
-                }, 1000);
             });
 
         });
