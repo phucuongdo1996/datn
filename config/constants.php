@@ -119,3 +119,35 @@ const USER_HISTORY_BUY_ITEM = 1; // Mua sản phẩm
 const USER_HISTORY_SELL_ITEM = 2; // Bán sản phẩm
 const USER_HISTORY_BUY_STEAM_CODE = 3; // Mua stean code
 const USER_HISTORY_RECHARGE_MONEY = 4; // Nạp tài khoản.
+
+const STEAM_CODE_5 = 1;
+const STEAM_CODE_10 = 2;
+const STEAM_CODE_20 = 3;
+const STEAM_CODE_50 = 4;
+const STEAM_CODE_100 = 5;
+const STEAM_CODE_200 = 6;
+const STEAM_CODE_250 = 7;
+
+const STEAM_CODE_ARRAY = [
+    STEAM_CODE_5 => 'steam_code_5.jpeg',
+    STEAM_CODE_10 => 'steam_code_10.jpeg',
+    STEAM_CODE_20 => 'steam_code_20.jpeg',
+    STEAM_CODE_50 => 'steam_code_50.jpeg',
+    STEAM_CODE_100 => 'steam_code_100.jpeg',
+    STEAM_CODE_200 => 'steam_code_200.jpeg',
+    STEAM_CODE_250 => 'steam_code_250.jpeg'
+];
+
+const STEAM_CODE_MONEY = [
+    STEAM_CODE_5 => 100000,
+    STEAM_CODE_10 => 200000,
+    STEAM_CODE_20 => 400000,
+    STEAM_CODE_50 => 1000000,
+    STEAM_CODE_100 => 2000000,
+    STEAM_CODE_200 => 4000000,
+    STEAM_CODE_250 => 5000000
+];
+
+const STEAM_CODE_FAIL = 0;
+const STEAM_CODE_READY = 1;
+const STEAM_CODE_USED = 2;

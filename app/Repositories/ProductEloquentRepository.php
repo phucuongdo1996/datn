@@ -2,9 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Hero;
 use App\Models\Product;
-use App\Repositories\BaseRepository;
 
 class ProductEloquentRepository extends BaseRepository
 {
