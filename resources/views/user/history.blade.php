@@ -16,14 +16,14 @@
                             <div class="row m-0 m10b">
                                 <div class="col-12 item-block m5r h-100 p15 p20t">
                                     <div class="row m0">
-                                        @php($thu = $userHistory->where('type', USER_HISTORY_SELL_ITEM)->sum('purchase_money'))
+                                        @php($thu = $userHistory->whereIn('type', [USER_HISTORY_SELL_ITEM, USER_HISTORY_RECHARGE_MONEY])->sum('purchase_money'))
                                         @php($chi = $userHistory->where('type', USER_HISTORY_BUY_ITEM)->sum('purchase_money'))
                                             <div class="col-4 row m0">
                                                 <div class="col-4 d-flex align-items-center justify-content-center">
                                                     <label class="fs18">Tổng thu</label>
                                                 </div>
                                                 <div class="col-8 p15r">
-                                                    <input type="text" value="{{ number_format($thu, 2) }}" class="form-control text-right" style="color: green">
+                                                    <input type="text" value="{{ number_format($thu, 2) }}" class="form-control text-right" style="color: green" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-4 row m0">
@@ -31,7 +31,7 @@
                                                     <label class="fs18">Tổng chi</label>
                                                 </div>
                                                 <div class="col-8 p15r">
-                                                    <input type="text" value="{{ number_format($chi, 2) }}" class="form-control text-right" style="color: red">
+                                                    <input type="text" value="{{ number_format($chi, 2) }}" class="form-control text-right" style="color: red" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-4 row m0">
@@ -39,7 +39,7 @@
                                                     <label class="fs18">Chênh lệch</label>
                                                 </div>
                                                 <div class="col-8 p15r">
-                                                    <input type="text" value="{{ number_format($thu-$chi, 2) }}" class="form-control text-right" style="color: {{ $thu-$chi > 0 ? 'green' : 'red' }}">
+                                                    <input type="text" value="{{ number_format($thu-$chi, 2) }}" class="form-control text-right" style="color: {{ $thu-$chi > 0 ? 'green' : 'red' }}" disabled>
                                                 </div>
                                             </div>
                                         </div>

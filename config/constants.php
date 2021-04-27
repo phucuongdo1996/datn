@@ -116,3 +116,4 @@ const REVENUE_STEAM_CODE = 2; // Doanh thu từ Steam code
 const USER_HISTORY_BUY_ITEM = 1; // Mua sản phẩm
 const USER_HISTORY_SELL_ITEM = 2; // Bán sản phẩm
 const USER_HISTORY_BUY_STEAM_CODE = 3; // Mua stean code
+const USER_HISTORY_RECHARGE_MONEY = 4; // Nạp tài khoản.

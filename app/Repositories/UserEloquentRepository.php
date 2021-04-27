@@ -1,24 +1,10 @@
 <?php
 
-namespace App\Repositories
-;
+namespace App\Repositories;
 
-use App\Api\Pay\PayApiInterface;
-use App\Events\Pay;
-use App\Mail\ChangeMemberStatus;
 use App\Models\User;
-use App\Repositories\BaseRepository;
-use App\Repositories\Profile\ProfileEloquentRepository;
-use App\Repositories\Profile\ProfileRepositoryInterface;
-use App\Repositories\Property\PropertyRepositoryInterface;
-use App\Repositories\ResetPassword\ResetPasswordRepositoryInterface;
-use App\Repositories\SubUserPermission\SubUserPermissionRepositoryInterface;
-use App\Repositories\SubUserProperty\SubUserPropertyEloquentRepository;
-use App\Repositories\VerifiedRegister\VerifiedRegisterRepositoryInterface;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class UserEloquentRepository extends BaseRepository
 {
@@ -32,6 +18,12 @@ class UserEloquentRepository extends BaseRepository
         return User::class;
     }
 
+    /**
+     * Lấy sản phẩm sở hữu bởi User.
+     *
+     * @param $params
+     * @return mixed
+     */
     public function getProductsByUser($params)
     {
         $productSellingIds = Auth::user()->marketSeller()->where('status', TRADE_SELLING)->pluck('product_id')->toArray();
@@ -55,6 +47,12 @@ class UserEloquentRepository extends BaseRepository
             ->orderBy('updated_at', 'DESC')->paginate(MAX_RECORDS_PAGINATE);
     }
 
+    /**
+     * Lấy sản phẩm đang bán sở hữu bởi User.
+     *
+     * @param $params
+     * @return mixed
+     */
     public function getProductsSellingByUser($params)
     {
         return Auth::user()->marketSeller()->where('status', TRADE_SELLING)
@@ -74,5 +72,32 @@ class UserEloquentRepository extends BaseRepository
                 });
             })
             ->orderBy('id', 'DESC')->paginate(MAX_RECORDS_PAGINATE);
+    }
+
+    /**
+     * Cộng tiền nạp cho User.
+     *
+     * @param $money
+     * @return bool
+     */
+    public function addMoneyUser($money)
+    {
+        DB::beginTransaction();
+        try {
+            $user = Auth::user();
+            $user->money_own += $money;
+            $user->save();
+            resolve(UserHistoryEloquentRepository::class)->create([
+                'user_id' => $user->id,
+                'purchase_money' => $money,
+                'type' => USER_HISTORY_RECHARGE_MONEY
+            ]);
+            DB::commit();
+            return true;
+        } catch (\Exception $exception) {
+            report($exception);
+            DB::rollBack();
+            return false;
+        }
     }
 }

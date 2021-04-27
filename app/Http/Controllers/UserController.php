@@ -22,7 +22,6 @@ class UserController extends Controller
     private $productEloquentRepository;
     private $userEloquentRepository;
     private $marketEloquentRepository;
-    private $userHistoryEloquentRepository;
 
     /**
      * UserController constructor.
@@ -38,15 +37,13 @@ class UserController extends Controller
         ProductEloquentRepository $productEloquentRepository,
         CategoryEloquentRepository $categoryEloquentRepository,
         HeroEloquentRepository $heroEloquentRepository,
-        MarketEloquentRepository $marketEloquentRepository,
-        UserHistoryEloquentRepository $userHistoryEloquentRepository
+        MarketEloquentRepository $marketEloquentRepository
     ) {
         $this->categoryEloquentRepository = $categoryEloquentRepository;
         $this->heroEloquentRepository = $heroEloquentRepository;
         $this->productEloquentRepository = $productEloquentRepository;
         $this->userEloquentRepository = $userEloquentRepository;
         $this->marketEloquentRepository = $marketEloquentRepository;
-        $this->userHistoryEloquentRepository = $userHistoryEloquentRepository;
     }
 
     /**
@@ -118,8 +115,14 @@ class UserController extends Controller
      */
     public function getUrlBaoKim(GetUrlBaoKimRequest $request)
     {
+        $params = $request->all();
+        if ($this->userEloquentRepository->addMoneyUser($params['total_amount'])) {
+            Session::flash(STR_FLASH_SUCCESS, 'Nạp tài khoản thành công !.');
+        } else {
+            Session::flash(STR_FLASH_ERROR, 'Có lỗi trong quá trình xử lý, Nạp tài khoản thất bại !.');
+        }
         return response()->json([
-            'url_redirect' => BaoKimApi::getUrlRedirect($request->all())
+            'url_redirect' => BaoKimApi::getUrlRedirect($params)
         ], 200);
     }
 
