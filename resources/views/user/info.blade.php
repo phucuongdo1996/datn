@@ -17,8 +17,8 @@
                                 <div class="col-12 item-block m5r h-100 p15 p20t" style="min-height: 600px">
                                     <div class="row m-0 fs16">
                                         <div class="col-2 d-flex justify-content-center">
-                                            <div style="width: 120px; height: 120px">
-                                                <img src="{{ asset('images/avatar_user/img_avatar.png') }}" alt="">
+                                            <div class="d-flex" style="width: 120px; height: 120px">
+                                                <img class="object-fit-cover" style="border-radius: 50%" src="{{ asset(URL_USER_AVATAR . ($currentUser->avatar ?? 'defalut.png')) }}" alt="">
                                             </div>
                                         </div>
                                         <div class="col-10 p20">

@@ -19,6 +19,7 @@ class UserTableSeeder extends Seeder
             'email' => 'phucuongdo1996@gmail.com',
             'password' => \Illuminate\Support\Facades\Hash::make('123456789'),
             'nick_name' => 'Phu_Cuong_Do',
+            'avatar' => '15.jpeg',
             'steam_url' => $faker->url,
             'money_own' => rand(1000, 50000000),
         ]);
@@ -28,6 +29,7 @@ class UserTableSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail,
                 'password' => \Illuminate\Support\Facades\Hash::make('123456789'),
                 'nick_name' => $faker->firstName,
+                'avatar' => rand(1, 15) . '.jpeg',
                 'steam_url' => $faker->url,
                 'money_own' => rand(1000, 50000000),
             ]);

@@ -78,6 +78,8 @@ const ARRAY_URL_ITEM_IMAGES = [
 
 const IMAGES_SLIDES = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
 
+const URL_USER_AVATAR = 'images/avatar_user/';
+
 /**
  * Số bản ghi tối đa.
  */

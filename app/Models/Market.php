@@ -32,7 +32,8 @@ class Market extends Model
         'product_name',
         'product_image',
         'hero_image',
-        'hero_name'
+        'hero_name',
+        'seller_avatar',
     ];
 
     /**
@@ -53,6 +54,11 @@ class Market extends Model
     public function getSellerNameAttribute()
     {
         return $this->seller->nick_name;
+    }
+
+    public function getSellerAvatarAttribute()
+    {
+        return isset($this->seller->avatar) ? $this->seller->avatar : 'img_avatar.png';
     }
 
     public function getProductNameAttribute()

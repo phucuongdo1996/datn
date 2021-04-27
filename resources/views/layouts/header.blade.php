@@ -32,7 +32,7 @@
                         <div id="dropdown-menu">
                             <div class="dropdown" style="cursor: pointer">
                                 <div class="d-flex align-items-center" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img style="border-radius: 50%; width: 50px" src="{{ asset('images/avatar_user/img_avatar.png') }}" alt="">
+                                    <img style="border-radius: 50%; width: 50px; height: 50px" src="{{ asset(URL_USER_AVATAR . ($currentUser->avatar ?? 'img_avatar.png')) }}" alt="">
                                     <div class="p10l fs16">
                                         <div class="text-right font-weight-bold m5b">{{ $currentUser->nick_name }} <i class="fas fa-caret-down"></i></div>
                                         <div class="text-right text-gold"><i class="fas fa-coins"></i> {{ number_format($currentUser->money_own) }}</div>

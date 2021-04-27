@@ -32,7 +32,7 @@
                                                 <div class="col-3 font-weight-bold fs16 m15r">Người bán: </div>
                                                 <a href="#" class="d-flex align-items-center">
                                                     <div class="m10l m10r d-flex" style="width: 60px; height: 40px">
-                                                        <img class="object-fit-cover w-100" src="{{ asset('images/avatar_user/img_avatar.png') }}" alt="">
+                                                        <img class="object-fit-cover w-100" src="{{ asset(URL_USER_AVATAR . $market['seller_avatar']) }}" alt="">
                                                     </div>{{ $market['seller_name'] }}</a>
                                             </div>
                                             <div class="row m-0 fs16 d-flex align-items-center m10b">

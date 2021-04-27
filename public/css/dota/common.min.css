@@ -240,3 +240,12 @@ body {
   background: linear-gradient(90deg, #000, #42426c 48%, #64797e);
 }
 
+.btn:focus {
+  outline: unset;
+  box-shadow: unset;
+}
+
+.btn-zoom-hover:hover {
+  transform: scale(1.3);
+}
+
