@@ -185,19 +185,19 @@
                 <input type="hidden" name="market_id" value="{{ $market['id'] }}">
                 <div class="modal-header">
                     <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Mua sản phẩm</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="close btn btn-zoom-hover" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="row m0 h100 col-12">
-                            <div class="d-flex h100" style="width: 150px">
-                                <img class="w-100 object-fit-contain" src="{{ asset('images/item_dota/set_dota_1.jpg') }}" alt="">
+                            <div class="col-3" style="background-color: black">
+                                <img class="w-100 object-fit-contain" src="{{ asset(getImageUrl($market['product'])) }}" alt="">
                             </div>
-                            <div style="min-width: 450px; max-width: 550px">
-                                <div class="d-flex align-items-center font-weight-bold m10l m10b fs20 justify-content-center">Guise of the Winged Bolt</div>
-                                <div class="d-flex align-items-center m10l justify-content-center fs16">Drow ranger</div>
+                            <div class="col-9">
+                                <div class="d-flex align-items-center font-weight-bold m10l m15b fs20 justify-content-center" style="color: {{ SPECIAL_COLOR[$market['product']['special']] }}">{{ $market['product_name'] }} ({{ SPECIAL_TEXT[$market['product']['special']] }})</div>
+                                <div class="d-flex align-items-center m10l justify-content-center fs18">{{ $market['hero_name'] ?? 'Tất cả tướng' }}</div>
                             </div>
                         </div>
                         <div class="row m0 m20t col-12">

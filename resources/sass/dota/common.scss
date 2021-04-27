@@ -227,9 +227,14 @@ body {
     padding: 8px 25px;
     background: linear-gradient(90deg,#000,#42426c 48%,#64797e);
 }
-//.btn:hover {
-//    box-shadow: 0 0 10px 0 white inset, 0 0 10px 2px white;
-//    border: 1px solid grey;
-//}
+
+.btn:focus {
+    outline: unset;
+    box-shadow: unset;
+}
+
+.btn-zoom-hover:hover {
+    transform: scale(1.3);
+}
 
 

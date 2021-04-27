@@ -67,8 +67,9 @@
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
                                                                 Tổng tiền đã nạp:
                                                             </div>
+                                                            @php($money = $currentUser->userHistory()->where('type', USER_HISTORY_RECHARGE_MONEY)->sum('purchase_money'))
                                                             <div class="col-6 form-control font-weight-bold fs16 d-flex align-items-center">
-                                                                <i class="fas fa-coins m10r"></i> 44,000,000
+                                                                <i class="fas fa-coins m10r"></i> {{ number_format($money) }}
                                                             </div>
                                                         </div>
                                                     </div>
