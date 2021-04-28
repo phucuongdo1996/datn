@@ -135,49 +135,6 @@
     @include('layouts.footer')
 @endsection
 @section('modal')
-    <div class="modal fade" id="modal-success" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 750px">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Thanh toán thành công !</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="row m0 col-12">
-                            <div class="row m0 col-12 border p10b">
-                                <div class="row m0 col-12 m10t form-group">
-                                    <div class="col-6 d-flex align-items-center">Số giao dịch</div>
-                                    <div class="form-control col-6 text-right">DPC20210301</div>
-                                </div>
-                                <div class="row m0 col-12 m10t form-group">
-                                    <div class="col-6 d-flex align-items-center">Mã sản phẩm</div>
-                                    <div class="form-control col-6 text-right">SPKD20210301</div>
-                                </div>
-                                <div class="row m0 col-12 m10t form-group">
-                                    <div class="col-6 d-flex align-items-center">Ngày tạo</div>
-                                    <div class="form-control col-6 text-right">{{ date('d/m/Y', time()) }}</div>
-                                </div>
-                                <div class="row m0 col-12 m10t form-group">
-                                    <div class="col-6 d-flex align-items-center">Giá sản phẩm (đã bao gồm VAT)</div>
-                                    <div class="form-control col-6 text-right">15,000</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <a href="{{ route(USER_LIST_ITEM) }}">
-                        <button type="button" class="btn btn-info">Đến kho đồ <i class="fas fa-arrow-right"></i></button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal xác thực mua item -->
     <div class="modal fade" id="modal-buy-item" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 750px">

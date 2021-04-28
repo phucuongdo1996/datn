@@ -21,7 +21,7 @@
                                                 <div class="overlay d-flex justify-content-center align-items-center">
                                                     @if($data[$key]['count_record'] > 0)
                                                         <div>
-                                                            <button class="btn btn-primary fs18 buy-steam-code" style="width: 200px">
+                                                            <button class="btn btn-primary fs18 buy-steam-code" style="width: 200px" data-type="{{ $key }}" data-money="{{ STEAM_CODE_MONEY[$key] }}">
                                                                 <span><i class="fas fa-coins"></i> {{ number_format(STEAM_CODE_MONEY[$key]) }}</span>
                                                             </button>
                                                         </div>
@@ -45,62 +45,12 @@
     </div>
     </div>
 
-    <div class="modal fade" id="modal-sell-item" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 800px">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Bán sản phẩm</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="row m0 h100 col-12">
-                            <div class="d-flex h100" style="width: 150px">
-                                <img class="w-100 object-fit-contain" src="{{ asset('images/item_dota/set_dota_1.jpg') }}" alt="">
-                            </div>
-                            <div style="min-width: 450px; max-width: 550px">
-                                <div class="d-flex align-items-center font-weight-bold m10l m10b fs20 justify-content-center">Guise of the Winged Bolt</div>
-                                <div class="d-flex align-items-center m10l justify-content-center fs16">Drow ranger</div>
-                            </div>
-                        </div>
-                        <div class="row m0 m20t col-12">
-                            <div class="w-100 border">
-                                <div class="w-100" id="history-pay-chart-sell"></div>
-                            </div>
-                        </div>
-
-                        <div class="row m0 m20t col-12 p25l">
-                            <div class="col-2 d-flex align-items-center font-weight-bold">Giá bán</div>
-                            <div class="col-4">
-                                <input type="text" class="form-control convert-number-double-decimal text-right" name="amount_sell">
-                            </div>
-                            <div class="col-2 d-flex align-items-center font-weight-bold">Giá thực nhận</div>
-                            <div class="col-4">
-                                <input type="text" class="form-control convert-number-double-decimal text-right" name="amount_real">
-                            </div>
-                        </div>
-
-                        <div class="row m0 m20t col-12 p25l">
-                            <input type="checkbox" style="display: block; width: unset">
-                            <div class="m10l">Đồng ý và tiến hành rao bán</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button id="pay-submit" type="button" class="btn btn-primary">Hoàn tất</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal xác thực mua item -->
     <div class="modal fade" id="modal-buy-steam-code" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 750px">
             <form id="form-buy-item" class="modal-content">
                 <input type="hidden" name="steam_code_type" value="">
+                <input type="hidden" name="steam_code_money" value="">
                 <div class="modal-header">
                     <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Mua sản phẩm</h5>
                     <button type="button" class="close btn btn-zoom-hover" data-dismiss="modal" aria-label="Close">
@@ -115,27 +65,24 @@
                                 <div class="row m0 col-12 m10t form-group">
                                     <div class="col-6 d-flex align-items-center">Tài khoản hiện có</div>
                                     <div class="form-control col-6 text-right fs20">{{ $currentUser ? number_format($currentUser->money_own) : FLAG_ZERO }}</div>
+                                    <input id="user-money" type="hidden" value="{{ $currentUser ? $currentUser->money_own : FLAG_ZERO }}">
                                 </div>
                                 @php($rest = 1000000)
                                 <div class="row m0 col-12 m10t form-group">
                                     <div class="col-6 d-flex align-items-center">Giá sản phẩm (đã bao gồm VAT)</div>
-                                    <div class="form-control col-6 text-right fs20" style="color: {{ $rest > 0 ? 'green' : 'red' }}">1000000</div>
+                                    <div id="steam-price" class="form-control col-6 text-right fs20" style="color: {{ $rest > 0 ? 'green' : 'red' }}">0</div>
                                 </div>
                                 <div class="row m0 col-12 m10t form-group">
-
                                     <div class="col-6 d-flex align-items-center">Tài khoản còn lại</div>
-                                    <div class="form-control col-6 text-right fs20" style="color: {{ $rest > 0 ? 'green' : 'red' }}">1000000</div>
+                                    <div id="money-rest" class="form-control col-6 text-right fs20" style="color: {{ $rest > 0 ? 'green' : 'red' }}">0</div>
                                 </div>
                             </div>
                         </div>
                         <div class="row m0 m20t col-12 p25l">
-                            @if($rest > 0)
-                                <input id="check-submit" name="check_submit" type="checkbox" style="display: block; width: unset; transform: scale(1.5)">
-                                <div class="m10l fs16 font-weight-bold pointer-event"><label for="check-submit">Đồng ý và tiến hành rao bán</label></div>
-                                <p class="error-message" data-error="check_submit"></p>
-                            @else
-                                <div class="m10l fs16 font-weight-bold pointer-event"><label class="error-message">Tài khoản hiện có không đủ để thực hiện giao dịch này!</label></div>
-                            @endif
+                                <input class="can-pay" id="check-submit" name="check_submit" type="checkbox" style="display: block; width: unset; transform: scale(1.5)">
+                                <div class="can-pay m10l fs16 font-weight-bold pointer-event"><label for="check-submit">Đồng ý và tiến hành rao bán</label></div>
+                                <p class="can-pay error-message" data-error="check_submit"></p>
+                                <div class="cant-pay m10l fs16 font-weight-bold pointer-event"><label class="error-message">Tài khoản hiện có không đủ để thực hiện giao dịch này!</label></div>
                         </div>
                     </div>
                 </div>
@@ -143,6 +90,40 @@
                     <button id="pay-submit" type="button" class="btn m-0 btn-load-more" disabled><span><i class="fas fa-shopping-cart m5r"></i> Thanh toán</span></button>
                 </div>
             </form>
+        </div>
+    </div>
+    <!-- Modal thông tin thẻ -->
+    <div class="modal fade" id="steam-code-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 750px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold fs25" id="exampleModalCenterTitle">Thanh toán thành công !</h5>
+                    <button type="button" class="close btn btn-zoom-hover" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="row m0 col-12">
+                            <div class="row m0 col-12 border p10b">
+                                <div class="row m0 col-12 m10t form-group fs20">
+                                    <div class="col-6 d-flex align-items-center">Mã thẻ</div>
+                                    <div class="form-control col-6 text-right fs20">{{ $infoSteamCode['steam_code'] }}</div>
+                                </div>
+                                <div class="row m0 col-12 m10t form-group fs20">
+                                    <div class="col-6 d-flex align-items-center">Số Seri</div>
+                                    <div class="form-control col-6 text-right fs20">{{ $infoSteamCode['steam_seri'] }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ route(USER_HISTORY) }}">
+                        <button type="button" class="btn btn-info">Xem lịch sử <i class="fas fa-arrow-right"></i></button>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -184,5 +165,10 @@
     </div>
 @endsection
 @section('js')
+    @if($infoSteamCode)
+    <script>
+        $('#steam-code-info').modal('show');
+    </script>
+    @endif
     <script src="{{ asset('js/dota/steam_code.js') }}"></script>
 @endsection

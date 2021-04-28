@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\SteamCodeEloquentRepository;
+use Illuminate\Support\Facades\Session;
 
 class SteamCodeController extends Controller
 {
@@ -19,7 +20,11 @@ class SteamCodeController extends Controller
      */
     public function index()
     {
+        $infoSteamCode = null;
+        if (Session::has('steam_preview')) {
+            $infoSteamCode = Session::pull('steam_preview');
+        }
         $data = $this->steamCodeEloquentRepository->getStatusSteamCode();
-        return view('steam_code.index', compact('data'));
+        return view('steam_code.index', compact('data', 'infoSteamCode'));
     }
 }

@@ -185,4 +185,22 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function buySteamCode(Request $request)
+    {
+        $params = $request->all();
+        $result = $this->userEloquentRepository->buySteamCode($params['steam_code_type']);
+        if ($result['save']) {
+            Session::flash(STR_FLASH_SUCCESS, 'Mua mã thẻ thành công!');
+            Session::put('steam_preview', $result['data']);
+            return response()->json([
+                'save' => true,
+                'data' => $result['data']
+            ]);
+        }
+        Session::flash(STR_FLASH_ERROR, 'Đã có lỗi trong quá trình xử lý. Xin hãy thử lại !');
+        return response()->json([
+            'save' => false
+        ]);
+    }
 }

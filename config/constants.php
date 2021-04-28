@@ -25,6 +25,7 @@ const USER_SELL_ITEM = 'user.sell.item';
 const USER_WITHDRAW_ITEM = 'user.withdraw.item';
 const USER_BUY_ITEM = 'user.buy.item';
 const USER_VALIDATE_SELL_ITEM = 'user.validate.sell.item';
+const USER_BUY_STEAM_CODE = 'user.buy.steam.code';
 
 const ADMIN_INDEX = 'admin.index';
 const ADMIN_EDIT_PRODUCT = 'admin.edit.product';
@@ -136,6 +137,16 @@ const STEAM_CODE_ARRAY = [
     STEAM_CODE_100 => 'steam_code_100.jpeg',
     STEAM_CODE_200 => 'steam_code_200.jpeg',
     STEAM_CODE_250 => 'steam_code_250.jpeg'
+];
+
+const STEAM_CODE_VALUE = [
+    STEAM_CODE_5 => '$ 5',
+    STEAM_CODE_10 => '$ 10',
+    STEAM_CODE_20 => '$ 20',
+    STEAM_CODE_50 => '$ 50',
+    STEAM_CODE_100 => '$ 100',
+    STEAM_CODE_200 => '$ 200',
+    STEAM_CODE_250 => '$ 250'
 ];
 
 const STEAM_CODE_MONEY = [

@@ -100,4 +100,34 @@ class UserEloquentRepository extends BaseRepository
             return false;
         }
     }
+
+    public function buySteamCode($type)
+    {
+        DB::beginTransaction();
+        try {
+            $user = Auth::user();
+            $money = STEAM_CODE_MONEY[$type];
+            $steamCode = resolve(SteamCodeEloquentRepository::class)->buySteamCode($type);
+            if ($user->money_own >= $money && $steamCode) {
+                $user->money_own -= $money;
+                $user->userHistory()->create([
+                    'steam_code_id' => $steamCode->id,
+                    'purchase_money' => $money,
+                    'type' => USER_HISTORY_BUY_STEAM_CODE
+                ]);
+                $user->save();
+                DB::commit();
+                return [
+                    'save' => true,
+                    'data' => $steamCode->toArray()
+                ];
+            }
+            DB::rollBack();
+            return ['save' => false];
+        } catch (\Exception $exception) {
+            report($exception);
+            DB::rollBack();
+            return ['save' => false];
+        }
+    }
 }

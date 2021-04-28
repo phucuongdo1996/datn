@@ -67,4 +67,14 @@ class UserHistory extends Model
     {
         return isset($this->partner) ? $this->partner->nick_name : '';
     }
+
+    /**
+     * Relationship to steam code table [Partner]
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function steamCode()
+    {
+        return $this->belongsTo(SteamCode::class, 'steam_code_id', 'id');
+    }
 }
