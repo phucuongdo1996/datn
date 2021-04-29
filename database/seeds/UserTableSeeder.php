@@ -15,6 +15,17 @@ class UserTableSeeder extends Seeder
         DB::table('users')->truncate();
         $faker = Faker\Factory::create();
         DB::table('users')->insert([
+            'role' => ADMIN,
+            'user_code' => substr(hash('SHA256', $faker->name), 0, 5),
+            'email' => 'admin@gmail.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('123456789'),
+            'nick_name' => 'Admin',
+            'avatar' => '15.jpeg',
+            'steam_url' => $faker->url,
+            'money_own' => rand(1000, 50000000),
+        ]);
+        DB::table('users')->insert([
+            'role' => USER,
             'user_code' => substr(hash('SHA256', $faker->name), 0, 5),
             'email' => 'phucuongdo1996@gmail.com',
             'password' => \Illuminate\Support\Facades\Hash::make('123456789'),
@@ -25,6 +36,7 @@ class UserTableSeeder extends Seeder
         ]);
         for ($i = 0; $i < 50; $i++) {
             DB::table('users')->insert([
+                'role' => USER,
                 'user_code' => substr(hash('SHA256', $faker->name), 0, 5),
                 'email' => $faker->unique()->safeEmail,
                 'password' => \Illuminate\Support\Facades\Hash::make('123456789'),

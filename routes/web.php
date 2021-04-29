@@ -26,11 +26,14 @@ Route::get('/', 'TopController@index')->name(TOP);
 /**
  * Admin routes.
  */
-Route::prefix('admin')->group(function () {
-    Route::get('/', 'AdminController@index')->name(ADMIN_INDEX);
-    Route::get('/edit-product', 'AdminController@editProduct')->name(ADMIN_EDIT_PRODUCT);
-    Route::get('/add-steam-code', 'AdminController@addSteamCode')->name(ADMIN_ADD_STEAM_CODE);
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/', 'AdminController@index')->name(ADMIN_INDEX);
+        Route::get('/edit-product', 'AdminController@editProduct')->name(ADMIN_EDIT_PRODUCT);
+        Route::get('/add-steam-code', 'AdminController@addSteamCode')->name(ADMIN_ADD_STEAM_CODE);
+    });
 });
+
 
 /**
  * User routes
@@ -48,7 +51,7 @@ Route::prefix('dota')->group(function () {
     /**
      * Auth routes
      */
-    Route::middleware(['auth'])->group(function () {
+    Route::middleware(['auth', 'role:user'])->group(function () {
         Route::prefix('user')->group(function () {
             Route::get('/list-item', 'UserController@listItem')->name(USER_LIST_ITEM);
             Route::get('/store-product', 'UserController@storeProduct')->name(USER_STORE_PRODUCT);

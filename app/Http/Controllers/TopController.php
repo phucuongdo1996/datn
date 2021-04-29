@@ -8,6 +8,7 @@ use App\Repositories\MarketEloquentRepository;
 use App\Repositories\ProductEloquentRepository;
 use App\Repositories\ProductNewEloquentRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TopController extends Controller
 {
@@ -47,6 +48,9 @@ class TopController extends Controller
      */
     public function index()
     {
+        if (Auth::check() && Auth::user()->role == ADMIN) {
+            return redirect()->route(ADMIN_INDEX);
+        }
         $newItems = $this->marketEloquentRepository->getNewItems();
         $newSets = $this->marketEloquentRepository->getNewSets();
         $productNews = $this->marketEloquentRepository->getProductNew();

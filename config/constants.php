@@ -159,6 +159,12 @@ const STEAM_CODE_MONEY = [
     STEAM_CODE_250 => 5000000
 ];
 
+/**
+ * Trạng thái thẻ Steam Code.
+ */
 const STEAM_CODE_FAIL = 0;
 const STEAM_CODE_READY = 1;
 const STEAM_CODE_USED = 2;
+
+const ADMIN = 1;
+const USER = 2;

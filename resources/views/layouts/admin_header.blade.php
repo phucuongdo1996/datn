@@ -23,7 +23,22 @@
                             @if(!$currentUser)
                                 <li><a href="" class="registrationBtn">Đăng nhập</a>
                             @else
-                                <li><a href="" class="registrationBtn">{{ trans('attributes.dota.header.home') }}</a></li>
+                                        <div id="dropdown-menu">
+                                            <div class="dropdown" style="cursor: pointer">
+                                                <div class="d-flex align-items-center" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <img style="border-radius: 50%; width: 50px; height: 50px" src="{{ asset(URL_USER_AVATAR . ($currentUser->avatar ?? 'img_avatar.png')) }}" alt="">
+                                                    <div class="p10l fs16">
+                                                        <div class="text-right font-weight-bold m5b">{{ $currentUser->nick_name }} <i class="fas fa-caret-down"></i></div>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item p15" href="{{ route(ADMIN_INDEX) }}"><i class="fas fa-chart-line"></i> Thống kê doanh số</a>
+                                                    <a class="dropdown-item p15" href="{{ route(ADMIN_ADD_STEAM_CODE) }}"><i class="fab fa-steam-square"></i> Quản lý thẻ Steam Code</a>
+                                                    <a class="dropdown-item p15" href="{{ route(ADMIN_EDIT_PRODUCT) }}"><i class="fas fa-edit"></i> Quản lý thẻ Sản phẩm</a>
+                                                    <a class="dropdown-item p15" href="{{ route(LOGOUT) }}"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                                                </div>
+                                            </div>
+                                        </div>
                             @endif
                         </ul>
                     </div><!-- memberNav -->

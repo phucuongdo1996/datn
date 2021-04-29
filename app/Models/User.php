@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserHistory::class, 'user_id', 'id');
     }
+
+    public function getRole()
+    {
+        return $this->role == ADMIN ? 'admin' : 'user';
+    }
 }
