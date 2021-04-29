@@ -17,7 +17,7 @@
                                 <div class="col-12 item-block m5r h-100 p15 p20t">
                                     <div class="row m0">
                                         @php($thu = $userHistory->whereIn('type', [USER_HISTORY_SELL_ITEM, USER_HISTORY_RECHARGE_MONEY])->sum('purchase_money'))
-                                        @php($chi = $userHistory->where('type', USER_HISTORY_BUY_ITEM)->sum('purchase_money'))
+                                        @php($chi = $userHistory->whereIn('type', [USER_HISTORY_BUY_ITEM, USER_HISTORY_BUY_STEAM_CODE])->sum('purchase_money'))
                                             <div class="col-4 row m0">
                                                 <div class="col-4 d-flex align-items-center justify-content-center">
                                                     <label class="fs18">Tổng thu</label>
@@ -63,52 +63,26 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal-sell-item" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 800px">
+    <div class="modal fade" id="steam-code-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 700px">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Bán sản phẩm</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title font-weight-bold fs25" id="exampleModalCenterTitle">Thông tin thẻ</h5>
+                    <button type="button" class="close btn btn-zoom-hover" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="row m0 h100 col-12">
-                            <div class="d-flex h100" style="width: 150px">
-                                <img class="w-100 object-fit-contain" src="{{ asset('images/item_dota/set_dota_1.jpg') }}" alt="">
-                            </div>
-                            <div style="min-width: 450px; max-width: 550px">
-                                <div class="d-flex align-items-center font-weight-bold m10l m10b fs20 justify-content-center">Guise of the Winged Bolt</div>
-                                <div class="d-flex align-items-center m10l justify-content-center fs16">Drow ranger</div>
-                            </div>
+                    <div class="row m0 col-12 p10b">
+                        <div class="row m0 col-12 m10t form-group fs20">
+                            <div class="col-4 d-flex align-items-center">Mã thẻ</div>
+                            <div id="steam-code" class="form-control col-8 text-right fs20"></div>
                         </div>
-                        <div class="row m0 m20t col-12">
-                            <div class="w-100 border">
-                                <div class="w-100" id="history-pay-chart-sell"></div>
-                            </div>
-                        </div>
-
-                        <div class="row m0 m20t col-12 p25l">
-                           <div class="col-2 d-flex align-items-center font-weight-bold">Giá bán</div>
-                           <div class="col-4">
-                               <input type="text" class="form-control convert-number-double-decimal text-right" name="amount_sell">
-                           </div>
-                            <div class="col-2 d-flex align-items-center font-weight-bold">Giá thực nhận</div>
-                            <div class="col-4">
-                                <input type="text" class="form-control convert-number-double-decimal text-right" name="amount_real">
-                            </div>
-                        </div>
-
-                        <div class="row m0 m20t col-12 p25l">
-                            <input type="checkbox" style="display: block; width: unset">
-                            <div class="m10l">Đồng ý và tiến hành rao bán</div>
+                        <div class="row m0 col-12 m10t form-group fs20">
+                            <div class="col-4 d-flex align-items-center">Số Seri</div>
+                            <div id="steam-seri" class="form-control col-8 text-right fs20"></div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button id="pay-submit" type="button" class="btn btn-primary">Hoàn tất</button>
                 </div>
             </div>
         </div>

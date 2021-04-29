@@ -249,3 +249,13 @@ body {
   transform: scale(1.3);
 }
 
+.sold-steam .overlay {
+  opacity: 1;
+}
+
+.sold-steam .sold-steam-button {
+  width: 100%;
+  background-color: #656565;
+  padding: 15px 0 !important;
+}
+

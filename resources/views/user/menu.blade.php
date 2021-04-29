@@ -19,7 +19,7 @@
                     <i class="fas fa-store fs20"></i>
                     <div class="fs18 p10l">Sản phẩm đang bán</div>
                 </a>
-                <a href="{{ route(USER_HISTORY) }}" class="d-flex align-items-center menu-user-item p15 border-bottom @if($currentRouteName == USER_HISTORY) menu-user-item-active @endif" >
+                <a href="{{ route(USER_HISTORY) }}" class="d-flex align-items-center menu-user-item p15 @if($currentRouteName == USER_HISTORY) menu-user-item-active @endif" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px">
                     <i class="fas fa-history fs20"></i>
                     <div class="fs18 p10l">Lịch sử giao dịch</div>
                 </a>

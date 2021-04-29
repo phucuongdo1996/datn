@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="col-4">
-                <button class="btn btn-info" data-steam-code="{{ $data->steamCode->steam_code }}" data-steam-seri="{{ $data->steamCode->steam_seri }}"><span><i class="fas fa-info-circle"></i> Chi tiết thẻ</span></button>
+                <button type="button" class="btn btn-load-more btn-steam-info" data-steam-code="{{ $data->steamCode->steam_code }}" data-steam-seri="{{ $data->steamCode->steam_seri }}"><span><i class="fas fa-info-circle"></i> Chi tiết thẻ</span></button>
             </div>
 
         </div>

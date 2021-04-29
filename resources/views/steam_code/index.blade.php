@@ -15,19 +15,22 @@
                                 <div class="item-block m5r h-100 p15 p20t">
                                     <div class="row m-0" style="">
                                         @foreach(STEAM_CODE_ARRAY as $key => $value)
+                                            @php($readySell = isset($data[$key]['count_record']) && $data[$key]['count_record'] > 0)
                                         <div class="col-xl-3 col-lg-4 col-6  m0 p15b p15r" style="">
-                                            <div class="d-flex position-relative hovereffect h-365 border-radius-10">
+                                            <div class="d-flex position-relative hovereffect h-365 border-radius-10 @if(!$readySell)sold-steam @endif">
                                                 <img class="w-100" style="object-fit: fill" src="{{ asset('images/steam_codes/' . $value) }}" alt="">
                                                 <div class="overlay d-flex justify-content-center align-items-center">
-                                                    @if($data[$key]['count_record'] > 0)
+                                                    @if($readySell)
                                                         <div>
                                                             <button class="btn btn-primary fs18 buy-steam-code" style="width: 200px" data-type="{{ $key }}" data-money="{{ STEAM_CODE_MONEY[$key] }}">
                                                                 <span><i class="fas fa-coins"></i> {{ number_format(STEAM_CODE_MONEY[$key]) }}</span>
                                                             </button>
                                                         </div>
                                                     @else
-                                                        <div class="fs18 color-white" >
-                                                            Hết hàng
+                                                        <div class="sold-steam-button">
+                                                            <div class="fs18 color-white" >
+                                                                Hết hàng
+                                                            </div>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -120,13 +123,12 @@
                 </div>
                 <div class="modal-footer">
                     <a href="{{ route(USER_HISTORY) }}">
-                        <button type="button" class="btn btn-info">Xem lịch sử <i class="fas fa-arrow-right"></i></button>
+                        <button type="button" class="btn btn-load-more"><span class="fs16">Xem lịch sử <i class="fas fa-arrow-alt-circle-right"></i></span></button>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Modal Đăng nhập -->
     <div class="modal fade" id="login-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 750px">

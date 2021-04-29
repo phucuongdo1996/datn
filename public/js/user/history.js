@@ -62,12 +62,16 @@ let historyUser = (function () {
         });
     }
 
+    modules.showModalSteamInfo = function (object) {
+        $('#steam-code').text(object.data('steam-code'));
+        $('#steam-seri').text(object.data('steam-seri'));
+        $('#steam-code-info').modal('show');
+    }
+
     return modules;
 }(window.jQuery, window, document));
 
 $(document).ready(function () {
-    historyUser.buildHistoryChart();
-
     $('#show-chart').on('click', function () {
         if($(this).hasClass('show-chart')) {
             $(this).removeClass('show-chart');
@@ -76,5 +80,10 @@ $(document).ready(function () {
             $(this).addClass('show-chart');
             $(this).text('Thu biểu đồ');
         }
-    })
+    });
+
+    $('.btn-steam-info').on('click', function () {
+        console.log(1111)
+        historyUser.showModalSteamInfo($(this));
+    });
 });
