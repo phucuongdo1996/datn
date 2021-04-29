@@ -19,6 +19,7 @@ class CreateAdminRevenueTable extends Migration
             $table->integer('value');
             $table->timestamps();
             $table->softDeletes();
+            $table->index(['type']);
         });
     }
 

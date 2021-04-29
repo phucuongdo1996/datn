@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductsTableSeeder::class);
         $this->call(ProductsNewTableSeeder::class);
         $this->call(MarketTableSeeder::class);
+        $this->call(SteamCodeTableSeeder::class);
     }
 }

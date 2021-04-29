@@ -18,6 +18,7 @@ class CreateProductsRemarkableTable extends Migration
             $table->integer('product_base_id');
             $table->timestamps();
             $table->softDeletes();
+            $table->index(['product_base_id']);
         });
     }
 

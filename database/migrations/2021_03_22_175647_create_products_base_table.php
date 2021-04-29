@@ -22,6 +22,7 @@ class CreateProductsBaseTable extends Migration
             $table->string('image')->nullable()->comment('image');
             $table->timestamps();
             $table->softDeletes();
+            $table->index(['hero_id', 'type', 'category_id']);
         });
     }
 

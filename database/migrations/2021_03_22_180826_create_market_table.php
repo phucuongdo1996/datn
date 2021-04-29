@@ -22,6 +22,7 @@ class CreateMarketTable extends Migration
             $table->tinyInteger('status')->comment('0 - Đã huỷ, 1 - Đang bán, 2 - Đã bán');
             $table->timestamps();
             $table->softDeletes();
+            $table->index(['seller_id', 'product_id', 'price', 'status']);
         });
     }
 

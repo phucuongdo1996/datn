@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('special')->default(FLAG_ZERO);
             $table->timestamps();
             $table->softDeletes();
+            $table->index(['user_id', 'product_base_id']);
         });
     }
 

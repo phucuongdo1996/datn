@@ -18,6 +18,7 @@ class AddColumnIntoSteamCodeTable extends Migration
             $table->tinyInteger('status')->after('type');
             $table->unique('steam_code');
             $table->unique('steam_seri');
+            $table->index(['type']);
         });
     }
 

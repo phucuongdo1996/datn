@@ -22,6 +22,7 @@ class CreateUserHistoryTable extends Migration
             $table->integer('type')->comment('1 - Mua item, 2 - Bán item, 3 - Mua steam code, 4 - Nạp thẻ');
             $table->timestamps();
             $table->softDeletes();
+            $table->index(['user_id', 'type']);
         });
     }
 
