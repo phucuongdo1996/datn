@@ -186,6 +186,12 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Xử lý Request [Mua thẻ Steam Code]
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function buySteamCode(Request $request)
     {
         $params = $request->all();

@@ -30,6 +30,7 @@ const USER_BUY_STEAM_CODE = 'user.buy.steam.code';
 const ADMIN_INDEX = 'admin.index';
 const ADMIN_EDIT_PRODUCT = 'admin.edit.product';
 const ADMIN_ADD_STEAM_CODE = 'admin.add.steam.code';
+const ADMIN_GET_DATA_REVENUE = 'admin.get.data.revenue';
 
 /**
  * Loại sản phẩm.
@@ -112,6 +113,7 @@ const SPECIAL_COLOR = ['unset', '#99CCFF', '#3333FF', '#6600CC', '#FF9900', '#FF
  */
 const REVENUE_AGENCY = 1; // Doanh thu từ trung gian giao dịch
 const REVENUE_STEAM_CODE = 2; // Doanh thu từ Steam code
+const REVENUE_RECHARGE_MONEY = 3; // Doanh thu từ Nạp tài khoản
 
 /**
  * Lịch sử giao dịch : Loại giao dịch.

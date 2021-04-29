@@ -92,6 +92,10 @@ class UserEloquentRepository extends BaseRepository
                 'purchase_money' => $money,
                 'type' => USER_HISTORY_RECHARGE_MONEY
             ]);
+            resolve(AdminRevenueEloquentRepository::class)->create([
+                'type' => REVENUE_RECHARGE_MONEY,
+                'value' => $money
+            ]);
             DB::commit();
             return true;
         } catch (\Exception $exception) {
@@ -101,6 +105,12 @@ class UserEloquentRepository extends BaseRepository
         }
     }
 
+    /**
+     * Mua thẻ Steam Code.
+     *
+     * @param $type
+     * @return array|false[]
+     */
     public function buySteamCode($type)
     {
         DB::beginTransaction();
@@ -116,6 +126,10 @@ class UserEloquentRepository extends BaseRepository
                     'type' => USER_HISTORY_BUY_STEAM_CODE
                 ]);
                 $user->save();
+                resolve(AdminRevenueEloquentRepository::class)->create([
+                    'type' => REVENUE_STEAM_CODE,
+                    'value' => $money
+                ]);
                 DB::commit();
                 return [
                     'save' => true,
