@@ -3,11 +3,11 @@
 namespace App\Repositories;
 
 use App\Models\ProductNew;
-use App\Traits\showProduct;
+use App\Traits\ShowProduct;
 
 class ProductNewEloquentRepository extends BaseRepository
 {
-    use showProduct;
+    use ShowProduct;
 
     /**
      * Specify Model class name.

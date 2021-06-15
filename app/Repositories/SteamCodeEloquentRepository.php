@@ -45,4 +45,16 @@ class SteamCodeEloquentRepository extends BaseRepository
         }
         return null;
     }
+
+    public function getData($params)
+    {
+        return $this->model->where('status', STEAM_CODE_READY)
+            ->when(isset($params['steam_code']), function ($query) use ($params) {
+                return $query->where('steam_code', 'like', $params['steam_code'] . '%')->orWhere('steam_seri', 'like', $params['steam_code'] . '%');
+            })
+            ->when(isset($params['type']), function ($query) use ($params) {
+                return $query->where('type', $params['type']);
+            })
+            ->orderBy('type')->orderBy('created_at', 'DESC')->paginate(20);
+    }
 }

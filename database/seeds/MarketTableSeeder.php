@@ -16,9 +16,11 @@ class MarketTableSeeder extends Seeder
         $userIds = \App\Models\User::all()->pluck('id')->toArray();
         $products = \App\Models\Product::select('id', 'price')->get()->toArray();
         $count = count($products);
+        $dateEnd= (new \DateTime())->getTimestamp();
+        $dateStart = (new \DateTime('-30 days'))->getTimestamp();
         for ($i = 0; $i < 5000; $i++) {
             $randomProduct = $i % $count;
-            $date = date("Y-m-d H:i:s", rand(1609599600, 1618395069));
+            $date = date("Y-m-d H:i:s", rand($dateStart, $dateEnd));
             DB::table('market')->insert([
                 'seller_id' => $userIds[array_rand($userIds, 1)],
                 'product_id' => $products[$randomProduct]['id'],
@@ -29,7 +31,7 @@ class MarketTableSeeder extends Seeder
                 'updated_at' => $date,
             ]);
             for ($k = 1; $k < 6; $k++) {
-                $date2 = date("Y-m-d H:i:s", rand(1609599600, 1618395069));
+                $date2 = date("Y-m-d H:i:s", rand($dateStart, $dateEnd));
                 DB::table('market')->insert([
                     'seller_id' => $userIds[array_rand($userIds, 1)],
                     'buyer_id' => $userIds[array_rand($userIds, 1)],

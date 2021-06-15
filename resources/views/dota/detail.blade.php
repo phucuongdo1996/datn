@@ -95,7 +95,7 @@
                                                     <td>
                                                         <div class="d-flex">
                                                             <div class="icon-user">
-                                                                <img src="{{ asset('images/avatar_user/img_avatar.png') }}" alt="">
+                                                                <img src="{{ asset(URL_USER_AVATAR . $item->seller->avatar) }}" alt="">
                                                             </div>
                                                             <div class="d-flex align-items-center font-weight-bold m10l">{{ $item->seller->nick_name }}</div>
                                                         </div>

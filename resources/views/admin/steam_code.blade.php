@@ -20,35 +20,36 @@
                                            Thêm thẻ Steam code:
                                         </div>
                                     </div>
-                                    <div class="row m15t p20l">
+                                    <form id="form-data" class="row m15t p20l">
                                         <div class="col-12 row m-0">
                                             <div class="col-4">
                                                 <div class="p10r">
-                                                    <input type="text" class="form-control" placeholder="Mã thẻ nạp">
+                                                    <input name="steam_code" type="text" class="form-control convert-card-number" placeholder="Mã thẻ nạp">
+                                                    <p class="error-message p10t" data-error="steam_code"></p>
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="p10r">
-                                                    <input type="text" class="form-control" placeholder="Số seri">
+                                                    <input name="steam_seri" type="text" class="form-control convert-card-number" placeholder="Số seri">
+                                                    <p class="error-message p10t" data-error="steam_seri"></p>
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="p10r">
-                                                    <select name="" id="" class="form-control">
+                                                    <select name="type" id="" class="form-control">
                                                         <option value="">Mệnh giá</option>
-                                                        <option value="">100,000</option>
-                                                        <option value="">200,000</option>
-                                                        <option value="">500,000</option>
-                                                        <option value="">1,000,000</option>
-                                                        <option value="">2,000,000</option>
+                                                        @foreach(STEAM_CODE_VALUE as $key => $value)
+                                                            <option value="{{ $key }}">{{ $value }}</option>
+                                                        @endforeach
                                                     </select>
+                                                    <p class="error-message p10t" data-error="type"></p>
                                                 </div>
                                             </div>
                                             <div class="col-12 m10t d-flex justify-content-center">
-                                                <button class="btn btn-primary"><i class="fas fa-plus-circle"></i> Thêm thẻ</button>
+                                                <button id="btn-add-steam-code" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Thêm thẻ</button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 <div class="col-12 item-block m5r h-100 p15 p20t m10t">
                                     <div class="row m10t p20l">
@@ -57,31 +58,32 @@
                                         </div>
                                     </div>
                                     <div class="row m15t p20l">
-                                        <div class="col-12 row m0">
+                                        <form action="{{ route(ADMIN_ADD_STEAM_CODE) }}" method="GET" class="col-12 row m0">
                                             <div class="col-4">
                                                 <div class="p10r">
-                                                    <input type="text" class="form-control" placeholder="Mã thẻ, số seri">
+                                                    <input name="steam_code" value="{{ $params['steam_code'] ?? '' }}" type="text" class="form-control convert-card-number" placeholder="Mã thẻ, số seri">
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="p10r">
-                                                    <select name="" id="" class="form-control">
+                                                    <select name="type" id="" class="form-control">
                                                         <option value="">Mệnh giá</option>
-                                                        <option value="">100,000</option>
-                                                        <option value="">200,000</option>
-                                                        <option value="">500,000</option>
-                                                        <option value="">1,000,000</option>
-                                                        <option value="">2,000,000</option>
+                                                        @foreach(STEAM_CODE_VALUE as $key => $value)
+                                                            <option value="{{ $key }}" @if(isset($params['type']) && $params['type'] == $key) selected @endif>{{ $value }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="p10r">
-                                                    <button class="btn btn-primary"><i class="fas fa-search"></i> Tìm kiếm</button>
+                                                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Tìm kiếm</button>
                                                 </div>
                                             </div>
+                                        </form>
+                                        <div id="paginate" class="d-flex justify-content-end m10t m15t w-100">
+                                            {{ $data->appends(request()->query()) }}
                                         </div>
-                                        <div class="col-12 row m-0 m15t overflow-auto" style="height: 400px">
+                                        <div class="col-12 row m-0 m15t overflow-auto" style="height: 600px">
                                             <table id="table-custom" class="table table-bordered table-striped border m0 table-border-custom">
                                                 <thead>
                                                 <tr>
@@ -93,28 +95,37 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach(ARRAY_COLOR as $key => $item)
+                                                @forelse($data as $key => $item)
                                                     <tr>
-                                                        <td class="text-center">{{ $key }}</td>
+                                                        <td class="text-center">{{ $key+1 }}</td>
                                                         <td class="text-center">
-                                                            {{ rand(1111, 9999) }} {{ rand(1111, 9999) }} {{ rand(1111, 9999) }} {{ rand(1111, 9999) }}
+                                                            {{ $item->steam_code }}
                                                         </td>
                                                         <td class="text-center">
-                                                            {{ rand(1111, 9999) }} {{ rand(1111, 9999) }} {{ rand(1111, 9999) }} {{ rand(1111, 9999) }}
+                                                            {{ $item->steam_seri }}
                                                         </td>
                                                         <td class="text-center">
-                                                            {{ ['100,000', '200,000', '500,000'][array_rand(['100,000', '200,000', '500,000'], 1)] }}
+                                                            {{ STEAM_CODE_VALUE[$item->type] }}
                                                         </td>
                                                         <td class="text-center">
-                                                            <button class="btn btn-danger min-w115"><i class="fas fa-trash-alt"></i> Xoá</button>
+                                                            <button class="btn btn-danger min-w115 btn-delete-steam-code" data-id="{{ $item->id }}" data-steam-code="{{ $item->steam_code }}"><i class="fas fa-trash-alt"></i> Xoá</button>
                                                         </td>
                                                     </tr>
-                                                @endforeach
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="5">
+                                                            Không có dữ liệu.
+                                                        </td>
+                                                    </tr>
+                                                @endforelse
                                                 </tbody>
                                             </table>
                                             <div class="col-6">
                                                 <div id="chart-top-sell"></div>
                                             </div>
+                                        </div>
+                                        <div id="paginate" class="d-flex justify-content-end p20t p10b w-100">
+                                            {{ $data->links() }}
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +137,32 @@
             </div><!-- kvWrap -->
         </div>
     </div>
+
+    <div class="modal fade" id="modal-delete-steam-code" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Xác nhận</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-center m15b">
+                        <div class="fs20">Xóa mã thẻ steam này ?</div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div id="delete-steam-code" class="fs20 font-weight-bold">1234 5678 7894</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="steam-code-id">
+                    <button id="delete-submit" type="button" class="btn m-0 btn-load-more"><span><i class="fas fa-check-circle m10r"></i>Hoàn tất</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
-    <script src="{{ asset('js/admin/index.js') }}"></script>
+    <script src="{{ asset('js/admin/steam_code.js') }}"></script>
 @endsection

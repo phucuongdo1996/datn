@@ -30,6 +30,8 @@ const USER_BUY_STEAM_CODE = 'user.buy.steam.code';
 const ADMIN_INDEX = 'admin.index';
 const ADMIN_EDIT_PRODUCT = 'admin.edit.product';
 const ADMIN_ADD_STEAM_CODE = 'admin.add.steam.code';
+const ADMIN_STORE_STEAM_CODE = 'admin.store.steam.code';
+const ADMIN_DELETE_STEAM_CODE = 'admin.delete.steam.code';
 const ADMIN_GET_DATA_REVENUE = 'admin.get.data.revenue';
 
 /**

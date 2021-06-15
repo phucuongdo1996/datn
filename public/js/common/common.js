@@ -51,6 +51,14 @@ var Common = (function () {
         })
     };
 
+    modules.convertCardNumber = function () {
+        $("body").find('.convert-card-number').each(function (i, e) {
+            new Cleave($(this), {
+                blocks: [4, 4, 4]
+            });
+        })
+    }
+
     modules.Numeral = function () {
         $("body").find('.convert-data').each(function (i, e) {
             let price = $(this).val();
@@ -119,6 +127,7 @@ var Common = (function () {
     modules.clearMessageValidate = function () {
         $('p.error-message').text('');
         $('input.input-error').removeClass('input-error');
+        $('select.input-error').removeClass('input-error');
         $('.fail-login').hide();
     };
 
@@ -127,6 +136,7 @@ var Common = (function () {
         $.each(messageList, function (key, value) {
             $('p.error-message[data-error=' + key + ']').text(value).show();
             $('input[name=' + key + ']').addClass('input-error');
+            $('select[name=' + key + ']').addClass('input-error');
         });
     };
 
@@ -287,6 +297,7 @@ var Common = (function () {
 
 $(document).ready(function () {
     Common.cleaveNumeral();
+    Common.convertCardNumber();
     Common.optionDateTime();
     Common.onlyAcceptNumbers();
 

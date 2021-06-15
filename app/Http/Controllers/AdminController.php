@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SteamCodeRequest;
 use App\Repositories\AdminRevenueEloquentRepository;
+use App\Repositories\SteamCodeEloquentRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
     private $adminRevenueEloquentRepository;
+    private $steamCodeEloquentRepository;
 
     public function __construct(
+        SteamCodeEloquentRepository $steamCodeEloquentRepository,
         AdminRevenueEloquentRepository $adminRevenueEloquentRepository
     ) {
+        $this->steamCodeEloquentRepository = $steamCodeEloquentRepository;
         $this->adminRevenueEloquentRepository = $adminRevenueEloquentRepository;
     }
 
@@ -51,8 +58,59 @@ class AdminController extends Controller
         return view('admin.edit_product');
     }
 
-    public function addSteamCode()
+    /**
+     * Show màn hình [Quản lý Steam Code]
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function addSteamCode(Request $request)
     {
-        return view('admin.steam_code');
+        $params = $request->all();
+        $data = $this->steamCodeEloquentRepository->getData($params);
+        return view('admin.steam_code', compact('data', 'params'));
+    }
+
+    /**
+     * Tạo mới thẻ [Quản lý Steam Code]
+     *
+     * @param SteamCodeRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function storeSteamCode(SteamCodeRequest $request)
+    {
+        $data = $request->all();
+        $data['status'] = STEAM_CODE_READY;
+        if ($this->steamCodeEloquentRepository->create($data)) {
+            Session::flash(STR_FLASH_SUCCESS, 'Thêm thẻ thành công !.');
+            return response()->json([
+                'status' => 201
+            ]);
+        }
+        Session::flash(STR_FLASH_ERROR, 'Thêm thẻ thất bại !.');
+        return response()->json([
+            'status' => 400
+        ]);
+
+    }
+
+    /**
+     * Xóa thẻ [Quản lý Steam Code]
+     *
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
+    public function deleteSteamCode($id)
+    {
+        if ($this->steamCodeEloquentRepository->deleteById($id)) {
+            Session::flash(STR_FLASH_SUCCESS, 'Xóa thẻ thành công !.');
+            return response()->json([
+                'status' => 200
+            ]);
+        }
+        Session::flash(STR_FLASH_ERROR, 'Xóa thẻ thất bại !.');
+        return response()->json([
+            'status' => 400
+        ]);
     }
 }
