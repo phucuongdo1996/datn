@@ -29,6 +29,9 @@ const USER_BUY_STEAM_CODE = 'user.buy.steam.code';
 
 const ADMIN_INDEX = 'admin.index';
 const ADMIN_EDIT_PRODUCT = 'admin.edit.product';
+const ADMIN_ADD_PRODUCT_NEW = 'admin.add.product.new';
+const ADMIN_ADD_PRODUCT_BEST_SELLER = 'admin.add.product.best.seller';
+const ADMIN_ADD_PRODUCT_REMARKABLE = 'admin.add.product.remarkable';
 const ADMIN_ADD_STEAM_CODE = 'admin.add.steam.code';
 const ADMIN_STORE_STEAM_CODE = 'admin.store.steam.code';
 const ADMIN_DELETE_STEAM_CODE = 'admin.delete.steam.code';

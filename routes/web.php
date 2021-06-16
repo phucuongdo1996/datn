@@ -30,6 +30,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', 'AdminController@index')->name(ADMIN_INDEX);
         Route::get('/edit-product', 'AdminController@editProduct')->name(ADMIN_EDIT_PRODUCT);
+        Route::post('/add-product-new', 'AdminController@addProductNew')->name(ADMIN_ADD_PRODUCT_NEW);
+        Route::post('/add-product-best-seller', 'AdminController@addProductBestSeller')->name(ADMIN_ADD_PRODUCT_BEST_SELLER);
+        Route::post('/add-product-remarkable', 'AdminController@addProductRemarkable')->name(ADMIN_ADD_PRODUCT_REMARKABLE);
+        Route::post('/add-product-new', 'AdminController@addProductNew')->name(ADMIN_ADD_PRODUCT_NEW);
         Route::get('/add-steam-code', 'AdminController@addSteamCode')->name(ADMIN_ADD_STEAM_CODE);
         Route::post('/add-steam-code', 'AdminController@storeSteamCode')->name(ADMIN_STORE_STEAM_CODE);
         Route::delete('/delete-steam-code/{id}', 'AdminController@deleteSteamCode')->name(ADMIN_DELETE_STEAM_CODE);

@@ -11,4 +11,15 @@ trait ShowProduct
     {
         return $this->get()->pluck('product_base_id')->toArray();
     }
+
+    /**
+     * @param $productBaseId
+     * @return mixed
+     */
+    public function addRecord($productBaseId)
+    {
+        return $this->model->updateOrCreate([
+            'product_base_id' => $productBaseId
+        ]);
+    }
 }

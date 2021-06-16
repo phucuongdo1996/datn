@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SteamCodeRequest;
 use App\Repositories\AdminRevenueEloquentRepository;
+use App\Repositories\ProductBaseEloquentRepository;
+use App\Repositories\ProductBestsellerEloquentRepository;
+use App\Repositories\ProductNewEloquentRepository;
+use App\Repositories\ProductRemarkableEloquentRepository;
 use App\Repositories\SteamCodeEloquentRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -12,13 +16,35 @@ class AdminController extends Controller
 {
     private $adminRevenueEloquentRepository;
     private $steamCodeEloquentRepository;
+    private $productNewEloquentRepository;
+    private $productBestsellerEloquentRepository;
+    private $productRemarkableEloquentRepository;
+    private $productBaseEloquentRepository;
 
+    /**
+     * AdminController constructor.
+     *
+     * @param SteamCodeEloquentRepository $steamCodeEloquentRepository
+     * @param ProductNewEloquentRepository $productNewEloquentRepository
+     * @param ProductBaseEloquentRepository $productBaseEloquentRepository
+     * @param ProductBestsellerEloquentRepository $productBestsellerEloquentRepository
+     * @param ProductRemarkableEloquentRepository $productRemarkableEloquentRepository
+     * @param AdminRevenueEloquentRepository $adminRevenueEloquentRepository
+     */
     public function __construct(
         SteamCodeEloquentRepository $steamCodeEloquentRepository,
+        ProductNewEloquentRepository $productNewEloquentRepository,
+        ProductBaseEloquentRepository $productBaseEloquentRepository,
+        ProductBestsellerEloquentRepository $productBestsellerEloquentRepository,
+        ProductRemarkableEloquentRepository $productRemarkableEloquentRepository,
         AdminRevenueEloquentRepository $adminRevenueEloquentRepository
     ) {
         $this->steamCodeEloquentRepository = $steamCodeEloquentRepository;
         $this->adminRevenueEloquentRepository = $adminRevenueEloquentRepository;
+        $this->productNewEloquentRepository = $productNewEloquentRepository;
+        $this->productBestsellerEloquentRepository = $productBestsellerEloquentRepository;
+        $this->productRemarkableEloquentRepository = $productRemarkableEloquentRepository;
+        $this->productBaseEloquentRepository = $productBaseEloquentRepository;
     }
 
     /**
@@ -31,6 +57,11 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    /**
+     * Show màn hình [Thống kê doanh số]
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getDataRevenue()
     {
         $data = $this->adminRevenueEloquentRepository->getDataRevenue();
@@ -53,13 +84,71 @@ class AdminController extends Controller
         return response()->json(['data' => $dataReturn]);
     }
 
+    /**
+     * Show màn hình [Quản lý sản phẩm]
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function editProduct()
     {
-        return view('admin.edit_product');
+        $productNew = $this->productNewEloquentRepository->orderBy('product_base_id', 'DESC')->get();
+        $productBestSeller = $this->productBestsellerEloquentRepository->orderBy('product_base_id', 'DESC')->get();
+        $productRemarkable = $this->productRemarkableEloquentRepository->orderBy('product_base_id', 'DESC')->get();
+        $productBase = $this->productBaseEloquentRepository->orderBy('name')->get()->pluck('name', 'id')->toArray();
+        return view('admin.edit_product', compact('productNew', 'productBestSeller', 'productRemarkable', 'productBase'));
+    }
+
+    /**
+     * Thêm sản phẩm mới cập nhật.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function addProductNew(Request $request)
+    {
+        if ( $this->productNewEloquentRepository->addRecord($request->product_id)) {
+            Session::flash(STR_FLASH_SUCCESS, 'Thêm thành công !.');
+        } else {
+            Session::flash(STR_FLASH_ERROR, 'Thêm thất bại !.');
+        }
+        return redirect()->back();
+    }
+
+    /**
+     * Thêm sản phẩm bán chạy nhất.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function addProductBestSeller(Request $request)
+    {
+        if ( $this->productBestsellerEloquentRepository->addRecord($request->product_id)) {
+            Session::flash(STR_FLASH_SUCCESS, 'Thêm thành công !.');
+        } else {
+            Session::flash(STR_FLASH_ERROR, 'Thêm thất bại !.');
+        }
+        return redirect()->back();
+    }
+
+    /**
+     * Thêm sản phẩm đáng chú ý.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function addProductRemarkable(Request $request)
+    {
+        if ( $this->productRemarkableEloquentRepository->addRecord($request->product_id)) {
+            Session::flash(STR_FLASH_SUCCESS, 'Thêm thành công !.');
+        } else {
+            Session::flash(STR_FLASH_ERROR, 'Thêm thất bại !.');
+        }
+        return redirect()->back();
     }
 
     /**
      * Show màn hình [Quản lý Steam Code]
+     *
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

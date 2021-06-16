@@ -10,7 +10,6 @@
                     <div class="col-3">
                         @include('admin.menu')
                     </div>
-
                     <div class="col-9">
                         <div class="p5l">
                             <div class="row m-0">
@@ -21,7 +20,7 @@
                                         </div>
                                     </div>
                                     <div class="row m15t p20l">
-                                        <div class="col-12 row m-0">
+                                        <div class="col-12 row m-0" style="height: 400px; overflow-y: auto">
                                             <table id="table-custom" class="table table-bordered table-striped border m0 table-border-custom">
                                                 <thead>
                                                 <tr>
@@ -31,32 +30,44 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach(ARRAY_COLOR_1 as $key => $item)
+                                                @foreach($productNew as $item)
                                                     <tr>
-                                                        <td class="text-center">{{ $key }}</td>
-                                                        <td>Sản phẩm {{ $key }}</td>
+                                                        <td class="text-center">{{ $item->product_base_id }}</td>
+                                                        <td>{{ $item->productBase->name }}</td>
                                                         <td class="text-center">
                                                             <button class="btn btn-danger min-w115"><i class="fas fa-trash-alt"></i> Xoá</button>
                                                         </td>
                                                     </tr>
                                                 @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <form action="{{ route(ADMIN_ADD_PRODUCT_NEW) }}" method="POST" class="col-12 row m-0 m15t">
+                                            @csrf
+                                            <table id="table-custom" class="table table-bordered table-striped border m0 table-border-custom">
+                                                <tbody>
                                                 <tr>
-                                                    <td class="text-center">
-                                                        <input type="text" class="form-control">
+                                                    <td class="w-20">
+                                                        <select name="product_id" id="" class="form-control select-product-id">
+                                                            @foreach($productBase as $key => $value)
+                                                                <option value="{{ $key }}">{{ $key }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </td>
-                                                    <td class="text-center">
-                                                        <input type="text" class="form-control">
+                                                    <td class="w-60">
+                                                        <select name="" id="" class="form-control select-product-name">
+                                                            @foreach($productBase as $key => $value)
+                                                                <option value="{{ $key }}">{{ $value }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-primary min-w115"><i class="fas fa-plus-circle"></i> Thêm</button>
+                                                    <td class="w-20 text-center">
+                                                        <button type="submit" class="btn btn-primary min-w115"><i class="fas fa-plus-circle"></i> Thêm</button>
                                                     </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <div class="col-6">
-                                                <div id="chart-top-sell"></div>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
 
@@ -67,7 +78,7 @@
                                         </div>
                                     </div>
                                     <div class="row m15t p20l">
-                                        <div class="col-12 row m-0">
+                                        <div class="col-12 row m-0" style="height: 400px; overflow-y: auto">
                                             <table id="table-custom" class="table table-bordered table-striped border m0 table-border-custom">
                                                 <thead>
                                                 <tr>
@@ -77,32 +88,44 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach(ARRAY_COLOR_1 as $key => $item)
+                                                @foreach($productBestSeller as $item)
                                                     <tr>
-                                                        <td class="text-center">{{ $key }}</td>
-                                                        <td>Sản phẩm {{ $key }}</td>
+                                                        <td class="text-center">{{ $item->product_base_id }}</td>
+                                                        <td>{{ $item->productBase->name }}</td>
                                                         <td class="text-center">
                                                             <button class="btn btn-danger min-w115"><i class="fas fa-trash-alt"></i> Xoá</button>
                                                         </td>
                                                     </tr>
                                                 @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <form action="{{ route(ADMIN_ADD_PRODUCT_BEST_SELLER) }}" method="POST" class="col-12 row m-0 m15t">
+                                            @csrf
+                                            <table id="table-custom" class="table table-bordered table-striped border m0 table-border-custom">
+                                                <tbody>
                                                 <tr>
-                                                    <td class="text-center">
-                                                        <input type="text" class="form-control">
+                                                    <td class="w-20">
+                                                        <select name="product_id" id="" class="form-control select-product-id">
+                                                            @foreach($productBase as $key => $value)
+                                                                <option value="{{ $key }}">{{ $key }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </td>
-                                                    <td class="text-center">
-                                                        <input type="text" class="form-control">
+                                                    <td class="w-60">
+                                                        <select name="" id="" class="form-control select-product-name">
+                                                            @foreach($productBase as $key => $value)
+                                                                <option value="{{ $key }}">{{ $value }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-primary min-w115"><i class="fas fa-plus-circle"></i> Thêm</button>
+                                                    <td class="w-20 text-center">
+                                                        <button type="submit" class="btn btn-primary min-w115"><i class="fas fa-plus-circle"></i> Thêm</button>
                                                     </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <div class="col-6">
-                                                <div id="chart-top-sell"></div>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
 
@@ -113,7 +136,7 @@
                                         </div>
                                     </div>
                                     <div class="row m15t p20l">
-                                        <div class="col-12 row m-0">
+                                        <div class="col-12 row m-0" style="height: 400px; overflow-y: auto">
                                             <table id="table-custom" class="table table-bordered table-striped border m0 table-border-custom">
                                                 <thead>
                                                 <tr>
@@ -123,32 +146,44 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach(ARRAY_COLOR_1 as $key => $item)
+                                                @foreach($productRemarkable as $item)
                                                     <tr>
-                                                        <td class="text-center">{{ $key }}</td>
-                                                        <td>Sản phẩm {{ $key }}</td>
+                                                        <td class="text-center">{{ $item->product_base_id }}</td>
+                                                        <td>{{ $item->productBase->name }}</td>
                                                         <td class="text-center">
                                                             <button class="btn btn-danger min-w115"><i class="fas fa-trash-alt"></i> Xoá</button>
                                                         </td>
                                                     </tr>
                                                 @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <form action="{{ route(ADMIN_ADD_PRODUCT_REMARKABLE) }}" method="POST" class="col-12 row m-0 m15t">
+                                            @csrf
+                                            <table id="table-custom" class="table table-bordered table-striped border m0 table-border-custom">
+                                                <tbody>
                                                 <tr>
-                                                    <td class="text-center">
-                                                        <input type="text" class="form-control">
+                                                    <td class="w-20">
+                                                        <select name="product_id" id="" class="form-control select-product-id">
+                                                            @foreach($productBase as $key => $value)
+                                                                <option value="{{ $key }}">{{ $key }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </td>
-                                                    <td class="text-center">
-                                                        <input type="text" class="form-control">
+                                                    <td class="w-60">
+                                                        <select name="" id="" class="form-control select-product-name">
+                                                            @foreach($productBase as $key => $value)
+                                                                <option value="{{ $key }}">{{ $value }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-primary min-w115"><i class="fas fa-plus-circle"></i> Thêm</button>
+                                                    <td class="w-20 text-center">
+                                                        <button type="submit" class="btn btn-primary min-w115"><i class="fas fa-plus-circle"></i> Thêm</button>
                                                     </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <div class="col-6">
-                                                <div id="chart-top-sell"></div>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -161,5 +196,5 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('js/admin/index.js') }}"></script>
+    <script src="{{ asset('js/admin/edit_product.js') }}"></script>
 @endsection
