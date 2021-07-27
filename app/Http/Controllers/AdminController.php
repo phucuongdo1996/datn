@@ -48,7 +48,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Show dota site
+     * Show màn hình [Thống kê doanh số]
      *
      * @return mixed
      */
@@ -58,7 +58,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Show màn hình [Thống kê doanh số]
+     * Lấy thông tin doanh số [Thống kê doanh số]
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -68,18 +68,18 @@ class AdminController extends Controller
         $indexMonth = date("m-Y", time());
         $lastMonth = date("m-Y", strtotime("-1 month"));
         $revenueLastMonth = $data->filter(function ($value, $key) use ($lastMonth) {
-            return $key == $lastMonth;
-        });
+            return $value->month_year == $lastMonth;
+        })->first();
         $revenueIndexMonth = $data->filter(function ($value, $key) use ($indexMonth) {
-            return $key == $indexMonth;
-        });
+            return $value->month_year == $indexMonth;
+        })->first();
         $dataReturn = [
             'categories' => $data->pluck('month_year')->toArray(),
             'revenue_agency' => $data->pluck('revenue_agency')->toArray(),
             'revenue_steam_code' => $data->pluck('revenue_steam_code')->toArray(),
             'revenue_recharge_money' => $data->pluck('revenue_recharge_money')->toArray(),
-            'revenue_last_month' => $revenueLastMonth->toArray(),
-            'revenue_index_month' => $revenueIndexMonth->toArray(),
+            'revenue_last_month' => $revenueLastMonth,
+            'revenue_index_month' => $revenueIndexMonth,
         ];
         return response()->json(['data' => $dataReturn]);
     }

@@ -143,7 +143,7 @@ $(document).ready(function () {
 
     $('input[name=price]').on('keyup', function () {
         let value1 = Common.convertStringToNumber($(this).val());
-        let value2 = value1 * 0.9;
+        let value2 = value1 * 0.95;
         $('input[name=price_real]').val(Common.numberFormat(value2, 2))
     });
 

@@ -2,11 +2,33 @@ let adminFunction = (function () {
     let modules = {};
 
     modules.buildCharts = function () {
-        modules.buildIncomeChart();
+        modules.getDataRevenue();
         modules.buildTopSellChart();
     }
 
-    modules.buildIncomeChart = function () {
+    modules.getDataRevenue = function () {
+        let formData = new FormData();
+        formData.append("_token", $('meta[name="csrf-token"]').attr('content'));
+        let submitAjax = $.ajax({
+            url: '/admin/get-data-revenue',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false
+        })
+        submitAjax.done(function (response) {
+            modules.buildIncomeChart(response.data);
+            $('input[name=revenue_index_month]').val(Common.numberFormat(Number(response.data.revenue_index_month.revenue_agency) +
+                Number(response.data.revenue_index_month.revenue_recharge_money) +  Number(response.data.revenue_index_month.revenue_steam_code)));
+            $('input[name=revenue_last_month]').val(Common.numberFormat(Number(response.data.revenue_last_month.revenue_agency) +
+                Number(response.data.revenue_last_month.revenue_recharge_money) +  Number(response.data.revenue_last_month.revenue_steam_code)));
+        });
+        submitAjax.fail(function (response) {
+            console.log(response)
+        });
+    }
+
+    modules.buildIncomeChart = function (data) {
         Highcharts.chart('chart-income', {
             chart: {
                 type: 'column'
@@ -15,7 +37,7 @@ let adminFunction = (function () {
                 text: 'Doanh thu theo tháng'
             },
             xAxis: {
-                categories: ['01/2021', '02/2021', '03/2021', '04/2021', '05/2021']
+                categories: data.categories
             },
             yAxis: {
                 title: {
@@ -32,13 +54,13 @@ let adminFunction = (function () {
             },
             series: [{
                 name: 'Nạp tài khoản',
-                data: [5000000, 3000000, 4000000, 7000000, 2000000]
+                data: data.revenue_recharge_money.map(i => Number(i))
             }, {
                 name: 'Doanh thu dịch vụ trung gian',
-                data: [3600000, 2500000, 3000000, 2000000, 1000000]
+                data: data.revenue_agency.map(i => Number(i))
             }, {
                 name: 'Doanh thu Steam code',
-                data: [3000000, 4000000, 4000000, 2000000, 5500000]
+                data: data.revenue_steam_code.map(i => Number(i))
             }]
         });
     }

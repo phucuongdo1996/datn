@@ -25,7 +25,7 @@
                                                     Tổng doanh thu tháng này:
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="text" class="form-control" value="150,000,000">
+                                                    <input name="revenue_index_month" type="text" class="form-control convert-data" value="150,000,000" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-6 row">
@@ -33,7 +33,7 @@
                                                     Tổng doanh thu tháng trước:
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="text" class="form-control" value="150,000,000">
+                                                    <input name="revenue_last_month" type="text" class="form-control convert-data" value="150,000,000" readonly>
                                                 </div>
                                             </div>
                                         </div>
