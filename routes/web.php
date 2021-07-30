@@ -37,6 +37,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/add-steam-code', 'AdminController@addSteamCode')->name(ADMIN_ADD_STEAM_CODE);
         Route::post('/add-steam-code', 'AdminController@storeSteamCode')->name(ADMIN_STORE_STEAM_CODE);
         Route::delete('/delete-steam-code/{id}', 'AdminController@deleteSteamCode')->name(ADMIN_DELETE_STEAM_CODE);
+        Route::post('/delete-product', 'AdminController@deleteProduct')->name(ADMIN_DELETE_PRODUCT);
         Route::post('/get-data-revenue', 'AdminController@getDataRevenue')->name(ADMIN_GET_DATA_REVENUE);
     });
 });

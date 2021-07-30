@@ -35,6 +35,7 @@ const ADMIN_ADD_PRODUCT_REMARKABLE = 'admin.add.product.remarkable';
 const ADMIN_ADD_STEAM_CODE = 'admin.add.steam.code';
 const ADMIN_STORE_STEAM_CODE = 'admin.store.steam.code';
 const ADMIN_DELETE_STEAM_CODE = 'admin.delete.steam.code';
+const ADMIN_DELETE_PRODUCT = 'admin.delete.product';
 const ADMIN_GET_DATA_REVENUE = 'admin.get.data.revenue';
 
 /**
@@ -60,6 +61,9 @@ const ARRAY_COLOR = [
 ];
 const ARRAY_COLOR_1 = [
     '#2F868C', '#E56C9B', '#f7a35c', '#0377FF', '#FF0000',
+];
+const ARRAY_COLOR_PIE = [
+    '#2F868C', '#E56C9B', '#f7a35c', '#0377FF', '#FF0000', '#EF2081', '#91e8e1', '#C1DB05', '#F96E00', '#8085e9'
 ];
 
 /**

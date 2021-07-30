@@ -135,8 +135,8 @@ var Common = (function () {
         modules.clearMessageValidate();
         $.each(messageList, function (key, value) {
             $('p.error-message[data-error=' + key + ']').text(value).show();
-            $('input[name=' + key + ']').addClass('input-error');
-            $('select[name=' + key + ']').addClass('input-error');
+            $('input[name=' + key + ']').not('.not-border-error').addClass('input-error');
+            $('select[name=' + key + ']').not('.not-border-error').addClass('input-error');
         });
     };
 

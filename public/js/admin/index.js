@@ -24,7 +24,7 @@ let adminFunction = (function () {
                 Number(response.data.revenue_last_month.revenue_recharge_money) +  Number(response.data.revenue_last_month.revenue_steam_code)));
         });
         submitAjax.fail(function (response) {
-            console.log(response)
+            console.log(response);
         });
     }
 
@@ -78,7 +78,7 @@ let adminFunction = (function () {
                 text: ''
             },
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                pointFormat: '{series.name}: <b>{point.y}</b>'
             },
             accessibility: {
                 point: {
@@ -96,45 +96,9 @@ let adminFunction = (function () {
                 }
             },
             series: [{
-                name: 'Sản phẩm',
+                name: 'Số lượng giao dịch',
                 colorByPoint: true,
-                data: [{
-                    name: 'Sản phẩm 1',
-                    y: 60,
-                    color: '#BB0000',
-                    sliced: true,
-                    selected: true
-                }, {
-                    name: 'Sản phẩm 2',
-                    y: 20,
-                    color: '#FFFF66',
-                },{
-                    name: 'Sản phẩm 3',
-                    y: 20,
-                    color: '#00FF00'
-                }, {
-                    name: 'Sản phẩm 4',
-                    y: 15,
-                    color: '#33CCFF'
-                }, {
-                    name: 'Sản phẩm 5',
-                    y: 5
-                }, {
-                    name: 'Sản phẩm 6',
-                    y: 5
-                }, {
-                    name: 'Sản phẩm 7',
-                    y: 20
-                },{
-                    name: 'Sản phẩm 8',
-                    y: 20
-                }, {
-                    name: 'Sản phẩm 9',
-                    y: 15
-                }, {
-                    name: 'Sản phẩm 10',
-                    y: 5
-                }]
+                data: dataPieChart
             }]
         });
     }

@@ -54,7 +54,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $data = $this->adminRevenueEloquentRepository->getDataTopSeller();
+        $dataPieChart = $data->map(function ($value, $key) {
+            $value->color = ARRAY_COLOR_PIE[$key];
+            return $value;
+        })->toArray();
+        return view('admin.index', compact('dataPieChart'));
     }
 
     /**
@@ -201,5 +206,45 @@ class AdminController extends Controller
         return response()->json([
             'status' => 400
         ]);
+    }
+
+    /**
+     * Xóa sản phẩm khỏi bộ sưu tập [Quản lý sản phẩm]
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteProduct(Request $request)
+    {
+        try {
+            $params = $request->all();
+            if (!isset($params['table']) || !isset($params['product_base_id'])) {
+                Session::flash(STR_FLASH_ERROR, 'Xóa sản phẩm thất bại !.');
+                return response()->json([
+                    'status' => 400
+                ]);
+            }
+            switch ($params['table']) {
+                case 'products_new':
+                    $this->productNewEloquentRepository->where('product_base_id', $params['product_base_id'])->delete();
+                    break;
+                case 'products_bestseller':
+                    $this->productBestsellerEloquentRepository->where('product_base_id', $params['product_base_id'])->delete();
+                    break;
+                case 'products_remarkable':
+                    $this->productRemarkableEloquentRepository->where('product_base_id', $params['product_base_id'])->delete();
+                    break;
+            }
+            Session::flash(STR_FLASH_SUCCESS, 'Xóa sản phẩm thành công !.');
+            return response()->json([
+                'save' => true
+            ]);
+        } catch (\Exception $exception) {
+            report($exception);
+            Session::flash(STR_FLASH_ERROR, 'Xóa sản phẩm thất bại !.');
+            return response()->json([
+                'save' => false
+            ], 400);
+        }
     }
 }

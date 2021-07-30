@@ -35,7 +35,7 @@
                                                         <td class="text-center">{{ $item->product_base_id }}</td>
                                                         <td>{{ $item->productBase->name }}</td>
                                                         <td class="text-center">
-                                                            <button class="btn btn-danger min-w115"><i class="fas fa-trash-alt"></i> Xoá</button>
+                                                            <button type="button" class="btn btn-danger min-w115 btn-drop-product" data-id="{{ $item->product_base_id }}" data-table="products_new"><i class="fas fa-trash-alt"></i> Xoá</button>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -93,7 +93,7 @@
                                                         <td class="text-center">{{ $item->product_base_id }}</td>
                                                         <td>{{ $item->productBase->name }}</td>
                                                         <td class="text-center">
-                                                            <button class="btn btn-danger min-w115"><i class="fas fa-trash-alt"></i> Xoá</button>
+                                                            <button type="button" class="btn btn-danger min-w115 btn-drop-product" data-id="{{ $item->product_base_id }}" data-table="products_bestseller"><i class="fas fa-trash-alt"></i> Xoá</button>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -151,7 +151,7 @@
                                                         <td class="text-center">{{ $item->product_base_id }}</td>
                                                         <td>{{ $item->productBase->name }}</td>
                                                         <td class="text-center">
-                                                            <button class="btn btn-danger min-w115"><i class="fas fa-trash-alt"></i> Xoá</button>
+                                                            <button type="button" class="btn btn-danger min-w115 btn-drop-product" data-id="{{ $item->product_base_id }}" data-table="products_remarkable"><i class="fas fa-trash-alt"></i> Xoá</button>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -192,6 +192,29 @@
                 </div>
                 </div>
             </div><!-- kvWrap -->
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-delete-product-admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Xác nhận</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-center m15b">
+                        <div class="fs20">Loại bỏ sản phẩm này ?</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="product-base-id">
+                    <input type="hidden" id="table">
+                    <button id="delete-submit" type="button" class="btn m-0 btn-load-more"><span><i class="fas fa-check-circle m10r"></i>Hoàn tất</span></button>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

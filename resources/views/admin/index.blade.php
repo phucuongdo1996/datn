@@ -53,17 +53,19 @@
                                                     <table id="table-custom" class="table table-bordered table-striped border m0 table-border-custom">
                                                         <thead>
                                                         <tr>
-                                                            <th class="w-20">STT</th>
+                                                            <th class="w-10">STT</th>
+                                                            <th class="w-20">Mã sản phẩm gốc</th>
                                                             <th class="w-40">Tên sản phẩm</th>
-                                                            <th class="w-40">Số giao dịch</th>
+                                                            <th class="w-30">Số giao dịch</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @foreach(ARRAY_COLOR_1 as $key => $item)
+                                                        @foreach($dataPieChart as $key => $item)
                                                             <tr>
                                                                 <td class="text-center">{{ $key }}</td>
-                                                                <td><i class="fas fa-circle m10r" style="color: {{ $item }}"></i> Sản phẩm {{ $key }}</td>
-                                                                <td class="text-right">{{ 1000 - $key*10 }}</td>
+                                                                <td class="text-center">{{ $item->id }}</td>
+                                                                <td><i class="fas fa-circle m10r" style="color: {{ $item->color }}"></i>{{ $item->name }}</td>
+                                                                <td class="text-right">{{ $item->y}}</td>
                                                             </tr>
                                                         @endforeach
                                                         </tbody>
@@ -85,5 +87,8 @@
     </div>
 @endsection
 @section('js')
+    <script>
+        let dataPieChart = {!! json_encode($dataPieChart) !!}
+    </script>
     <script src="{{ asset('js/admin/index.js') }}"></script>
 @endsection

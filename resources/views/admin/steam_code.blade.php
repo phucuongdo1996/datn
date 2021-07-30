@@ -61,12 +61,12 @@
                                         <form action="{{ route(ADMIN_ADD_STEAM_CODE) }}" method="GET" class="col-12 row m0">
                                             <div class="col-4">
                                                 <div class="p10r">
-                                                    <input name="steam_code" value="{{ $params['steam_code'] ?? '' }}" type="text" class="form-control convert-card-number" placeholder="Mã thẻ, số seri">
+                                                    <input name="steam_code" value="{{ $params['steam_code'] ?? '' }}" type="text" class="form-control convert-card-number not-border-error" placeholder="Mã thẻ, số seri">
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="p10r">
-                                                    <select name="type" id="" class="form-control">
+                                                    <select name="type" id="" class="form-control not-border-error">
                                                         <option value="">Mệnh giá</option>
                                                         @foreach(STEAM_CODE_VALUE as $key => $value)
                                                             <option value="{{ $key }}" @if(isset($params['type']) && $params['type'] == $key) selected @endif>{{ $value }}</option>
