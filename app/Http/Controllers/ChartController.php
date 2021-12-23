@@ -29,7 +29,7 @@ class ChartController extends Controller
     public function getDataChartDetail(Request $request)
     {
 //        $data = $this->marketEloquentRepository->getDataChartProductDetail($request->product_base_id);
-        $data = $this->marketEloquentRepository->getDataChartProductDetail($request->product_base_id);
+//        $data = $this->marketEloquentRepository->getDataChartProductDetail($request->product_base_id);
         $date = array_map(function ($value) {
             return date('d/m', strtotime($value));
         }, array_column($data, 'date'));
