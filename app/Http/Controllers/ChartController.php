@@ -29,10 +29,10 @@ class ChartController extends Controller
     public function getDataChartDetail(Request $request)
     {
         $data = $this->marketEloquentRepository->getDataChartProductDetail($request->product_base_id);
-        $date = array_map(function ($value) {
-            return date('d/m', strtotime($value));
-        }, array_column($data, 'date'));
-        $price = array_map(function ($value) {
+//        $date = array_map(function ($value) {
+//            return date('d/m', strtotime($value));
+//        }, array_column($data, 'date'));
+//        $price = array_map(function ($value) {
             return (float)$value;
         }, array_column($data, 'avg_price'));
         return response()->json([
